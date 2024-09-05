@@ -11,35 +11,36 @@ import { PublicRoute } from './PublicRoute';
 import Layout from './components/Layout/Layout';
 
 function App() {
-	// useEffect(() => {
-	//   dispatch(refreshUserThunk());
-	// }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshUserThunk());
+  // }, [dispatch]);
 
-	// return isRefreshing ? (
-	//   <b>Refreshing user...</b>
-	// ) : (
+  // return isRefreshing ? (
+  //   <b>Refreshing user...</b>
+  // ) : (
 
-	return (
-		<Routes>
-			<Route
-				path='/'
-				element={<PrivateRoute redirectTo='/login' component={<Layout />} />}>
-				<Route index element={<HomeTab />} />
-				<Route path='/currency' element={<CurrencyTab />} />
-				<Route path='/statistics' element={<StatisticsTab />} />
-			</Route>
-			<Route
-				path='/login'
-				element={<PublicRoute redirectTo='/' component={<LoginPage />} />}
-			/>
-			<Route
-				path='/register'
-				element={
-					<PublicRoute redirectTo='/' component={<RegistrationPage />} />
-				}
-			/>
-			<Route path='*' element={<Navigate to={'/'} />} />
-		</Routes>
-	);
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
+      >
+        <Route index element={<HomeTab />} />
+        <Route path="/currency" element={<CurrencyTab />} />
+        <Route path="/statistics" element={<StatisticsTab />} />
+      </Route>
+      <Route
+        path="/login"
+        element={<PublicRoute redirectTo="/" component={<LoginPage />} />}
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute redirectTo="/" component={<RegistrationPage />} />
+        }
+      />
+      <Route path="*" element={<Navigate to={'/'} />} />
+    </Routes>
+  );
 }
 export default App;
