@@ -20,12 +20,7 @@ export const RegistrationForm = () => {
     <div>
       <div>
         <div>
-          <h1>SignUP now!</h1>
-          <p>
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <h1>Money Guard</h1>
         </div>
         <div>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
