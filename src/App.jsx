@@ -1,12 +1,46 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import HomeTab from './pages/HomeTab/HomeTab';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import CurrencyTab from './pages/CurrencyTab/CurrencyTab';
+import StatisticsTab from './pages/StatisticsTab/StatisticsTab';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   dispatch(refreshUserThunk());
+  // }, [dispatch]);
 
-  return <></>;
+  // return isRefreshing ? (
+  //   <b>Refreshing user...</b>
+  // ) : (
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
+      >
+        <Route index element={<HomeTab />} />
+        <Route path="/currency" element={<CurrencyTab />} />
+        <Route path="/statistics" element={<StatisticsTab />} />
+      </Route>
+      <Route
+        path="/login"
+        element={<PublicRoute redirectTo="/" component={<LoginPage />} />}
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute redirectTo="/" component={<RegistrationPage />} />
+        }
+      />
+      <Route path="*" element={<Navigate to={'/'} />} />
+    </Routes>
+  );
 }
-
 export default App;

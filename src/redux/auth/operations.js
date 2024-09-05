@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.goit.global/';
+axios.defaults.baseURL = 'https://wallet.b.goit.study/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,7 +15,7 @@ export const registerThunk = createAsyncThunk(
   'auth/register',
   async (userData, thunkAPI) => {
     try {
-      const { data } = await axios.post('users/signup', userData);
+      const { data } = await axios.post('/api/auth/sign-up', userData);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -28,7 +28,7 @@ export const loginThunk = createAsyncThunk(
   'auth/login',
   async (userData, thunkAPI) => {
     try {
-      const { data } = await axios.post('users/login', userData);
+      const { data } = await axios.post('/api/auth/sign-in', userData);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -41,7 +41,7 @@ export const logoutThunk = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {
     try {
-      await axios.post('users/logout');
+      await axios.delete('/api/auth/sign-out');
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
