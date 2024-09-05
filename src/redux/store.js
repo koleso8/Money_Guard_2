@@ -12,22 +12,22 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// const persistConfig = {
-//   key: 'root',
-//   version: 1,
-//   storage,
-//   whiteList: ['contacts'],
-// };
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage,
+  whiteList: ['user'],
+};
 
-// const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 // import { transactionsReducer } from './transactions/slice';
 // import { editingReducer } from './editSlice';
-// import { authReducer } from './auth/slice';
+import { authReducer } from './auth/slice';
 
 export const store = configureStore({
   reducer: {
-    // auth: persistedReducer,
+    auth: persistedReducer,
     // transactions: transactionsReducer,
     // editing: editingReducer,
   },
