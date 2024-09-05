@@ -1,10 +1,9 @@
-const StatisticsDashboard = () => {
+export const StatisticsDashboard = () => {
   return (
     <div>
-      <MonthSelector />
-      <YearSelector />
+      Dash
+      {/* <MonthSelector /> */}
+      {/* <YearSelector /> */}
     </div>
   );
 };
-
-export default StatisticsDashboard;

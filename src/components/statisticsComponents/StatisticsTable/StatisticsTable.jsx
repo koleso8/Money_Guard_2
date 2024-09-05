@@ -1,13 +1,24 @@
-import React from "react";
+// import { lazy } from "react";
 
-const StatisticsTable = () => {
+// const {StatsTableRow} = lazy(() => import("../StatsTableRow/StatsTableRow"));
+import { StatsTableRow } from "../StatsTableRow/StatsTableRow";
+
+import dataJson from "../devData.json";
+
+export const StatisticsTable = () => {
+  const data = JSON.parse(dataJson);
+
+  console.log(data);
+
   return (
     <div>
       <table>
-        <th></th>
         <tr>
-          <StatsTableRow />
+          <th>Category</th>
+          <th>Sum</th>
         </tr>
+
+        <StatsTableRow />
       </table>
       <div className={s.summary}>
         <p>Expenses: </p>
@@ -16,5 +27,3 @@ const StatisticsTable = () => {
     </div>
   );
 };
-
-export default StatisticsTable;
