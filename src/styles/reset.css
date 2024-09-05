@@ -1,13 +1,13 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	font-size: 16px;
-	line-height: 1.5;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 h1,
@@ -17,40 +17,40 @@ h4,
 h5,
 h6,
 p {
-	margin: 0;
+  margin: 0;
 }
 
 p:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 ol,
 ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
-	font-family: inherit;
-	font-size: inherit;
-	color: currentColor;
-	text-decoration: none;
-	margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: currentColor;
+  text-decoration: none;
+  margin: 0;
 }
 
 button {
-	font-family: inherit;
-	font-size: inherit;
-	cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
 }
 
 img {
-	display: block;
-	max-width: 100%;
-	height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 address {
-	font-style: normal;
+  font-style: normal;
 }
