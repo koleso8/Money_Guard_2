@@ -8,6 +8,13 @@
   --dashboard_text: #ff868d;
   --form_color: rgba(255, 255, 255, 0.1);
 
+  --gradient: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+
   --font_family: 'Poppins', sans-serif;
   --second_family: 'Circe', sans-serif;
 }
