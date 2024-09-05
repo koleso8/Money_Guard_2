@@ -1,0 +1,68 @@
+/* .table {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	& p {
+		width: calc(100% / 3);
+		text-align: center;
+	}
+}
+
+.mainRow {
+	background-color: rgba(255, 255, 255, 0.2);
+} */
+
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.mainRow {
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 100%;
+}
+
+.item {
+	padding: 16px 25px;
+	text-align: center;
+}
+
+.diagramBox {
+	width: 100%;
+	position: relative;
+}
+
+.diagram {
+	width: 100%;
+}
+
+.pointNumber {
+	color: var(--dashboard_text);
+	font-size: 12px;
+}
+
+.pointFirst {
+	position: absolute;
+	top: 15px;
+	left: 57px;
+}
+
+.pointSecond {
+	position: absolute;
+	top: -20px;
+	right: 100px;
+}

@@ -1,0 +1,14 @@
+.page {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	overflow: hidden;
+	background-image: url('../../images/layout_bg.webp');
+	background-position: center center;
+	background-size: cover;
+}
+
+.main {
+	display: flex;
+	flex-grow: 1;
+}
