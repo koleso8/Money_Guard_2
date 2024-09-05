@@ -1,6 +1,4 @@
-Додаток для обліку фінансів
-[logo](https://github.com/koleso8/Money_Guard_2/blob/d26b3310b133a3297d704e6df699e587e7eda550/src/images/icons.svg)
-
-<p align="center">
- <img width="200px" src="./src/images/icons.svg" alt="qr"/>
+<p align="center" style='background-image: url(./src/images/layout_bg.webp); background-size: cover; '>
+Додаток для обліку фінансів [WebSite](https://money-guard-2.vercel.app/)
+ <img width="200px" src="./src/images/layout_bg.webp" alt="qr"/>
 </p>
