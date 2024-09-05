@@ -12,13 +12,14 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { currencyReducer } from './currency/slice';
+import { authReducer } from './auth/slice';
 
-// const persistConfig = {
-//   key: 'root',
-//   version: 1,
-//   storage,
-//   whiteList: ['contacts'],
-// };
+const persistConfig = {
+	key: 'root',
+	version: 1,
+	storage,
+	whiteList: ['user'],
+};
 
 const currencyPersistConfig = {
 	key: 'currency',
@@ -26,18 +27,18 @@ const currencyPersistConfig = {
 	whitelist: ['currencies', 'lastRequestTime'],
 };
 
-// const persistedReducer = persistReducer(persistConfig, authReducer);
-
-// import { transactionsReducer } from './transactions/slice';
-// import { editingReducer } from './editSlice';
-// import { authReducer } from './auth/slice';
+const persistedReducer = persistReducer(persistConfig, authReducer);
+const currencyPersistedReducer = persistReducer(
+	currencyPersistConfig,
+	currencyReducer
+);
 
 export const store = configureStore({
 	reducer: {
-		// auth: persistedReducer,
+		auth: persistedReducer,
+		currency: currencyPersistedReducer,
 		// transactions: transactionsReducer,
 		// editing: editingReducer,
-		currency: persistReducer(currencyPersistConfig, currencyReducer),
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
