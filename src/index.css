@@ -1,0 +1,13 @@
+:root {
+  --yellow: #ffb627;
+  --icon_violet: #734aef;
+  --white: #fbfbfb;
+  --white_40: rgba(255, 255, 255, 0.4);
+  --white_60: rgba(255, 255, 255, 0.6);
+  --text_button: #623f8b;
+  --dashboard_text: #ff868d;
+  --form_color: rgba(255, 255, 255, 0.1);
+
+  --font_family: 'Poppins', sans-serif;
+  --second_family: 'Circe', sans-serif;
+}
