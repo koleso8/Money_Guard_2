@@ -4,7 +4,8 @@ import {
   logoutThunk,
   refreshUserThunk,
   registerThunk,
-} from "./operations";
+} from './operations';
+
 // import { errorMessage } from '../../components/errorMessage';
 
 const initialState = {

@@ -59,8 +59,12 @@ export const refreshUserThunk = createAsyncThunk(
     if (persisToken === null) thunkAPI.rejectWithValue("NO USER");
     try {
       setAuthHeader(persisToken);
+
+
+
       const { data } = await goitApi.get("/api/users/current");
-      return data;
+
+return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
