@@ -1,7 +1,13 @@
-import React from 'react';
-
 const StatisticsTab = () => {
-  return <div>statistic</div>;
+  return (
+    <div>
+      <Chart />
+      <div>
+        <StatisticsDashboard />
+        <StatisticsTable />
+      </div>
+    </div>
+  );
 };
 
 export default StatisticsTab;
