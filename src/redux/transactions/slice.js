@@ -18,23 +18,25 @@ const slice = createSlice({
   initialState,
   reducers: {
     clearItems: state => {
-      return { ...state, items: [] };
+      return { ...state, transactions: [] };
     },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchTransactionsThunk.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.transactions = action.payload;
       })
       .addCase(addTransactionsThunk.fulfilled, (state, action) => {
-        state.items.push(action.payload);
+        state.transactions.push(action.payload);
         // success('Contact has been saved');
       })
       .addCase(deleteTransactionsThunk.fulfilled, (state, action) => {
-        state.items = state.items.filter(item => item.id !== action.payload);
+        state.transactions = state.transactions.filter(
+          item => item.id !== action.payload
+        );
       })
       .addCase(editTransactionsThunk.fulfilled, (state, action) => {
-        state.items = state.items.map(item =>
+        state.transactions = state.transactions.map(item =>
           item.id === action.payload.id ? { ...item, ...action.payload } : item
         );
       })
@@ -83,12 +85,14 @@ const slice = createSlice({
   },
 });
 
-export const TransactionsReducer = slice.reducer;
+export const transactionsReducer = slice.reducer;
+console.log(slice.reducer);
 
 export const {
-  addContact,
-  deleteContact,
-  chengeContact,
+  getTransactionsThunk,
+  addTransactions,
+  deleteTransactions,
+  chengeTransactions,
   onEdit,
   cancelEdit,
   clearItems,
