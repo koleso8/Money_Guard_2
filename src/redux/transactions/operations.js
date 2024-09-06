@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-export const fetchTransactionsThunk = createAsyncThunk(
-  'transactions/fetchTransactions',
+import { getBalanceThunk, goitApi } from '../auth/operations';
+
+export const fetchAllTrnThunk = createAsyncThunk(
+  'transactions/fetchAllTransactions',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/transactions');
+      const { data } = await goitApi.get('/transactions');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -13,12 +14,29 @@ export const fetchTransactionsThunk = createAsyncThunk(
   }
 );
 
-export const addTransactionsThunk = createAsyncThunk(
-  'transactions/addTransactions',
-  async (card, thunkAPI) => {
+export const fetchPeriodTrnThunk = createAsyncThunk(
+  'transactions/fetchByPeriodTransactions',
+  async (period, thunkAPI) => {
     try {
-      const { data } = await axios.post('/api/transactions', card);
+      const { month, year } = period;
+      if (month || year) {
+        const { data } = await goitApi.get('/transactions-summary', {
+          params: { month, year },
+        });
+        return data;
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
+export const addTrnThunk = createAsyncThunk(
+  'transactions/addTransaction',
+  async (transaction, thunkAPI) => {
+    try {
+      const { data } = await goitApi.post('/transactions', transaction);
+      await thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,30 +44,44 @@ export const addTransactionsThunk = createAsyncThunk(
   }
 );
 
-export const deleteTransactionsThunk = createAsyncThunk(
-  'transactions/deleteTransactions',
-  async (id, thunkAPI) => {
+export const editTrnThunk = createAsyncThunk(
+  'transactions/editTransaction',
+  async (transaction, thunkAPI) => {
     try {
-      await axios.delete(`/api/transactions/${id}`);
-      return id;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const editTransactionsThunk = createAsyncThunk(
-  'transactions/editTransactions',
-  async (card, thunkAPI) => {
-    try {
-      await axios.patch(`/api/transactions/${card.id}`, {
-        transactionDate: card.date,
-        type: card.type,
-        categoryId: card.id,
-        comment: card.comment,
-        amount: card.amount,
+      const { id, transactionDate, type, comment, amount } = transaction;
+      const { data } = await goitApi.patch(`/transactions/${id}`, {
+        transactionDate,
+        type,
+        comment,
+        amount,
       });
-      return card;
+      await thunkAPI.dispatch(getBalanceThunk());
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteTrnThunk = createAsyncThunk(
+  'transactions/deleteTransaction',
+  async (transactionId, thunkAPI) => {
+    try {
+      await goitApi.delete(`/transactions/${transactionId}`);
+      await thunkAPI.dispatch(getBalanceThunk());
+      return transactionId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getCategoriesThunk = createAsyncThunk(
+  'transactions/getCategories',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await goitApi.get('/transaction-categories');
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
