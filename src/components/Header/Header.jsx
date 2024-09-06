@@ -1,7 +1,11 @@
-import s from './Header.module.css';
-import clsx from 'clsx';
+import { useSelector } from "react-redux";
+import s from "./Header.module.css";
+import clsx from "clsx";
+import { selectUser } from "../../redux/auth/selectors";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const user = useSelector(selectUser);
   const handleLogout = () => {
     console.log("Logout clicked");
   };
@@ -16,14 +20,16 @@ const Header = () => {
 
   return (
     <div className={clsx(s.container)}>
-      <div className={clsx(s.logo)} onClick={redirectToHome}>
-        <svg className={clsx(s.logosvg)}>
-          <use href="./src/images/icons.svg#logo"></use>
-        </svg>
-        <p className={clsx(s.title)}>Money Guard</p>
-      </div>
+      <NavLink to="/">
+        <div className={clsx(s.logo)} onClick={redirectToHome}>
+          <svg className={clsx(s.logosvg)}>
+            <use href="./src/images/icons.svg#logo"></use>
+          </svg>
+          <p className={clsx(s.title)}>Money Guard</p>
+        </div>
+      </NavLink>
       <div className={clsx(s.logout)}>
-        <p className={clsx(s.username)}>Name</p>
+        <p className={clsx(s.username)}>{user.username}</p>
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
           <svg width="18" height="18">
             <use href="./src/images/icons.svg#logout"></use>
