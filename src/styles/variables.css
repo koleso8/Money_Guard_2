@@ -21,4 +21,5 @@
 
 html {
   font-family: var(--font_family);
+  color: var(--white);
 }

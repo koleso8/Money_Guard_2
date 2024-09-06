@@ -1,96 +1,95 @@
-// import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// import {
-//   addContactsThunk,
-//   deleteContactsThunk,
-//   editContactsThunk,
-//   fetchContactsThunk,
-// } from './operations';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import {
+  addTransactionsThunk,
+  deleteTransactionsThunk,
+  editTransactionsThunk,
+  fetchTransactionsThunk,
+} from './operations';
 // import { success } from '../../components/success';
 
-// const initialState = {
-//   items: [],
-//   loading: false,
-//   error: null,
-// };
+const initialState = {
+  transactions: [],
+  loading: false,
+  error: null,
+};
 
-// const slice = createSlice({
-//   name: 'contacts',
-//   initialState,
-//   reducers: {
-//     clearItems: state => {
-//       return { ...state, items: [] };
-//     },
-//   },
-//   extraReducers: builder => {
-//     builder
-//       .addCase(fetchContactsThunk.fulfilled, (state, action) => {
-//         state.items = action.payload;
-//       })
-//       .addCase(addContactsThunk.fulfilled, (state, action) => {
-//         state.items.push(action.payload);
-//         success('Contact has been saved');
-//       })
-//       .addCase(deleteContactsThunk.fulfilled, (state, action) => {
-//         state.items = state.items.filter(item => item.id !== action.payload);
-//       })
-//       .addCase(editContactsThunk.fulfilled, (state, action) => {
-//         state.items = state.items.map(item =>
-//           item.id === action.payload.id ? { ...item, ...action.payload } : item
-//         );
-//       })
-//       .addMatcher(
-//         isAnyOf(
-//           fetchContactsThunk.fulfilled,
-//           addContactsThunk.fulfilled,
-//           deleteContactsThunk.fulfilled,
-//           editContactsThunk.fulfilled,
+const slice = createSlice({
+  name: 'transactions',
+  initialState,
+  reducers: {
+    clearItems: state => {
+      return { ...state, items: [] };
+    },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchTransactionsThunk.fulfilled, (state, action) => {
+        state.items = action.payload;
+      })
+      .addCase(addTransactionsThunk.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+        // success('Contact has been saved');
+      })
+      .addCase(deleteTransactionsThunk.fulfilled, (state, action) => {
+        state.items = state.items.filter(item => item.id !== action.payload);
+      })
+      .addCase(editTransactionsThunk.fulfilled, (state, action) => {
+        state.items = state.items.map(item =>
+          item.id === action.payload.id ? { ...item, ...action.payload } : item
+        );
+      })
+      .addMatcher(
+        isAnyOf(
+          fetchTransactionsThunk.fulfilled,
+          addTransactionsThunk.fulfilled,
+          deleteTransactionsThunk.fulfilled,
+          editTransactionsThunk.fulfilled,
 
-//           fetchContactsThunk.rejected,
-//           addContactsThunk.rejected,
-//           deleteContactsThunk.rejected,
+          fetchTransactionsThunk.rejected,
+          addTransactionsThunk.rejected,
+          deleteTransactionsThunk.rejected,
 
-//           editContactsThunk.rejected
-//         ),
-//         state => {
-//           state.loading = false;
-//         }
-//       )
-//       .addMatcher(
-//         isAnyOf(
-//           fetchContactsThunk.rejected,
-//           addContactsThunk.rejected,
-//           deleteContactsThunk.rejected,
+          editTransactionsThunk.rejected
+        ),
+        state => {
+          state.loading = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchTransactionsThunk.rejected,
+          addTransactionsThunk.rejected,
+          deleteTransactionsThunk.rejected,
 
-//           editContactsThunk.rejected
-//         ),
-//         (state, action) => {
-//           state.error = action.payload;
-//         }
-//       )
-//       .addMatcher(
-//         isAnyOf(
-//           editContactsThunk.pending,
-//           fetchContactsThunk.pending,
-//           addContactsThunk.pending,
+          editTransactionsThunk.rejected
+        ),
+        (state, action) => {
+          state.error = action.payload;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          editTransactionsThunk.pending,
+          fetchTransactionsThunk.pending,
+          addTransactionsThunk.pending,
 
-//           deleteContactsThunk.pending
-//         ),
-//         state => {
-//           state.error = null;
-//           state.loading = true;
-//         }
-//       );
-//   },
-// });
+          deleteTransactionsThunk.pending
+        ),
+        state => {
+          state.error = null;
+          state.loading = true;
+        }
+      );
+  },
+});
 
-// export const contactsReducer = slice.reducer;
+export const TransactionsReducer = slice.reducer;
 
-// export const {
-//   addContact,
-//   deleteContact,
-//   chengeContact,
-//   onEdit,
-//   cancelEdit,
-//   changeFilter,
-//   clearItems,
-// } = slice.actions;
+export const {
+  addContact,
+  deleteContact,
+  chengeContact,
+  onEdit,
+  cancelEdit,
+  clearItems,
+} = slice.actions;
