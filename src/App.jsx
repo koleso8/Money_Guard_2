@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from './pages/HomeTab/HomeTab';
@@ -11,14 +11,14 @@ import { PublicRoute } from './PublicRoute';
 import Layout from './components/Layout/Layout';
 
 function App() {
+  // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(refreshUserThunk());
   // }, [dispatch]);
 
-  // return isRefreshing ? (
+  //selectIsRefreshing ? (
   //   <b>Refreshing user...</b>
   // ) : (
-
   return (
     <Routes>
       <Route
