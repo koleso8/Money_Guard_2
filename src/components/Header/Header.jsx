@@ -1,12 +1,11 @@
-
-import { useDispatch, useSelector } from "react-redux";
-import s from "./Header.module.css";
-import clsx from "clsx";
-import { selectUser } from "../../redux/auth/selectors";
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
-import { logoutThunk } from "../../redux/auth/operations";
+import { useDispatch, useSelector } from 'react-redux';
+import s from './Header.module.css';
+import clsx from 'clsx';
+import { selectUser } from '../../redux/auth/selectors';
+import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
+import { logoutThunk } from '../../redux/auth/operations';
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -22,16 +21,16 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
         closeModal();
       }
     };
     if (isModalOpen) {
-      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isModalOpen]);
 
