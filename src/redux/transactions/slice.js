@@ -1,95 +1,99 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
-  addTransactionsThunk,
-  deleteTransactionsThunk,
-  editTransactionsThunk,
-  fetchTransactionsThunk,
+  addTrnThunk,
+  deleteTrnThunk,
+  editTrnThunk,
+  fetchAllTrnThunk,
+  fetchPeriodTrnThunk,
+  getCategoriesThunk,
 } from './operations';
-// import { success } from '../../components/success';
 
 const initialState = {
-  transactions: [],
+  items: [],
+  periodTransactions: [],
   loading: false,
   error: null,
+  currentTransaction: null,
+  categories: [],
 };
 
-const slice = createSlice({
+const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
+
   reducers: {
-    clearItems: state => {
-      return { ...state, items: [] };
+    addCurrentTransaction(state, { payload }) {
+      state.currentTransaction = payload;
     },
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchTransactionsThunk.fulfilled, (state, action) => {
-        state.items = action.payload;
+      .addCase(fetchAllTrnThunk.fulfilled, (state, { payload }) => {
+        state.items = payload;
       })
-      .addCase(addTransactionsThunk.fulfilled, (state, action) => {
-        state.items.push(action.payload);
-        // success('Contact has been saved');
+      .addCase(fetchPeriodTrnThunk.fulfilled, (state, { payload }) => {
+        state.periodTransactions = payload;
       })
-      .addCase(deleteTransactionsThunk.fulfilled, (state, action) => {
-        state.items = state.items.filter(item => item.id !== action.payload);
+      .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
+        state.categories = payload;
       })
-      .addCase(editTransactionsThunk.fulfilled, (state, action) => {
-        state.items = state.items.map(item =>
-          item.id === action.payload.id ? { ...item, ...action.payload } : item
+      .addCase(editTrnThunk.fulfilled, (state, { payload }) => {
+        payload.transactionDate = payload.transactionDate
+          .toString()
+          .slice(0, 10);
+        state.items = state.items.map(trn =>
+          trn.id === payload.id ? payload : trn
         );
+      })
+      .addCase(addTrnThunk.fulfilled, (state, { payload }) => {
+        payload.transactionDate = payload.transactionDate
+          .toString()
+          .slice(0, 10);
+        const { items } = state;
+        state.items = [...items, payload];
+      })
+      .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
+        state.items = state.items.filter(trn => trn.id !== payload);
       })
       .addMatcher(
         isAnyOf(
-          fetchTransactionsThunk.fulfilled,
-          addTransactionsThunk.fulfilled,
-          deleteTransactionsThunk.fulfilled,
-          editTransactionsThunk.fulfilled,
-
-          fetchTransactionsThunk.rejected,
-          addTransactionsThunk.rejected,
-          deleteTransactionsThunk.rejected,
-
-          editTransactionsThunk.rejected
+          fetchAllTrnThunk.pending,
+          fetchPeriodTrnThunk.pending,
+          addTrnThunk.pending,
+          deleteTrnThunk.pending
+        ),
+        state => {
+          state.loading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchAllTrnThunk.fulfilled,
+          fetchPeriodTrnThunk.fulfilled,
+          addTrnThunk.fulfilled,
+          deleteTrnThunk.fulfilled
         ),
         state => {
           state.loading = false;
+          state.error = null;
         }
       )
       .addMatcher(
         isAnyOf(
-          fetchTransactionsThunk.rejected,
-          addTransactionsThunk.rejected,
-          deleteTransactionsThunk.rejected,
-
-          editTransactionsThunk.rejected
-        ),
-        (state, action) => {
-          state.error = action.payload;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          editTransactionsThunk.pending,
-          fetchTransactionsThunk.pending,
-          addTransactionsThunk.pending,
-
-          deleteTransactionsThunk.pending
+          getCategoriesThunk.rejected,
+          fetchAllTrnThunk.rejected,
+          fetchPeriodTrnThunk.rejected,
+          addTrnThunk.rejected,
+          deleteTrnThunk.rejected
         ),
         state => {
-          state.error = null;
-          state.loading = true;
+          state.loading = false;
+          state.error = true;
         }
       );
   },
 });
 
-export const TransactionsReducer = slice.reducer;
-
-export const {
-  addContact,
-  deleteContact,
-  chengeContact,
-  onEdit,
-  cancelEdit,
-  clearItems,
-} = slice.actions;
+export const transactionsReducer = transactionsSlice.reducer;
+export const { addCurrentTransaction } = transactionsSlice.actions;
