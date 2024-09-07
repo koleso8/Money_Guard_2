@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import s from "./Header.module.css";
 import clsx from "clsx";
@@ -46,11 +47,13 @@ const Header = () => {
       </NavLink>
       <div className={clsx(s.logout)}>
         <p className={clsx(s.username)}>{user.username}</p>
+
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
           <svg width="18" height="18">
             <use href="./src/images/icons.svg#logout"></use>
           </svg>
         </button>
+
         <button className={clsx(s.exitButton)} onClick={handleLogout}>
           Exit
         </button>
