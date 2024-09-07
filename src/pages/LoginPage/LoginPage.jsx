@@ -1,9 +1,11 @@
-import React from "react";
-import { DevTempLoginPage } from "../../components/statisticsComponents/devTempLoginPage"; //DELETE
+import LoginForm from "../../components/LoginForm/LoginForm";
 
 const LoginPage = () => {
-  // return <div>login</div>;
-  return <DevTempLoginPage />; //DELETE
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  );
 };
 
 export default LoginPage;
