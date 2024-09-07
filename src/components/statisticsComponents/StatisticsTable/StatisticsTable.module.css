@@ -1,0 +1,142 @@
+:root {
+  --main_expenses: #fed057;
+  --products: #ffd8d0;
+  --car: #fd9498;
+  --self_care: #c5baff;
+  --child_care: #6e78e8;
+  --household_products: #4a56e2;
+  --education: #81e1ff;
+  --leisure: #24cca7;
+  --other_expenses: #00ad84;
+  --entertainment: #56b9dc;
+}
+
+.doughnutCont {
+  height: 400px;
+  width: 400px;
+}
+
+/* TABLE ROW */
+.tableRow {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  border-bottom: 1px solid #fff4;
+  /* border-image-source: linear-gradient(to left, #fffb, #fff3); */
+}
+.categoryAndLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.categoryName {
+}
+
+.colorBar {
+  height: 24px;
+  width: 24px;
+  border-radius: 2px;
+}
+
+/* #region Color Bar */
+.Main_expenses {
+  background-color: var(--main_expenses);
+}
+.Products {
+  background-color: var(--products);
+}
+.Car {
+  background-color: var(--car);
+}
+.Self_care {
+  background-color: var(--self_care);
+}
+.Child_care {
+  background-color: var(--child_care);
+}
+.Household_products {
+  background-color: var(--household_products);
+}
+.Education {
+  background-color: var(--education);
+}
+.Leisure {
+  background-color: var(--leisure);
+}
+.Other_expenses {
+  background-color: var(--other_expenses);
+}
+.Entertainment {
+  background-color: var(--entertainment);
+}
+.Income {
+  background-color: #ffe091;
+}
+/* #endregion */
+
+/* TABLE */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  min-width: 330px;
+}
+
+.tableHead {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  align-items: center;
+
+  height: 56px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #523b7e99;
+}
+.tableHeading {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.tableBody {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+.summaryText {
+  margin: 0;
+}
+.expenseAmount {
+  margin: 0;
+  color: #ff868d;
+}
+.incomeAmount {
+  margin: 0;
+  color: #ffb627;
+}
