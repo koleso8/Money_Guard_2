@@ -2,6 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerThunk } from "../../redux/auth/operations";
+
 export const RegistrationForm = () => {
   const dispath = useDispatch();
   const initialValues = {
@@ -9,6 +10,7 @@ export const RegistrationForm = () => {
     email: "",
     password: "",
   };
+
 
   const handleSubmit = (values, options) => {
     console.log(values);
@@ -41,7 +43,7 @@ export const RegistrationForm = () => {
                 <label>
                   <span>Password</span>
                 </label>
-                <Field name="password" type="password" placeholder="password" />
+                <Field name="password" type="password" placeholder="password" />        
               </div>
               <div>
                 <button>Rgister</button>
