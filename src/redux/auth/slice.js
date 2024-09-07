@@ -5,7 +5,6 @@ import {
   refreshUserThunk,
   registerThunk,
 } from './operations';
-
 // import { errorMessage } from '../../components/errorMessage';
 
 const initialState = {
