@@ -44,8 +44,8 @@
   transform: translate(-50%, -50%);
   background: var(--modal_background);
   padding: 40px;
-  height: 80%;
-  width: 50%;
+  height: 448px;
+  width: 534px;
   overflow: visible;
   position: absolute;
 }
