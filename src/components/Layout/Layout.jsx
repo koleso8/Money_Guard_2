@@ -6,17 +6,23 @@ import clsx from 'clsx';
 import s from './Layout.module.css';
 
 export const Layout = () => {
-	return (
-		<div className={clsx(s.page)}>
-			<Header />
-			<main className={clsx(s.main)}>
-				<Dashboard />
-				<Suspense fallback={'____loader__'}>
-					<Outlet />
-				</Suspense>
-			</main>
-		</div>
-	);
+  return (
+    <div className={clsx(s.page)}>
+      <Header />
+      <main className={clsx(s.main)}>
+        <Dashboard />
+        <div className={clsx(s.outlet)}>
+          <Suspense fallback={'____loader__'}>
+            <Outlet />
+          </Suspense>
+        </div>
+      </main>
+      <div className={clsx(s.gradient, s.gradientOne)}></div>
+      <div className={clsx(s.gradient, s.gradientTwo)}></div>
+      <div className={clsx(s.gradient, s.gradientThree)}></div>
+      <div className={clsx(s.gradient, s.gradientFour)}></div>
+    </div>
+  );
 };
 
 export default Layout;
