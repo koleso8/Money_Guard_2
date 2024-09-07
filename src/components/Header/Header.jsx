@@ -44,7 +44,7 @@ const Header = () => {
         </button>
       </div>
 
-      <ModalBackdrop isOpen={isModalOpen} closeModal={closeModal}>
+      <ModalBackdrop isOpen={isModalOpen} closeModal={closeModal} noCloseButton>
         <div className={s.back}>
           <div className={clsx(s.logo)}>
             <svg className={clsx(s.logosvg)}>

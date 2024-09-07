@@ -192,7 +192,7 @@
     min-width: 300px;
   }
 }
-.back {
+/* .back {
   width: 100vw;
   height: 100vh;
   z-index: 999;
@@ -205,5 +205,5 @@
   justify-content: center;
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(25, 16, 16, 0.25);
-  /* background-color: var(--form_color); */
-}
+  background-color: var(--form_color);
+} */
