@@ -1,27 +1,27 @@
 {
   "categoriesSummary": [
     {
-      "name": "salary",
+      "name": "Income",
       "type": "INCOME",
       "total": 50000
     },
     {
-      "name": "DogCare",
+      "name": "Car",
       "type": "EXPENSE",
       "total": 200
     },
     {
-      "name": "CatCare",
+      "name": "Leisure",
       "type": "EXPENSE",
       "total": 450
     },
     {
-      "name": "BribeIn",
+      "name": "Income",
       "type": "INCOME",
       "total": 3500
     },
     {
-      "name": "BribeOut",
+      "name": "Education",
       "type": "EXPENSE",
       "total": 1600
     }
