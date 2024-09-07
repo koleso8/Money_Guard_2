@@ -19,7 +19,6 @@
 /* TABLE ROW */
 .tableRow {
   padding: 16px;
-  height: 21px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,7 +128,6 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  height: 21px;
 }
 .summaryText {
   margin: 0;

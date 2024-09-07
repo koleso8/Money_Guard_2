@@ -53,6 +53,14 @@ export const ChartSection = () => {
       legend: {
         display: false,
       },
+      annotation: {
+        annotations: {
+          a: {
+            backgroundShadowColor: "#fff",
+            shadowBlur: "10px",
+          },
+        },
+      },
     },
     cutout: "70%",
   };
