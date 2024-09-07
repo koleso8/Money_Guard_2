@@ -21,6 +21,7 @@
 .currencyBox {
   flex-grow: 1;
   height: 100%;
+  overflow: hidden;
 }
 
 @media (max-width: 1439px) {

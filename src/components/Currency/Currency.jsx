@@ -5,6 +5,7 @@ import {
   selectLastRequestTime,
 } from '../../redux/currency/selectors';
 import { fetchCurrencies } from '../../redux/currency/operations';
+import CurrencyChart from '../CurrencyChart/CurrencyChart';
 import clsx from 'clsx';
 import s from './Currency.module.css';
 
@@ -12,6 +13,16 @@ const Currency = () => {
   const dispatch = useDispatch();
   const currencies = useSelector(selectCurrencies);
   const lastRequestTime = useSelector(selectLastRequestTime);
+
+  const currenciesForChart = [
+    currencies[0]?.rateBuy.toFixed(2) - 10,
+    currencies[0]?.rateBuy.toFixed(2),
+    currencies[1]?.rateBuy.toFixed(2) - 15,
+    currencies[1]?.rateBuy.toFixed(2) - 10,
+    currencies[1]?.rateBuy.toFixed(2) - 5,
+    currencies[1]?.rateBuy.toFixed(2),
+    currencies[1]?.rateBuy.toFixed(2) - 6,
+  ];
 
   useEffect(() => {
     const currentTime = Date.now();
@@ -54,13 +65,13 @@ const Currency = () => {
         </tbody>
       </table>
       <div className={clsx(s.diagramBox)}>
-        <span className={clsx(s.pointNumber, s.pointFirst)}>
+        {/* <span className={clsx(s.pointNumber, s.pointFirst)}>
           {currencies[0]?.rateBuy.toFixed(2) ?? ''}
         </span>
         <span className={clsx(s.pointNumber, s.pointSecond)}>
           {currencies[1]?.rateBuy.toFixed(2) ?? ''}
-        </span>
-        <picture>
+        </span> */}
+        {/* <picture>
           <source
             media="(min-width: 1440px)"
             srcSet="./src/images/graph_desktop_1x.webp 1x, ./src/images/graph_desktop_2x.webp 2x"
@@ -82,7 +93,13 @@ const Currency = () => {
             alt="diagram"
             loading="lazy"
           />
-        </picture>
+        </picture> */}
+        <div className={clsx(s.chartWrapper)}>
+          <CurrencyChart
+            labels={currenciesForChart}
+            dataSet={currenciesForChart}
+          />
+        </div>
       </div>
     </div>
   );
