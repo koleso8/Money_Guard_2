@@ -48,7 +48,7 @@
   right: 100px;
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1279px) {
   .wrapper {
     border-radius: 0px 0px 8px 8px;
   }
