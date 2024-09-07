@@ -1,5 +1,4 @@
 .back {
-  position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 999;
@@ -7,7 +6,7 @@
 
   transition: all linear 0.5s;
   /* //!____________Why?______________ */
-  position: fixed;
+
   top: 0;
   left: 0;
   right: 0;
@@ -16,6 +15,6 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(100px);
-  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 60px 0 rgba(25, 16, 16, 0.25);
   background-color: var(--form_color);
 }
