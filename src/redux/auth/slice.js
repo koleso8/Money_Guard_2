@@ -5,11 +5,11 @@ import {
   refreshUserThunk,
   registerThunk,
 } from './operations';
-import { errorMessage } from '../../components/errorMessage';
+// import { errorMessage } from '../../components/errorMessage';
 
 const initialState = {
   user: {
-    name: null,
+    username: null,
     email: null,
   },
   token: null,
@@ -28,7 +28,7 @@ const slice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(registerThunk.rejected, () => {
-        errorMessage('This name or email is already in use');
+        // errorMessage('This name or email is already in use');
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -36,7 +36,7 @@ const slice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(loginThunk.rejected, () => {
-        errorMessage('Invalid email or password');
+        // errorMessage('Invalid email or password');
       })
       .addCase(logoutThunk.fulfilled, state => {
         state.user = { name: null, email: null };
@@ -53,7 +53,7 @@ const slice = createSlice({
       })
       .addCase(refreshUserThunk.rejected, state => {
         state.isRefreshing = false;
-        errorMessage('Please login or register');
+        // errorMessage('Please login or register');
       });
   },
 });

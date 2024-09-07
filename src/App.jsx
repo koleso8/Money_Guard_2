@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
 import HomeTab from './pages/HomeTab/HomeTab';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -9,16 +8,17 @@ import CurrencyTab from './pages/CurrencyTab/CurrencyTab';
 import StatisticsTab from './pages/StatisticsTab/StatisticsTab';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import Layout from './components/Layout/Layout';
 
 function App() {
+  // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(refreshUserThunk());
   // }, [dispatch]);
 
-  // return isRefreshing ? (
+  //selectIsRefreshing ? (
   //   <b>Refreshing user...</b>
   // ) : (
-
   return (
     <Routes>
       <Route

@@ -1,0 +1,133 @@
+.fon {
+  background-image: url(../../images/FormBcReg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.iner {
+  max-width: 533px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 62px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: linear-gradient(
+    to bottom right,
+    rgba(72, 57, 113),
+    rgba(64, 51, 116),
+    rgba(62, 45, 147),
+    rgba(69, 47, 141),
+    rgba(97, 62, 131)
+  );
+}
+
+.wrap_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 52px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.wrap_button {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wrap_input {
+  position: relative;
+}
+
+.input {
+  padding: 8px 54px;
+  background: none;
+  color: gray;
+  border: none;
+  border-bottom: 1px solid gray;
+  font-weight: 400;
+  font-size: 18px;
+  outline: none;
+}
+
+.svg_form_first {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+}
+
+.svg_form_second {
+  position: absolute;
+  top: 7px;
+  left: 19px;
+}
+
+.svg_form_name {
+  position: absolute;
+  top: 7px;
+  left: 13px;
+}
+
+.btn_first {
+  border-radius: 20px;
+  border: none;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.btn_second {
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: #fcfcfc;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #623f8b;
+  padding: 13px 115px;
+}
