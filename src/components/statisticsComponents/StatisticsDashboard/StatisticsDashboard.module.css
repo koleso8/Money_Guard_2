@@ -1,0 +1,16 @@
+.selectors {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.selectorWrapper {
+  width: 100%;
+}
+
+.test {
+  border: 1px solid #ffffff99;
+  background: "linear-gradient(0deg, rgba(83, 61, 186, 0.7) 0%, rgba(80, 48, 154, 0.7) 43.14%, rgba(106, 70, 165, 0.525) 73.27%, rgba(133, 93, 175, 0.133) 120.03%)";
+  color: #5a438c;
+  font-size: ;
+}

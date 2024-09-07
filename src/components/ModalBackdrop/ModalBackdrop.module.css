@@ -6,9 +6,7 @@
   backdrop-filter: blur(3px);
 
   transition: all linear 0.5s;
-}
-
-.back {
+  /* //!____________Why?______________ */
   position: fixed;
   top: 0;
   left: 0;
