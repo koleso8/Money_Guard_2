@@ -1,13 +1,19 @@
-import clsx from "clsx";
-import s from "./TransactionsList.module.css";
+import clsx from 'clsx';
+import s from './TransactionsList.module.css';
 // import { useSelector } from "react-redux";
 // import { selectTransactions } from "../../redux/transactions/selector";
-import TransactionsItem from "../TransactionsItem/TransactionsItem";
-import transactionData from "../../helpers/placeholderTransactions.json";
-import { FiPlus } from "react-icons/fi";
+import TransactionsItem from '../TransactionsItem/TransactionsItem';
+import transactionData from '../../helpers/placeholderTransactions.json';
+import { FiPlus } from 'react-icons/fi';
+import { useState } from 'react';
+import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 
 const TransactionsList = () => {
   //   const allTransactions = useSelector(selectTransactions);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const openAddModal = () => setIsAddModalOpen(true);
+  const closeAddModal = () => setIsAddModalOpen(false);
 
   const allTransactions = transactionData;
 
@@ -25,14 +31,22 @@ const TransactionsList = () => {
           </tr>
         </thead>
         <tbody className={clsx(s.tableBody)}>
-          {allTransactions.map((item) => (
+          {allTransactions.map(item => (
             <TransactionsItem key={item.id} {...item} />
           ))}
         </tbody>
       </table>
-      <button type="button" className={clsx(s.addTrnBtn)}>
+      <button
+        type="button"
+        className={clsx(s.addTrnBtn)}
+        onClick={openAddModal}
+      >
         <FiPlus size={30} color="fff" />
       </button>
+
+      <ModalBackdrop isOpen={isAddModalOpen} closeModal={closeAddModal}>
+        YA MODALKA
+      </ModalBackdrop>
     </div>
   );
 };
