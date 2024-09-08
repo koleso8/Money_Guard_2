@@ -20,20 +20,6 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    };
-    if (isModalOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-    }
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isModalOpen]);
-
   return (
     <div className={clsx(s.container)}>
       <NavLink to="/">
@@ -58,32 +44,30 @@ const Header = () => {
         </button>
       </div>
 
-      {isModalOpen && (
-        <ModalBackdrop>
-          <div className={s.back}>
-            <div className={clsx(s.logo)}>
-              <svg className={clsx(s.logosvg)}>
-                <use href="./src/images/icons.svg#logo"></use>
-              </svg>
-              <p className={clsx(s.title)}>Money Guard</p>
-            </div>
-            <div className={s.modalContent}>
-              <p className={s.modalText}>Are you sure you want to log out?</p>
-              <button
-                className={s.logoutBtn}
-                onClick={() => {
-                  dispatch(logoutThunk());
-                }}
-              >
-                L O G O U T
-              </button>
-              <button className={s.cancelBtn} onClick={closeModal}>
-                C A N C E L
-              </button>
-            </div>
+      <ModalBackdrop isOpen={isModalOpen} closeModal={closeModal} noCloseButton>
+        <div className={s.back}>
+          <div className={clsx(s.logo)}>
+            <svg className={clsx(s.logosvg)}>
+              <use href="./src/images/icons.svg#logo"></use>
+            </svg>
+            <p className={clsx(s.title)}>Money Guard</p>
           </div>
-        </ModalBackdrop>
-      )}
+          <div className={s.modalContent}>
+            <p className={s.modalText}>Are you sure you want to log out?</p>
+            <button
+              className={s.logoutBtn}
+              onClick={() => {
+                dispatch(logoutThunk());
+              }}
+            >
+              L O G O U T
+            </button>
+            <button className={s.cancelBtn} onClick={closeModal}>
+              C A N C E L
+            </button>
+          </div>
+        </div>
+      </ModalBackdrop>
     </div>
   );
 };

@@ -5,10 +5,10 @@
 // const StatisticsTable = lazy(() =>  import(    "../../components/statisticsComponents/StatisticsTable/StatisticsTable"  ));
 // const  = lazy(() => import());
 
-import { ChartSection } from "../../components/statisticsComponents/Chart/Chart";
-import { StatisticsDashboard } from "../../components/statisticsComponents/StatisticsDashboard/StatisticsDashboard";
-import { StatisticsTable } from "../../components/statisticsComponents/StatisticsTable/StatisticsTable";
-import s from "./StatisticsTab.module.css";
+import { ChartSection } from '../../components/statisticsComponents/Chart/Chart';
+import { StatisticsDashboard } from '../../components/statisticsComponents/StatisticsDashboard/StatisticsDashboard';
+import { StatisticsTable } from '../../components/statisticsComponents/StatisticsTable/StatisticsTable';
+import s from './StatisticsTab.module.css';
 
 const StatisticsTab = () => {
   return (

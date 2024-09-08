@@ -1,24 +1,64 @@
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
-	width: 480px;
-	border-right: 1px solid var(--white);
-	padding-top: 42px;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 480px;
+  border-right: 1px solid var(--white);
+  padding-top: 40px;
+  height: 100%;
+}
+
+.topPart {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .navigationBox {
-	padding: 0 16px;
-}
-
-.balanceBox {
-	background-color: rgba(82, 59, 126, 0.6);
-	box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
-	padding: 8px 56px 11px;
+  padding: 0 16px;
 }
 
 .currencyBox {
-	flex-grow: 1;
-	height: 100%;
+  flex-grow: 1;
+  height: 100%;
+}
+
+@media (max-width: 1279px) {
+  .wrapper {
+    border-right: none;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 32px;
+    height: 214px;
+  }
+
+  .topPart {
+    width: 50%;
+    padding-top: 40px;
+    align-self: flex-end;
+  }
+
+  .navigationBox {
+    padding: 0;
+  }
+
+  .balanceBox {
+    border-radius: 8px;
+  }
+
+  .currencyBox {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    height: auto;
+  }
+
+  .topPart {
+    width: 100%;
+    padding-top: 15px;
+  }
 }

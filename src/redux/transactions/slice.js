@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   addTrnThunk,
   deleteTrnThunk,
@@ -6,7 +6,7 @@ import {
   fetchAllTrnThunk,
   fetchPeriodTrnThunk,
   getCategoriesThunk,
-} from './operations';
+} from "./operations";
 
 const initialState = {
   items: [],
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 const transactionsSlice = createSlice({
-  name: 'transactions',
+  name: "transactions",
   initialState,
 
   reducers: {
@@ -26,7 +26,7 @@ const transactionsSlice = createSlice({
       state.currentTransaction = payload;
     },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchAllTrnThunk.fulfilled, (state, { payload }) => {
         state.items = payload;
@@ -41,7 +41,7 @@ const transactionsSlice = createSlice({
         payload.transactionDate = payload.transactionDate
           .toString()
           .slice(0, 10);
-        state.items = state.items.map(trn =>
+        state.items = state.items.map((trn) =>
           trn.id === payload.id ? payload : trn
         );
       })
@@ -53,7 +53,7 @@ const transactionsSlice = createSlice({
         state.items = [...items, payload];
       })
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter(trn => trn.id !== payload);
+        state.items = state.items.filter((trn) => trn.id !== payload);
       })
       .addMatcher(
         isAnyOf(
@@ -62,7 +62,7 @@ const transactionsSlice = createSlice({
           addTrnThunk.pending,
           deleteTrnThunk.pending
         ),
-        state => {
+        (state) => {
           state.loading = true;
           state.error = null;
         }
@@ -74,7 +74,7 @@ const transactionsSlice = createSlice({
           addTrnThunk.fulfilled,
           deleteTrnThunk.fulfilled
         ),
-        state => {
+        (state) => {
           state.loading = false;
           state.error = null;
         }
@@ -87,7 +87,7 @@ const transactionsSlice = createSlice({
           addTrnThunk.rejected,
           deleteTrnThunk.rejected
         ),
-        state => {
+        (state) => {
           state.loading = false;
           state.error = true;
         }

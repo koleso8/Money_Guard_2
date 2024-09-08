@@ -3,21 +3,21 @@
 // const {StatsTableRow} = lazy(() => import("../StatsTableRow/StatsTableRow"));
 // const {StatisticsDashboard} = lazy(() => import("../StatisticsDashboard/StatisticsDashboard"));
 
-import { StatsTableRow } from "../StatsTableRow/StatsTableRow";
-import s from "./StatisticsTable.module.css";
+import { StatsTableRow } from '../StatsTableRow/StatsTableRow';
+import s from './StatisticsTable.module.css';
 
-import data from "../devData.json";
+import data from '../devData.json';
 
 export const StatisticsTable = () => {
   function prettifyNumbersInt(number) {
     // Inserts spaces: 4600000 -> 4 600 000
-    number = number + "";
+    number = number + '';
     let str = number.slice(-3);
     for (let i = number.length - 3; i > -1; i = i - 3) {
       if (i - 3 > -1) {
-        str = number.slice(i - 3, i) + " " + str;
+        str = number.slice(i - 3, i) + ' ' + str;
       } else {
-        str = number.slice(0, i) + " " + str;
+        str = number.slice(0, i) + ' ' + str;
         break;
       }
     }
@@ -32,7 +32,7 @@ export const StatisticsTable = () => {
           <p className={s.tableHeading}>Sum</p>
         </div>
         <ul className={s.tableBody}>
-          {data.categoriesSummary.map((e) => {
+          {data.categoriesSummary.map(e => {
             return (
               <StatsTableRow
                 category={e.name}
