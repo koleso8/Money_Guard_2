@@ -1,14 +1,134 @@
 .page {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	overflow: hidden;
-	background-image: url('../../images/layout_bg.webp');
-	background-position: center center;
-	background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #101010;
+  background-position: center center;
+  background-size: cover;
+  z-index: 5;
 }
 
 .main {
-	display: flex;
-	flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.outlet {
+  overflow-y: auto;
+}
+
+.gradient {
+  transform: translate(-50%, -50%);
+  filter: blur(200px);
+}
+
+.gradientOne {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border-radius: 740px;
+  filter: blur(200px);
+  background: linear-gradient(
+    220deg,
+    rgba(109, 84, 235, 0.6) 28.31%,
+    rgba(101, 35, 146, 0.6) 66.76%
+  );
+}
+
+.gradientTwo {
+  position: fixed;
+  top: 50%;
+  left: 100%;
+  width: 40%;
+  height: 40%;
+  border-radius: 360px;
+  filter: blur(150px);
+  background: #302e8e;
+}
+
+.gradientThree {
+  position: fixed;
+  top: 100%;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 900px;
+  background: linear-gradient(
+    220deg,
+    rgba(109, 84, 235, 0.6) 28.31%,
+    rgba(101, 35, 146, 0.6) 66.76%
+  );
+}
+
+.gradientFour {
+  position: fixed;
+  top: 85%;
+  left: 15%;
+  width: 100%;
+  height: 100%;
+  border-radius: 760px;
+  background: linear-gradient(207deg, #341fa0 46.11%, #652392 63.65%);
+}
+
+@media (max-width: 1279px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .gradientOne {
+    top: 30%;
+    left: -20%;
+  }
+
+  .gradientTwo {
+    top: 10%;
+    left: 80%;
+    border-radius: 550px;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(211deg, #652392 39.99%, #341fa0 59.67%);
+  }
+
+  .gradientFour {
+    top: 100%;
+    left: 0%;
+    border-radius: 820px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gradientOne {
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 430px;
+    background: linear-gradient(
+      220deg,
+      rgba(109, 84, 235, 0.73) 28.31%,
+      rgba(101, 35, 146, 0.73) 66.76%
+    );
+  }
+
+  .gradientTwo {
+    display: none;
+  }
+
+  .gradientThree {
+    top: 80%;
+    border-radius: 360px;
+  }
+
+  .gradientFour {
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    height: 75%;
+    border-radius: 450px;
+    background: rgba(47, 21, 176, 0.73);
+  }
 }
