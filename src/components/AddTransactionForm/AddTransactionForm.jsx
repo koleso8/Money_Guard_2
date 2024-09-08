@@ -1,8 +1,10 @@
 import { styled } from "@mui/material/styles";
+import s from "./AddTransactionForm.module.css";
 import Switch from "@mui/material/Switch";
 import { useState } from "react";
 import Income from "./Income/Income";
 import Expense from "./Expense/Expense";
+import clsx from "clsx";
 
 const CustomSwitch = styled(Switch)(() => ({
   width: 62,
@@ -71,7 +73,7 @@ const AddTransactionForm = ({ closeModal }) => {
   };
 
   return (
-    <div>
+    <div className={clsx(s.addTransactionForm)}>
       <h2>Add transaction</h2>
       <div
         style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
