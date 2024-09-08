@@ -63,7 +63,7 @@ const CustomSwitch = styled(Switch)(() => ({
   },
 }));
 
-const AddTransactionForm = () => {
+const AddTransactionForm = ({ closeModal }) => {
   const [transactionType, setTransactionType] = useState("+");
 
   const handleChange = (event) => {
@@ -83,8 +83,8 @@ const AddTransactionForm = () => {
         />
         <span style={{ marginLeft: "10px" }}>Expense</span>
       </div>
-      {transactionType === "+" && <Income />}
-      {transactionType === "-" && <Expense />}
+      {transactionType === "+" && <Income closeModal={closeModal} />}
+      {transactionType === "-" && <Expense closeModal={closeModal} />}
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const fetchAllTrnThunk = createAsyncThunk(
   "transactions/fetchAllTransactions",
   async (_, thunkAPI) => {
     try {
-      const { data } = await goitApi.get("/transactions");
+      const { data } = await goitApi.get("/api/transactions");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

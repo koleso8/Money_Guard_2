@@ -1,25 +1,24 @@
 .transactionListBox {
   width: calc(100vw - 480px);
   height: 100vh;
-  overflow: auto;
+  /* overflow: auto; */
   padding: 0px 100px 20px 69px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   margin-top: 46px;
 }
 
 .table {
   min-width: 715px;
   border-collapse: collapse;
-
   table-layout: auto;
   border-radius: 8px;
 }
 
 .tableBody {
   flex-grow: 1;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .tableHeader {

@@ -5,7 +5,7 @@ import incomeValidationSchema from "../../../helpers/incomeValidationSchema";
 import { useDispatch } from "react-redux";
 import { addTrnThunk } from "../../../redux/transactions/operations";
 
-const Income = () => {
+const Income = ({ closeModal }) => {
   const dispatch = useDispatch();
   const todayDate = new Date().toISOString().split("T")[0];
 
@@ -19,6 +19,7 @@ const Income = () => {
 
   const handleIncomeSubmit = (values) => {
     dispatch(addTrnThunk(values));
+    closeModal();
   };
 
   return (
