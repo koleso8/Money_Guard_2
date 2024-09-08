@@ -5,6 +5,7 @@ import { registerThunk } from '../../redux/auth/operations';
 import s from './RegistrationForm.module.css';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import Icon from '../Icon/Icon';
+import { Toaster } from 'react-hot-toast';
 
 export const RegistrationForm = () => {
   const dispath = useDispatch();
@@ -24,6 +25,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className={s.fon}>
+      <Toaster position="top-right" />
       <div className={s.iner}>
         <div className={s.wrap}>
           <div className={s.wrap_logo}>

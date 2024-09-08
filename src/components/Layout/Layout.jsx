@@ -4,10 +4,13 @@ import { Outlet } from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
 import clsx from 'clsx';
 import s from './Layout.module.css';
+import { Toaster } from 'react-hot-toast';
 
 export const Layout = () => {
   return (
     <div className={clsx(s.page)}>
+      <Toaster position="top-right" />
+
       <Header />
       <main className={clsx(s.main)}>
         <Dashboard />
