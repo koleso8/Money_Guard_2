@@ -62,5 +62,109 @@
     "categoryId": 206,
     "comment": "Gym membership",
     "amount": -40
+  },
+  {
+    "id": 9,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 10,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 11,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 12,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 13,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 14,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 15,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 19,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 17,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 18,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 16,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 8213,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
+  },
+  {
+    "id": 82323,
+    "transactionDate": "2024-09-08",
+    "type": "-",
+    "categoryId": 206,
+    "comment": "Gym membership",
+    "amount": -40
   }
 ]

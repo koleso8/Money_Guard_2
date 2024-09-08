@@ -1,20 +1,46 @@
 .transactionListBox {
-  overflow: hidden;
-  padding-top: 46px;
-  padding-left: 69px;
+  width: calc(100vw - 480px);
+  height: 100vh;
+  overflow: auto;
+  padding: 0px 100px 20px 69px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-top: 46px;
 }
 
 .table {
-  width: 715px;
+  min-width: 715px;
   border-collapse: collapse;
-  table-layout: fixed;
+
+  table-layout: auto;
+  border-radius: 8px;
+}
+
+.tableBody {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.tableHeader {
+  background: rgba(82, 59, 126);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+  color: #fff;
+  color: var(--white, #fbfbfb);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  position: sticky;
+  top: -1px;
 }
 
 .tableHeader th {
   padding-top: 16px;
   padding-bottom: 16px;
   color: var(--white);
-
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -55,19 +81,6 @@
   width: 15%;
 }
 
-.tableHeader {
-  background: rgba(82, 59, 126, 0.6);
-  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
-  color: #fff;
-  color: var(--white, #fbfbfb);
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-
 .addTrnBtn {
   display: flex;
   justify-content: center;
@@ -83,7 +96,7 @@
   bottom: 40px;
   right: 40px;
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease;
 }
 
 .addTrnBtn:hover {

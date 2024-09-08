@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.0.2",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
     "chart.js": "^4.4.4",
@@ -27,6 +30,7 @@
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.26.1",
     "react-select": "^5.8.0",
+    "react-switch": "^7.0.0",
     "redux-persist": "^6.0.0",
     "yup": "^1.4.0"
   },
