@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getBalanceThunk, goitApi } from '../auth/operations';
+import toast from 'react-hot-toast';
+import { toastStyles } from '../../helpers/toastStyles';
 
 export const fetchAllTrnThunk = createAsyncThunk(
   'transactions/fetchAllTransactions',
@@ -37,8 +39,11 @@ export const addTrnThunk = createAsyncThunk(
     try {
       const { data } = await goitApi.post('/transactions', transaction);
       await thunkAPI.dispatch(getBalanceThunk());
+      toast.success('Transaction added!', toastStyles);
+
       return data;
     } catch (error) {
+      toast.error('transaction was not added !', toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -56,8 +61,10 @@ export const editTrnThunk = createAsyncThunk(
         amount,
       });
       await thunkAPI.dispatch(getBalanceThunk());
+      toast.success('transaction was modified !', toastStyles);
       return data;
     } catch (error) {
+      toast.error('the transaction was not modified !', toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -69,8 +76,10 @@ export const deleteTrnThunk = createAsyncThunk(
     try {
       await goitApi.delete(`/transactions/${transactionId}`);
       await thunkAPI.dispatch(getBalanceThunk());
+      toast.success('transaction was deleted !', toastStyles);
       return transactionId;
     } catch (error) {
+      toast.error('the transaction was not deleted !', toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

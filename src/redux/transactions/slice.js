@@ -7,6 +7,7 @@ import {
   fetchPeriodTrnThunk,
   getCategoriesThunk,
 } from './operations';
+import toast from 'react-hot-toast';
 
 const initialState = {
   items: [],
