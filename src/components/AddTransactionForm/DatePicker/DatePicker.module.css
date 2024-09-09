@@ -1,0 +1,20 @@
+.picker {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: var(--white, #fbfbfb);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+}
+
+.iconContainer {
+  position: absolute;
+  top: 60%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

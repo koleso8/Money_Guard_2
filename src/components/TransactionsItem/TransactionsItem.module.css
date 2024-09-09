@@ -1,0 +1,109 @@
+.itemRow {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+  color: var(--white);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.date,
+.type,
+.category,
+.comment,
+.sum,
+.btnBox {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.date {
+  padding-left: 20px;
+  width: 14%;
+}
+.type {
+  text-align: center;
+  width: 14%;
+}
+
+.category {
+  text-align: left;
+  width: 18%;
+}
+.comment {
+  text-align: left;
+  width: 30%;
+  line-height: 18px;
+}
+
+.sum {
+  text-align: right;
+  width: 15%;
+  font-weight: 600;
+  padding-right: 20px;
+}
+
+.sumNegative {
+  color: #ff868d;
+}
+
+.sumPositive {
+  color: #ffb627;
+}
+
+.btnBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 6px;
+}
+
+.editBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 2px;
+  transition: all 0.1s ease;
+  margin-right: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease;
+}
+
+.editBtn:hover {
+  transform: scale(1.1);
+}
+
+.editBtn:active {
+  transform: scale(1);
+}
+
+.delBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 20px;
+  background: var(--gradient);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+  transform-origin: center;
+}
+
+.delBtn:hover {
+  transform: scale(1.05);
+}
+
+.delBtn:active {
+  transform: scale(1);
+}

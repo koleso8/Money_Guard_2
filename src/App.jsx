@@ -9,17 +9,21 @@ import StatisticsTab from './pages/StatisticsTab/StatisticsTab';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 import Layout from './components/Layout/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUserThunk } from './redux/auth/operations';
+import { selectIsRefreshing } from './redux/auth/selectors';
+import Loader from './Loader/Loader';
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(refreshUserThunk());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
 
-  //selectIsRefreshing ? (
-  //   <b>Refreshing user...</b>
-  // ) : (
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route
         path="/"

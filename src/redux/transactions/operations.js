@@ -1,12 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { getBalanceThunk, goitApi } from '../auth/operations';
+import { getBalanceThunk, goitApi } from "../auth/operations";
+import toast from "react-hot-toast";
+import { toastStyles } from "../../helpers/toastStyles";
 
 export const fetchAllTrnThunk = createAsyncThunk(
-  'transactions/fetchAllTransactions',
+  "transactions/fetchAllTransactions",
   async (_, thunkAPI) => {
     try {
-      const { data } = await goitApi.get('/transactions');
+      const { data } = await goitApi.get("/api/transactions");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -15,12 +17,12 @@ export const fetchAllTrnThunk = createAsyncThunk(
 );
 
 export const fetchPeriodTrnThunk = createAsyncThunk(
-  'transactions/fetchByPeriodTransactions',
+  "transactions/fetchByPeriodTransactions",
   async (period, thunkAPI) => {
     try {
       const { month, year } = period;
       if (month || year) {
-        const { data } = await goitApi.get('/transactions-summary', {
+        const { data } = await goitApi.get("/api/transactions-summary", {
           params: { month, year },
         });
         return data;
@@ -32,55 +34,65 @@ export const fetchPeriodTrnThunk = createAsyncThunk(
 );
 
 export const addTrnThunk = createAsyncThunk(
-  'transactions/addTransaction',
+  "transactions/addTransaction",
   async (transaction, thunkAPI) => {
     try {
-      const { data } = await goitApi.post('/transactions', transaction);
+      const { data } = await goitApi.post("/api/transactions", transaction);
       await thunkAPI.dispatch(getBalanceThunk());
+      toast.success("Transaction added!", toastStyles);
+
       return data;
     } catch (error) {
+      toast.error("transaction was not added !", toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const editTrnThunk = createAsyncThunk(
-  'transactions/editTransaction',
+  "transactions/editTransaction",
   async (transaction, thunkAPI) => {
     try {
-      const { id, transactionDate, type, comment, amount } = transaction;
-      const { data } = await goitApi.patch(`/transactions/${id}`, {
+      const { id, transactionDate, type, categoryId, comment, amount } =
+        transaction;
+      const { data } = await goitApi.patch(`/api/transactions/${id}`, {
         transactionDate,
         type,
+        categoryId,
         comment,
         amount,
       });
       await thunkAPI.dispatch(getBalanceThunk());
+      toast.success("transaction was modified !", toastStyles);
       return data;
     } catch (error) {
+      toast.error("the transaction was not modified !", toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteTrnThunk = createAsyncThunk(
-  'transactions/deleteTransaction',
+  "transactions/deleteTransaction",
   async (transactionId, thunkAPI) => {
     try {
-      await goitApi.delete(`/transactions/${transactionId}`);
+      await goitApi.delete(`/api/transactions/${transactionId}`);
       await thunkAPI.dispatch(getBalanceThunk());
+      toast.success("transaction was deleted !", toastStyles);
       return transactionId;
     } catch (error) {
+      toast.error("the transaction was not deleted !", toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const getCategoriesThunk = createAsyncThunk(
-  'transactions/getCategories',
+  "transactions/getCategories",
   async (_, thunkAPI) => {
     try {
-      const { data } = await goitApi.get('/transaction-categories');
+      const { data } = await goitApi.get("/api/transaction-categories");
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

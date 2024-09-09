@@ -7,6 +7,14 @@
   --text_button: #623f8b;
   --dashboard_text: #ff868d;
   --form_color: rgba(255, 255, 255, 0.1);
+  --modal_background: rgba(82, 59, 126, 0.95);
+
+  --gradient: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
 
   --gradient: linear-gradient(
     167deg,

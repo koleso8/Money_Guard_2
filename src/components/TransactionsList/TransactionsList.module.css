@@ -1,0 +1,116 @@
+.transactionListBox {
+  width: calc(100vw - 480px);
+  max-width: 1200px;
+  max-height: calc(100vh - 100px);
+  overflow: auto;
+  padding: 0px 100px 40px 69px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-top: 46px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.transactionListBox::-webkit-scrollbar {
+  display: none;
+}
+
+.table {
+  min-width: 715px;
+  border-collapse: collapse;
+  table-layout: auto;
+  border-radius: 8px;
+}
+
+.tableBody {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.tableHeader {
+  background: rgba(82, 59, 126);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+  color: #fff;
+  color: var(--white, #fbfbfb);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  position: sticky;
+  top: -1px;
+}
+
+.tableHeader th {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: var(--white);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.date {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-left: 20px;
+  text-align: left;
+  width: 14%;
+}
+
+.type {
+  text-align: center;
+  width: 14%;
+}
+
+.category {
+  text-align: left;
+  width: 18%;
+}
+.comment {
+  text-align: left;
+  width: 30%;
+}
+
+.sum {
+  text-align: right;
+  width: 15%;
+  padding-right: 20px;
+}
+
+.actions {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 15%;
+}
+
+.addTrnBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: var(--white);
+  cursor: pointer;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+}
+
+.addTrnBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+
+.addTrnBtn:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}

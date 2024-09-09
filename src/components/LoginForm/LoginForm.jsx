@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginThunk } from '../../redux/auth/operations';
 import s from './LoginForm.module.css';
+import Icon from '../Icon/Icon';
+import { Toaster } from 'react-hot-toast';
 export const LoginForm = () => {
   const dispath = useDispatch();
   const initialValues = {
@@ -18,21 +20,23 @@ export const LoginForm = () => {
 
   return (
     <div className={s.fon}>
+      <Toaster position="top-right" />
       <div className={s.iner}>
         <div className={s.wrap}>
           <div className={s.wrap_logo}>
-            <svg className={s.logo} width={36} height={36}>
-              <use href="./src/images/icons.svg#icon--Money-Guard-2"></use>
-            </svg>
+            <Icon width={36} height={36} name="icon--Money-Guard-2" />
             <h1 className={s.title}>Money Guard</h1>
           </div>
           <div>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
               <Form className={s.form}>
                 <div className={s.wrap_input}>
-                  <svg width={20} height={16} className={s.svg_form_first}>
-                    <use href="./src/images/icons.svg#icon-emailForm"></use>
-                  </svg>
+                  <Icon
+                    width={20}
+                    height={16}
+                    className={s.svg_form_first}
+                    name="icon-emailForm"
+                  />
                   <Field
                     name="email"
                     type="email"
@@ -41,9 +45,12 @@ export const LoginForm = () => {
                   />
                 </div>
                 <div className={s.wrap_input}>
-                  <svg width={16} height={21} className={s.svg_form_second}>
-                    <use href="./src/images/icons.svg#icon-passwordForm"></use>
-                  </svg>
+                  <Icon
+                    width={16}
+                    height={21}
+                    className={s.svg_form_first}
+                    name="icon-passwordForm"
+                  />
                   <Field
                     name="password"
                     type="password"

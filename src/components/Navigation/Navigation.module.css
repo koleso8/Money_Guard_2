@@ -1,54 +1,77 @@
 .list {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .listItem {
-	position: relative;
+  position: relative;
 }
 
 .iconBackground {
-	background-color: transparent;
-	transition: all 0.2s ease-in-out;
-	width: 0;
-	height: 0;
-	position: absolute;
-	left: 5px;
-	top: 5px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 5px;
+  top: 5px;
 }
 
 .linkActive .iconBackground {
-	display: block;
-	visibility: visible;
-	filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  display: block;
+  visibility: visible;
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
 
-	background-color: var(--white);
-	width: 15px;
-	height: 15px;
+  background-color: var(--white);
+  width: 15px;
+  height: 15px;
 }
 
 .icon {
-	width: 24px;
-	height: 24px;
-	fill: var(--white_60);
-	z-index: 5;
-	transition: all 0.2s ease-in-out;
+  width: 24px;
+  height: 24px;
+  fill: var(--white_60);
+  z-index: 5;
+  transition: all 0.2s ease-in-out;
 }
 
 .link {
-	font-size: 18px;
-	color: var(--white);
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	transition: all 0.2s ease-in-out;
+  font-size: 18px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.2s ease-in-out;
+  line-height: 1.2;
 }
 
 .linkActive {
-	font-size: 18px;
-	font-weight: 700;
-	& .icon {
-		fill: var(--icon_violet);
-	}
+  font-weight: 700;
+  & .icon {
+    fill: var(--icon_violet);
+  }
+}
+
+@media (max-width: 767px) {
+  .list {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .iconBackground {
+    top: 7px;
+    left: 7px;
+  }
+
+  .linkActive .iconBackground {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon {
+    width: 44px;
+    height: 44px;
+  }
 }
