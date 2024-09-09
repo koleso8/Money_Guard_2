@@ -1,28 +1,7 @@
 .fon {
-  background-image: url(../../images/FormBcReg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 75px;
-  padding-bottom: 75px;
-  height: 100vh;
-}
-
-.iner {
-  max-width: 533px;
-  padding: 0 20px;
-  margin: 0 auto;
-}
-
-.wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 75px 62px;
-  border: 1px solid #000;
-  border-radius: 8px;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(50px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  height: 100vh;
   background: linear-gradient(
     to bottom right,
     rgba(72, 57, 113),
@@ -31,6 +10,78 @@
     rgba(69, 47, 141),
     rgba(97, 62, 131)
   );
+  padding: 23px 20px;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (min-width: 556px) {
+  .fon {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    height: 100vh;
+    background-position: center center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .fon {
+    background-image: url(../../images/FonFormTablet.jpg),
+      linear-gradient(to bottom right, #2f15b0, #252480, #000000);
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .fon {
+    background-image: url(../../images/ToFormReg.png),
+      linear-gradient(to bottom right, #2f15b0, #252480, #000000);
+  }
+}
+
+@media only screen and (min-width: 556px) {
+  .hello {
+    color: red;
+    width: 40px;
+    height: 40px;
+    flex-basis: auto;
+  }
+}
+
+.iner {
+  width: 320px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 556px) {
+  .iner {
+    width: 533px;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 556px) {
+  .wrap {
+    padding: 62px 0px;
+    border-radius: 8px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+    background: var(--form_color);
+    /* background: linear-gradient(
+      to bottom right,
+      rgba(72, 57, 113),
+      rgba(64, 51, 116),
+      rgba(62, 45, 147),
+      rgba(69, 47, 141),
+      rgba(97, 62, 131)
+    ); */
+  }
 }
 
 .wrap_logo {
@@ -38,17 +89,46 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 52px;
+  margin-bottom: 40px;
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 26px;
+  height: 26px;
+}
+
+@media only screen and (min-width: 556px) {
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .title {
   font-weight: 400;
-  font-size: 26px;
+  font-size: 19px;
+}
+
+@media only screen and (min-width: 556px) {
+  .title {
+    font-size: 26px;
+  }
+}
+
+.wrap_form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.iner_form {
+  max-width: 280px;
+}
+
+@media only screen and (min-width: 556px) {
+  .iner_form {
+    max-width: 409px;
+  }
 }
 
 .form {
@@ -57,30 +137,50 @@
   gap: 40px;
 }
 
-.wrap_button {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .wrap_input {
   position: relative;
 }
 
 .input {
-  padding: 8px 54px;
   background: none;
-  color: gray;
   border: none;
-  border-bottom: 1px solid gray;
+  padding-left: 54px;
+  outline: none;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
-  outline: none;
+  color: var(--white_60);
+  padding-bottom: 8px;
+}
+
+.error {
+  position: absolute;
+  top: 42px;
+  left: 152px;
+  color: brown;
+}
+
+.error_second {
+  position: absolute;
+  top: 53px;
+  left: 104px;
+  color: brown;
+}
+
+.line {
+  width: 280px;
+  border: 1px solid var(--white_40);
+}
+
+@media only screen and (min-width: 556px) {
+  .line {
+    width: 409px;
+  }
 }
 
 .svg_form_first {
   position: absolute;
-  top: 12px;
+  top: 7px;
   left: 16px;
 }
 
@@ -90,16 +190,22 @@
   left: 19px;
 }
 
+.svg_form_third {
+  position: absolute;
+  top: 5px;
+  left: 18px;
+}
+
 .svg_form_name {
   position: absolute;
-  top: 7px;
-  left: 13px;
+  top: 3px;
+  left: 14px;
 }
 
 .btn_first {
   border-radius: 20px;
   border: none;
-  width: 300px;
+  width: 280px;
   height: 50px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: linear-gradient(
@@ -114,12 +220,21 @@
   text-transform: uppercase;
   text-align: center;
   color: #fff;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 556px) {
+  .btn_first {
+    width: 300px;
+  }
 }
 
 .btn_second {
   border: 1px solid #4a56e2;
   border-radius: 20px;
-  width: 300px;
+  width: 280px;
   height: 50px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: #fcfcfc;
@@ -129,5 +244,13 @@
   text-transform: uppercase;
   text-align: center;
   color: #623f8b;
-  padding: 13px 115px;
+  padding: 13px 104px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 556px) {
+  .btn_second {
+    width: 300px;
+  }
 }
