@@ -3,78 +3,95 @@ import Select from "react-select";
 import { useState } from "react";
 import clsx from "clsx";
 import s from "./Expense.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategories } from "../../../redux/transactions/selector";
+import { addTrnThunk } from "../../../redux/transactions/operations";
+import MyDatePicker from "../DatePicker/DatePicker";
 
-const categories = [
-  { value: "food", label: "Food" },
-  { value: "transport", label: "Transport" },
-  { value: "entertainment", label: "Entertainment" },
-  { value: "utilities", label: "Utilities" },
-];
+// !ADD VALIDATION, CHANGE TYPE OF NUMBER FOR EXPENSE
 
-const Expense = () => {
+const Expense = ({ closeModal }) => {
   const todayDate = new Date().toISOString().split("T")[0];
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const categoriesArr = useSelector(selectCategories);
+  const dispatch = useDispatch();
+
+  const categoryOptions = categoriesArr.map((category) => ({
+    value: category.id,
+    label: category.name,
+  }));
 
   const initialValues = {
-    amount: "",
-    date: todayDate,
+    transactionDate: todayDate,
+    type: "EXPENSE",
+    categoryId: "",
     comment: "",
-    category: "",
+    amount: "",
   };
 
-  const handleExpensSubmit = (values) => {
+  const handleExpenseSubmit = (values) => {
     console.log(values);
+    dispatch(addTrnThunk(values));
+    closeModal();
   };
 
   return (
     <div className={clsx(s.formBox)}>
-      <Formik initialValues={initialValues} onSubmit={handleExpensSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleExpenseSubmit}>
         {({ setFieldValue }) => (
           <Form className={clsx(s.expenseForm)}>
-            <div className={clsx(s.fieldContainer)}>
-              <label htmlFor="category" className={clsx(s.label)}></label>
-              <Select
-                className={clsx(s.expenseSelect)}
-                id="category"
-                name="category"
-                options={categories}
-                value={selectedCategory}
-                onChange={(option) => {
-                  setSelectedCategory(option);
-                  setFieldValue("category", option ? option.value : "");
-                }}
-                placeholder="Select a category"
-              />
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div className={clsx(s.selectWrapper)}>
+                <Select
+                  className={clsx(s.expenseSelect)}
+                  id="category"
+                  name="category"
+                  options={categoryOptions}
+                  value={selectedCategory}
+                  onChange={(option) => {
+                    setSelectedCategory(option);
+                    setFieldValue("categoryId", option ? option.value : "");
+                  }}
+                  placeholder="Select a category"
+                />
+              </div>
             </div>
-            <div className={clsx(s.fieldContainer)}>
-              <Field
-                name="amount"
-                type="number"
-                placeholder="0.00"
-                className={clsx(s.expenseSum)}
-              />
-              <Field
-                name="date"
-                type="date"
-                placeholder={new Date(todayDate)
-                  .toLocaleDateString("en-GB")
-                  .replace(/\//g, ".")}
-                className={clsx(s.expenseDate)}
-              />
+            <div className={clsx(s.sumDateContainer)}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div className={clsx(s.sdWrapper)}>
+                  <Field
+                    name="amount"
+                    type="text"
+                    placeholder="0.00"
+                    className={clsx(s.expenseSum)}
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div className={clsx(s.sdWrapper)}>
+                  <MyDatePicker name="transactionDate" />
+                </div>
+              </div>
             </div>
-            <div className={clsx(s.fieldContainer)}>
-              <Field
-                name="comment"
-                type="text"
-                placeholder="Comment"
-                className={clsx(s.expenseComment)}
-              />
+            <div className={clsx(s.commentContainer)}>
+              <div className={clsx(s.commentWrapper)}>
+                <Field
+                  name="comment"
+                  type="text"
+                  placeholder="Comment"
+                  className={clsx(s.expenseComment)}
+                />
+              </div>
             </div>
             <div className={clsx(s.buttonContainer)}>
               <button type="submit" className={clsx(s.expenseAddBtn)}>
                 Add
               </button>
-              <button type="button" className={clsx(s.expenseCnclBtn)}>
+              <button
+                type="button"
+                className={clsx(s.expenseCnclBtn)}
+                onClick={closeModal}
+              >
                 Cancel
               </button>
             </div>
