@@ -6,6 +6,7 @@
 
 .listItem {
   position: relative;
+  display: inline-flex;
 }
 
 .iconBackground {
@@ -44,6 +45,17 @@
   gap: 20px;
   transition: all 0.2s ease-in-out;
   line-height: 1.2;
+  display: inline-flex;
+}
+
+/* .link:not(.linkActive):hover {
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ff00ff,
+    0 0 40px #ff00ff, 0 0 50px #ff00ff;
+} */
+
+.link:not(.linkActive):hover .icon {
+  filter: drop-shadow(0 0 3px #734aef) drop-shadow(0 0 6px #734aef)
+    drop-shadow(0 0 9px #734aef);
 }
 
 .linkActive {
