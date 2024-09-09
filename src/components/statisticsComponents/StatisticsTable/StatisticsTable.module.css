@@ -10,13 +10,45 @@
   --other_expenses: #00ad84;
   --entertainment: #56b9dc;
 }
-
+/* CHART */
+.chart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .doughnutCont {
-  height: 400px;
-  width: 400px;
+  position: relative;
+  width: 336px;
+  height: 336px;
+}
+.balanceCont {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.balance {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* TABLE ROW */
+.tableRowWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRowWrapper::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(0deg, #fff1, #fff3);
+}
 .tableRow {
   padding: 16px;
   display: flex;
@@ -26,8 +58,7 @@
   font-size: 14px;
   font-weight: 400;
 
-  border-bottom: 1px solid #fff4;
-  /* border-image-source: linear-gradient(to left, #fffb, #fff3); */
+  /* border-bottom: 1px solid #fff4; */
 }
 .categoryAndLabel {
   display: flex;
@@ -35,9 +66,6 @@
   align-items: center;
   gap: 16px;
 }
-.categoryName {
-}
-
 .colorBar {
   height: 24px;
   width: 24px;
@@ -85,12 +113,13 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  max-height: 100vh;
+  width: 100%;
 }
 
 .table {
   display: flex;
   flex-direction: column;
-  min-width: 330px;
 }
 
 .tableHead {
@@ -107,6 +136,11 @@
 .tableHeading {
   font-weight: 600;
   font-size: 16px;
+}
+
+.scrollable {
+  height: 400px;
+  overflow: auto;
 }
 
 .tableBody {
@@ -139,4 +173,21 @@
 .incomeAmount {
   margin: 0;
   color: #ffb627;
+}
+
+@media only screen and (max-width: 1439px) {
+  .doughnutCont {
+    margin-top: 65px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .scrollable {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 376px) {
+  .doughnutCont {
+    height: 280px;
+    width: 280px;
+  }
 }

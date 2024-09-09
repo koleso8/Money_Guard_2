@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import { logoutThunk } from '../../redux/auth/operations';
 import { setHeaderHeight } from '../../redux/modal/slice';
+import Icon from '../Icon/Icon';
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -32,9 +33,7 @@ const Header = () => {
     <div className={clsx(s.container)} ref={headerRef}>
       <NavLink to="/">
         <div className={clsx(s.logo)}>
-          <svg className={clsx(s.logosvg)}>
-            <use href="./src/images/icons.svg#logo"></use>
-          </svg>
+          <Icon name="logo2" className={clsx(s.logosvg)} />
           <p className={clsx(s.title)}>Money Guard</p>
         </div>
       </NavLink>
@@ -42,9 +41,7 @@ const Header = () => {
         <p className={clsx(s.username)}>{user.username}</p>
 
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
-          <svg width="18" height="18">
-            <use href="./src/images/icons.svg#logout"></use>
-          </svg>
+          <Icon name="logout" />
         </button>
 
         <button className={clsx(s.exitButton)} onClick={handleLogout}>
@@ -54,13 +51,12 @@ const Header = () => {
 
       <ModalBackdrop isOpen={isModalOpen} closeModal={closeModal} noCloseButton>
         <div className={s.back}>
-          <div className={clsx(s.logo)}>
-            <svg className={clsx(s.logosvg)}>
-              <use href="./src/images/icons.svg#logo"></use>
-            </svg>
-            <p className={clsx(s.title)}>Money Guard</p>
-          </div>
           <div className={s.modalContent}>
+            <div className={clsx(s.logoModal)}>
+              <Icon name="logo2" className={clsx(s.logosvgModal)} />
+              <p className={clsx(s.titleModal)}>Money Guard</p>
+            </div>
+
             <p className={s.modalText}>Are you sure you want to log out?</p>
             <button
               className={s.logoutBtn}

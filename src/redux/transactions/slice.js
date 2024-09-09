@@ -10,6 +10,10 @@ import {
 
 const initialState = {
   items: [],
+  statisticsPeriod: {
+    month: new Date().getMonth(),
+    year: new Date().getFullYear(),
+  },
   periodTransactions: [],
   loading: false,
   error: null,
@@ -24,6 +28,9 @@ const transactionsSlice = createSlice({
   reducers: {
     addCurrentTransaction(state, { payload }) {
       state.currentTransaction = payload;
+    },
+    setStatisticsPeriod(state, { payload }) {
+      state.statisticsPeriod = { ...state.statisticsPeriod, ...payload };
     },
   },
   extraReducers: (builder) => {
@@ -96,4 +103,5 @@ const transactionsSlice = createSlice({
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
-export const { addCurrentTransaction } = transactionsSlice.actions;
+export const { addCurrentTransaction, setStatisticsPeriod } =
+  transactionsSlice.actions;
