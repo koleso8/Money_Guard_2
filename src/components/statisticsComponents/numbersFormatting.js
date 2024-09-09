@@ -1,8 +1,4 @@
-const num = 32415646542514;
-
-console.log(num);
-
-function formatNumbers(number) {
+export function formatNumber(number) {
   number = number + "";
   const dotIndex = number.indexOf(".");
 
@@ -19,5 +15,3 @@ function formatNumbers(number) {
   }
   return str;
 }
-
-console.log(formatNumbers(num));

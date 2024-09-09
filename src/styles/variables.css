@@ -16,6 +16,13 @@
     #7000ff 90.54%
   );
 
+  --gradient: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+
   --font_family: 'Poppins', sans-serif;
 }
 
