@@ -108,11 +108,11 @@ const CurrencyChart = ({ labels, dataSet }) => {
 
     if (chart) {
       const ctx = chart.ctx;
-      const gradient = ctx.createLinearGradient(0, 0, 0, 100); // Створюємо градієнт
+      const gradient = ctx.createLinearGradient(0, 0, 0, 100);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
       gradient.addColorStop(1, 'rgba(33, 150, 243, 0)');
 
-      chart.data.datasets[0].backgroundColor = gradient; // Призначаємо градієнт як фон
+      chart.data.datasets[0].backgroundColor = gradient;
       chart.update();
     }
   }, []);
