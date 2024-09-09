@@ -24,7 +24,7 @@
   overflow: hidden;
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1279px) {
   .wrapper {
     border-right: none;
     flex-direction: row;

@@ -16,7 +16,7 @@
 }
 
 .outlet {
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .gradient {
@@ -74,7 +74,7 @@
   background: linear-gradient(207deg, #341fa0 46.11%, #652392 63.65%);
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1279px) {
   .main {
     flex-direction: column;
   }

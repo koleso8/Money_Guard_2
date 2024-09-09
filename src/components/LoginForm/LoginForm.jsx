@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { loginThunk } from '../../redux/auth/operations';
 import s from './LoginForm.module.css';
 import Icon from '../Icon/Icon';
+import { Toaster } from 'react-hot-toast';
 export const LoginForm = () => {
   const dispath = useDispatch();
   const initialValues = {
@@ -19,6 +20,7 @@ export const LoginForm = () => {
 
   return (
     <div className={s.fon}>
+      <Toaster position="top-right" />
       <div className={s.iner}>
         <div className={s.wrap}>
           <div className={s.wrap_logo}>

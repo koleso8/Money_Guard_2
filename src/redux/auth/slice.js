@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  getBalanceThunk,
   loginThunk,
   logoutThunk,
   refreshUserThunk,
@@ -11,9 +12,9 @@ const initialState = {
   user: {
     username: null,
     email: null,
+    balance: null,
   },
   token: null,
-  balance: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -55,6 +56,9 @@ const slice = createSlice({
       .addCase(refreshUserThunk.rejected, state => {
         state.isRefreshing = false;
         // errorMessage('Please login or register');
+      })
+      .addCase(getBalanceThunk.fulfilled, (state, action) => {
+        state.user.balance = action.payload;
       });
   },
 });

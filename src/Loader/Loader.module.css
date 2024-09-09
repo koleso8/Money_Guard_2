@@ -1,4 +1,15 @@
 /* From Uiverse.io by Shoh2008 */
+.backdrop {
+  position: fixed;
+  background-color: #38254e;
+  opacity: 0.4;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1000;
+}
+
 .loader {
   transform: translateZ(1px) translateX(-50%) translateY(-50%);
   position: absolute;

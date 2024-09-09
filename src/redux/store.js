@@ -14,12 +14,13 @@ import storage from 'redux-persist/lib/storage';
 import { currencyReducer } from './currency/slice';
 import { authReducer } from './auth/slice';
 import { transactionsReducer } from './transactions/slice';
+import { modalReducer } from './modal/slice';
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  whiteList: ['user'],
+  whiteList: [],
 };
 
 const currencyPersistConfig = {
@@ -39,6 +40,7 @@ export const store = configureStore({
     auth: persistedReducer,
     currency: currencyPersistedReducer,
     transactions: transactionsReducer,
+    modal: modalReducer,
     // editing: editingReducer,
   },
   middleware: getDefaultMiddleware =>

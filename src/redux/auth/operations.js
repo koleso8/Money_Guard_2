@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from 'react-hot-toast';
+import { toastStyles } from '../../helpers/toastStyles';
 
 export const goitApi = axios.create({
   baseURL: 'https://wallet.b.goit.study/',
@@ -19,8 +21,10 @@ export const registerThunk = createAsyncThunk(
     try {
       const { data } = await goitApi.post('/api/auth/sign-up', userData);
       setAuthHeader(data.token);
+      toast.success('Registration successful!', toastStyles);
       return data;
     } catch (error) {
+      toast.error('Failed to register!', toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -32,8 +36,10 @@ export const loginThunk = createAsyncThunk(
     try {
       const { data } = await goitApi.post('/api/auth/sign-in', userData);
       setAuthHeader(data.token);
+      toast.success('Login successful!', toastStyles);
       return data;
     } catch (error) {
+      toast.error('Failed to login!', toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -56,6 +62,7 @@ export const refreshUserThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persisToken = state.auth.token;
+
     if (persisToken === null) thunkAPI.rejectWithValue('NO USER');
     try {
       setAuthHeader(persisToken);
@@ -73,8 +80,7 @@ export const getBalanceThunk = createAsyncThunk(
   'auth/getBalance',
   async (_, thunkAPI) => {
     try {
-      const { data } = await goitApi.get('users/current');
-
+      const { data } = await goitApi.get('/api/users/current');
       return data.balance;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
