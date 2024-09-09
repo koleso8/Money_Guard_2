@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import { logoutThunk } from '../../redux/auth/operations';
 import { setHeaderHeight } from '../../redux/modal/slice';
+import Icon from '../Icon/Icon';
 
 const Header = () => {
   const user = useSelector(selectUser);
