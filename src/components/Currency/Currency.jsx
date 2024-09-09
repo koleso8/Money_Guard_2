@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import clsx from 'clsx';
+import s from './Currency.module.css';
 import {
   selectCurrencies,
   selectLastRequestTime,
 } from '../../redux/currency/selectors';
 import { fetchCurrencies } from '../../redux/currency/operations';
-import clsx from 'clsx';
-import s from './Currency.module.css';
+import graphDesktop1x from '../../images/graph_desktop_1x.webp';
+import graphDesktop2x from '../../images/graph_desktop_2x.webp';
+import graphTablet1x from '../../images/graph_tablet_1x.webp';
+import graphTablet2x from '../../images/graph_tablet_2x.webp';
+import graphMobile1x from '../../images/graph_mobile_1x.webp';
+import graphMobile2x from '../../images/graph_mobile_2x.webp';
 
 const Currency = () => {
   const dispatch = useDispatch();
@@ -63,22 +69,22 @@ const Currency = () => {
         <picture>
           <source
             media="(min-width: 1440px)"
-            srcSet="./src/images/graph_desktop_1x.webp 1x, ./src/images/graph_desktop_2x.webp 2x"
+            srcSet={'.' + graphDesktop1x + ' 2x, ' + graphDesktop2x + ' 2x'}
             type="image/webp"
           />
           <source
             media="(min-width: 768px)"
-            srcSet="./src/images/graph_table_1x.webp 1x, ./src/images/graph_table_2x.webp 2x"
+            srcSet={'.' + graphTablet1x + ' 2x, ' + graphTablet2x + ' 2x'}
             type="image/webp"
           />
           <source
             media="(max-width: 767px)"
-            srcSet="./src/images/graph_mobile_1x.webp 1x, ./src/images/graph_mobile_2x.webp 2x"
+            srcSet={'.' + graphMobile1x + ' 2x, ' + graphMobile2x + ' 2x'}
             type="image/webp"
           />
           <img
             className={clsx(s.diagram)}
-            src="./src/images/graph_desktop_1x.webp"
+            src={graphDesktop1x}
             alt="diagram"
             loading="lazy"
           />

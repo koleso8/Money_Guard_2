@@ -1,0 +1,268 @@
+.editFormBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editFormTitle {
+  color: var(--white, #fbfbfb);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.editTypeTitle {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  gap: 12px;
+}
+
+.editForm {
+  width: 394px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  /* padding: 80px 73px 40px; */
+}
+
+.editIncomeHighlight {
+  color: #ffb627;
+}
+
+.editExpenseHighlight {
+  color: #ff868d;
+}
+
+.editCategoryWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.editCategoryWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--white-40, rgba(255, 255, 255, 0.4));
+}
+
+.editCategory {
+  width: 100%;
+  color: var(--white, #fbfbfb);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+/* ================================================== */
+
+.editSumDate {
+  display: flex;
+  gap: 32px;
+}
+
+.editSumDate span {
+  max-width: 181px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: #ff868d;
+}
+
+.editSumWrapper {
+  position: relative;
+  width: 181px;
+  margin-bottom: 10px;
+}
+
+.editSumWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--white-40, rgba(255, 255, 255, 0.4));
+}
+
+.editAmount {
+  width: 100%;
+  color: var(--white, #fbfbfb);
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: Poppins;
+}
+
+.editAmount::placeholder {
+  color: var(--white-60, rgba(255, 255, 255, 0.6));
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.editDateWrapper {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.editDateWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--white-40, rgba(255, 255, 255, 0.4));
+}
+
+.editDate {
+  width: 181px;
+  color: var(--white, #fbfbfb);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.editComment {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--white, #fbfbfb);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.editComment::placeholder {
+  color: var(--white-60, rgba(255, 255, 255, 0.6));
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.editCommentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.editCommentContainer span {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: #ff868d;
+}
+
+.editCommentWrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.editCommentWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--white-40, rgba(255, 255, 255, 0.4));
+}
+
+.editBtnBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editSubmitBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  background: var(
+    --button-gradient,
+    linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
+  );
+  border: none;
+  outline: none;
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  color: var(--white, #fbfbfb);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.editSubmitBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+
+.editSubmitBtn:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}
+
+.editCancelBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  background: var(--white, #fbfbfb);
+  border: none;
+  outline: none;
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  color: var(--text-button, #623f8b);
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.editCancelBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+
+.editCancelBtn:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}

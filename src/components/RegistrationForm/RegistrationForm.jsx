@@ -1,18 +1,19 @@
-import { Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { registerThunk } from "../../redux/auth/operations";
-import s from "./RegistrationForm.module.css";
-import PasswordStrengthBar from "react-password-strength-bar";
-import Icon from "../Icon/Icon";
+import { Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { registerThunk } from '../../redux/auth/operations';
+import s from './RegistrationForm.module.css';
+import PasswordStrengthBar from 'react-password-strength-bar';
+import Icon from '../Icon/Icon';
+import { Toaster } from 'react-hot-toast';
 
 export const RegistrationForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    username: "",
-    email: "",
-    password: "",
-    confirmPass: "",
+    username: '',
+    email: '',
+    password: '',
+    confirmPass: '',
   };
 
   const handleSubmit = (values, options) => {
@@ -24,6 +25,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className={s.fon}>
+      <Toaster position="top-right" />
       <div className={s.iner}>
         <div className={s.wrap}>
           <div className={s.wrap_logo}>

@@ -1,21 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isOpen: false,
-  children: {},
+  headerHeight: 0,
 };
 
 const slice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openModal: (state, action) => {
-      state.isOpen = true;
-      state.children = action.payload;
+    setHeaderHeight: (state, action) => {
+      state.headerHeight = action.payload;
     },
-    closeModal: state => (state.isOpen = false),
   },
 });
 
 export const modalReducer = slice.reducer;
-export {};
+export const { setHeaderHeight } = slice.actions;

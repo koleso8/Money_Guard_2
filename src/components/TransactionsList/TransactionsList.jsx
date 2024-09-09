@@ -1,21 +1,30 @@
 import clsx from 'clsx';
 import s from './TransactionsList.module.css';
-// import { useSelector } from "react-redux";
-// import { selectTransactions } from "../../redux/transactions/selector";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTransactions } from '../../redux/transactions/selector';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
-import transactionData from '../../helpers/placeholderTransactions.json';
 import { FiPlus } from 'react-icons/fi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
+import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
+import {
+  fetchAllTrnThunk,
+  getCategoriesThunk,
+} from '../../redux/transactions/operations';
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from '../../redux/auth/selectors';
 
 const TransactionsList = () => {
-  //   const allTransactions = useSelector(selectTransactions);
+  const allTransactions = useSelector(selectTransactions).toSorted(
+    (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+  );
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
-
-  const allTransactions = transactionData;
 
   return (
     <div className={clsx(s.transactionListBox)}>
@@ -43,9 +52,8 @@ const TransactionsList = () => {
       >
         <FiPlus size={30} color="fff" />
       </button>
-
       <ModalBackdrop isOpen={isAddModalOpen} closeModal={closeAddModal}>
-        YA MODALKA
+        <AddTransactionForm closeModal={closeAddModal} />
       </ModalBackdrop>
     </div>
   );
