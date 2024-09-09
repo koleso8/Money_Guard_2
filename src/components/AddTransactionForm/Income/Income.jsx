@@ -4,13 +4,14 @@ import s from "./Income.module.css";
 import incomeValidationSchema from "../../../helpers/incomeValidationSchema";
 import { useDispatch } from "react-redux";
 import { addTrnThunk } from "../../../redux/transactions/operations";
+import MyDatePicker from "../DatePicker/DatePicker";
 
 const Income = ({ closeModal }) => {
   const dispatch = useDispatch();
   const todayDate = new Date().toISOString().split("T")[0];
 
   const initialValues = {
-    transactionDate: "",
+    transactionDate: todayDate,
     type: "INCOME",
     categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
     comment: "",
@@ -18,6 +19,7 @@ const Income = ({ closeModal }) => {
   };
 
   const handleIncomeSubmit = (values) => {
+    console.log(values);
     dispatch(addTrnThunk(values));
     closeModal();
   };
@@ -32,38 +34,41 @@ const Income = ({ closeModal }) => {
         {() => (
           <Form className={clsx(s.incomeForm)}>
             <div className={clsx(s.sumDateContainer)}>
-              <Field
-                name="amount"
-                type="number"
-                placeholder="0.00"
-                className={clsx(s.incomeSum)}
-              />
-              <ErrorMessage
-                name="amount"
-                component="span"
-                className={clsx(s.error)}
-              />
-              <Field
-                name="transactionDate"
-                type="date"
-                placeholder={new Date(todayDate)
-                  .toLocaleDateString("en-GB")
-                  .replace(/\//g, ".")}
-                className={clsx(s.incomeDate)}
-              />
-              <ErrorMessage
-                name="transactionDate"
-                component="span"
-                className={clsx(s.error)}
-              />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div className={clsx(s.sdWrapper)}>
+                  <Field
+                    name="amount"
+                    type="text"
+                    placeholder="0.00"
+                    className={clsx(s.incomeSum)}
+                  />
+                </div>
+                <ErrorMessage
+                  name="amount"
+                  component="span"
+                  className={clsx(s.error)}
+                />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div className={clsx(s.sdWrapper)}>
+                  <MyDatePicker name="transactionDate" />
+                </div>
+                <ErrorMessage
+                  name="transactionDate"
+                  component="span"
+                  className={clsx(s.error)}
+                />
+              </div>
             </div>
             <div className={clsx(s.commentContainer)}>
-              <Field
-                name="comment"
-                type="text"
-                placeholder="Comment"
-                className={clsx(s.incomeComment)}
-              />
+              <div className={clsx(s.commentWrapper)}>
+                <Field
+                  name="comment"
+                  type="text"
+                  placeholder="Comment"
+                  className={clsx(s.incomeComment)}
+                />
+              </div>
               <ErrorMessage
                 name="comment"
                 component="span"
@@ -74,7 +79,11 @@ const Income = ({ closeModal }) => {
               <button type="submit" className={clsx(s.incomeAddBtn)}>
                 Add
               </button>
-              <button type="button" className={clsx(s.incomeCnclBtn)}>
+              <button
+                type="button"
+                className={clsx(s.incomeCnclBtn)}
+                onClick={closeModal}
+              >
                 Cancel
               </button>
             </div>

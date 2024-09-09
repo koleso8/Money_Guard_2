@@ -53,10 +53,12 @@ export const editTrnThunk = createAsyncThunk(
   "transactions/editTransaction",
   async (transaction, thunkAPI) => {
     try {
-      const { id, transactionDate, type, comment, amount } = transaction;
+      const { id, transactionDate, type, categoryId, comment, amount } =
+        transaction;
       const { data } = await goitApi.patch(`/api/transactions/${id}`, {
         transactionDate,
         type,
+        categoryId,
         comment,
         amount,
       });

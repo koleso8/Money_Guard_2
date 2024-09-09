@@ -7,12 +7,16 @@ import { FiPlus } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
 import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
-import { fetchAllTrnThunk } from "../../redux/transactions/operations";
+import {
+  fetchAllTrnThunk,
+  getCategoriesThunk,
+} from "../../redux/transactions/operations";
 
 const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions).toSorted(
     (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
   );
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -21,6 +25,7 @@ const TransactionsList = () => {
 
   useEffect(() => {
     dispatch(fetchAllTrnThunk());
+    dispatch(getCategoriesThunk());
   }, [dispatch]);
 
   return (
