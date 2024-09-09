@@ -16,9 +16,12 @@ const ModalBackdrop = ({
 }) => {
   const { isSmallScreen } = useScreenWidth();
   const headerHeight = useSelector(selectHeaderHeight);
+  const modalMarginFromTop = isSmallScreen ? headerHeight : 0;
+  console.log(headerHeight);
+
   const customStyles = {
     overlay: {
-      top: headerHeight,
+      top: modalMarginFromTop,
     },
   };
 
@@ -40,6 +43,7 @@ const ModalBackdrop = ({
           />
         </button>
       )}
+      <div className={clsx(s.gradient)}></div>
       {children}
     </Modal>
   );

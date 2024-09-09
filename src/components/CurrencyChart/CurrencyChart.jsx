@@ -108,7 +108,7 @@ const CurrencyChart = ({ labels, dataSet }) => {
 
     if (chart) {
       const ctx = chart.ctx;
-      const gradient = ctx.createLinearGradient(0, 0, 0, 100);
+      const gradient = ctx.createLinearGradient(0, 0, 0, 170);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
       gradient.addColorStop(1, 'rgba(33, 150, 243, 0)');
 
@@ -126,7 +126,7 @@ const CurrencyChart = ({ labels, dataSet }) => {
         style={{
           width: '110%',
           height: isSmallScreen ? '150px' : isMediumScreen ? '120px' : '200px',
-          marginLeft: '-5%',
+          marginLeft: isSmallScreen ? '-2%' : '-5%',
         }}
       />
     </div>

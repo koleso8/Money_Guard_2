@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { formatNumber } from '../statisticsComponents/numbersFormatting';
 
 const AnimatedNumber = ({ value, duration = 1000 }) => {
   const [displayedValue, setDisplayedValue] = useState(value);
@@ -24,7 +25,7 @@ const AnimatedNumber = ({ value, duration = 1000 }) => {
     requestAnimationFrame(animate);
   }, [value, duration, displayedValue]);
 
-  return <span>{displayedValue}</span>;
+  return <span>{formatNumber(displayedValue)}</span>;
 };
 
 export default AnimatedNumber;
