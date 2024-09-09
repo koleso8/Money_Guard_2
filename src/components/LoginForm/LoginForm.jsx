@@ -1,14 +1,14 @@
-import { Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { loginThunk } from '../../redux/auth/operations';
-import s from './LoginForm.module.css';
-import Icon from '../Icon/Icon';
+import { Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { loginThunk } from "../../redux/auth/operations";
+import s from "./LoginForm.module.css";
+import Icon from "../Icon/Icon";
 export const LoginForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
 
   const handleSubmit = (values, options) => {

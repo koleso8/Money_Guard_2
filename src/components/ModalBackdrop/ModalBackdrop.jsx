@@ -1,9 +1,9 @@
-import Modal from 'react-modal';
-import clsx from 'clsx';
-import s from './ModalBackdrop.module.css';
-import Icon from '../Icon/Icon';
+import Modal from "react-modal";
+import clsx from "clsx";
+import s from "./ModalBackdrop.module.css";
+import Icon from "../Icon/Icon";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 const ModalBackdrop = ({
   children,

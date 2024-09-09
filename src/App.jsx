@@ -1,25 +1,29 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import HomeTab from './pages/HomeTab/HomeTab';
-import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import CurrencyTab from './pages/CurrencyTab/CurrencyTab';
-import StatisticsTab from './pages/StatisticsTab/StatisticsTab';
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
-import Layout from './components/Layout/Layout';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Navigate, Route, Routes } from "react-router-dom";
+import HomeTab from "./pages/HomeTab/HomeTab";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import CurrencyTab from "./pages/CurrencyTab/CurrencyTab";
+import StatisticsTab from "./pages/StatisticsTab/StatisticsTab";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
+import Layout from "./components/Layout/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUserThunk } from "./redux/auth/operations";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(refreshUserThunk());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
 
-  //selectIsRefreshing ? (
-  //   <b>Refreshing user...</b>
-  // ) : (
-  return (
+  const refreshPending = useSelector(selectIsRefreshing);
+
+  return refreshPending ? (
+    <b style={{ color: "#000" }}>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route
         path="/"
@@ -39,7 +43,7 @@ function App() {
           <PublicRoute redirectTo="/" component={<RegistrationPage />} />
         }
       />
-      <Route path="*" element={<Navigate to={'/'} />} />
+      <Route path="*" element={<Navigate to={"/"} />} />
     </Routes>
   );
 }

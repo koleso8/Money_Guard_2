@@ -1,18 +1,18 @@
-import { Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { registerThunk } from '../../redux/auth/operations';
-import s from './RegistrationForm.module.css';
-import PasswordStrengthBar from 'react-password-strength-bar';
-import Icon from '../Icon/Icon';
+import { Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { registerThunk } from "../../redux/auth/operations";
+import s from "./RegistrationForm.module.css";
+import PasswordStrengthBar from "react-password-strength-bar";
+import Icon from "../Icon/Icon";
 
 export const RegistrationForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPass: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPass: "",
   };
 
   const handleSubmit = (values, options) => {
