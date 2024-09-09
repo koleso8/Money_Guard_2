@@ -1,9 +1,16 @@
 import s from './Loader.module.css';
+import a from '../components/Layout/Layout.module.css';
+import clsx from 'clsx';
 
 const Loader = () => {
   return (
     <>
-      <div className={s.loader}></div>;<div className={s.backdrop}></div>
+      <div className={s.loader}></div>
+      <div className={s.backdrop}></div>
+      <div className={clsx(a.gradient, a.gradientOne)}></div>
+      <div className={clsx(a.gradient, a.gradientTwo)}></div>
+      <div className={clsx(a.gradient, a.gradientThree)}></div>
+      <div className={clsx(a.gradient, a.gradientFour)}></div>
     </>
   );
 };

@@ -92,7 +92,6 @@ export const getCategoriesThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await goitApi.get('/api/transaction-categories');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

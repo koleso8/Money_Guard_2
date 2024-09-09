@@ -65,8 +65,6 @@ export const refreshUserThunk = createAsyncThunk(
 
     if (persisToken === null) thunkAPI.rejectWithValue('NO USER');
     try {
-      console.log(persisToken);
-
       setAuthHeader(persisToken);
 
       const { data } = await goitApi.get('/api/users/current');
@@ -83,7 +81,6 @@ export const getBalanceThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await goitApi.get('/api/users/current');
-
       return data.balance;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
