@@ -3,14 +3,16 @@ import s from './Header.module.css';
 import clsx from 'clsx';
 import { selectUser } from '../../redux/auth/selectors';
 import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import { logoutThunk } from '../../redux/auth/operations';
+import { setHeaderHeight } from '../../redux/modal/slice';
 
 const Header = () => {
   const user = useSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const headerRef = useRef(null);
 
   const handleLogout = () => {
     setIsModalOpen(true);
@@ -20,8 +22,14 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    if (headerRef.current) {
+      dispatch(setHeaderHeight(headerRef.current.offsetHeight));
+    }
+  }, [dispatch]);
+
   return (
-    <div className={clsx(s.container)}>
+    <div className={clsx(s.container)} ref={headerRef}>
       <NavLink to="/">
         <div className={clsx(s.logo)}>
           <svg className={clsx(s.logosvg)}>

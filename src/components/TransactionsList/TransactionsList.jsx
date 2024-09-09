@@ -1,16 +1,20 @@
-import clsx from "clsx";
-import s from "./TransactionsList.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTransactions } from "../../redux/transactions/selector";
-import TransactionsItem from "../TransactionsItem/TransactionsItem";
-import { FiPlus } from "react-icons/fi";
-import { useEffect, useState } from "react";
-import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
-import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
+import clsx from 'clsx';
+import s from './TransactionsList.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTransactions } from '../../redux/transactions/selector';
+import TransactionsItem from '../TransactionsItem/TransactionsItem';
+import { FiPlus } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
+import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
+import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
 import {
   fetchAllTrnThunk,
   getCategoriesThunk,
-} from "../../redux/transactions/operations";
+} from '../../redux/transactions/operations';
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from '../../redux/auth/selectors';
 
 const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions).toSorted(
@@ -18,15 +22,9 @@ const TransactionsList = () => {
   );
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const dispatch = useDispatch();
 
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
-
-  useEffect(() => {
-    dispatch(fetchAllTrnThunk());
-    dispatch(getCategoriesThunk());
-  }, [dispatch]);
 
   return (
     <div className={clsx(s.transactionListBox)}>
@@ -42,7 +40,7 @@ const TransactionsList = () => {
           </tr>
         </thead>
         <tbody className={clsx(s.tableBody)}>
-          {allTransactions.map((item) => (
+          {allTransactions.map(item => (
             <TransactionsItem key={item.id} {...item} />
           ))}
         </tbody>
