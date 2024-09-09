@@ -16,7 +16,7 @@
 }
 
 .outlet {
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .gradient {
