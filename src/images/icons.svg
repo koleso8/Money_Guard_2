@@ -40,5 +40,13 @@
 <path d="M0 13v6c0 0.552 0.448 1 1 1h30c0.552 0 1-0.448 1-1v-6c0-0.552-0.448-1-1-1h-30c-0.552 0-1 0.448-1 1z"></path>
 </symbol>
 
+<svg id="logo2" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0684 3.08869C12.4051 2.69093 10.7418 1.89542 9.49425 0.702148C8.24674 1.89542 6.58339 2.69093 4.92004 3.08869C5.33588 6.6685 6.58339 9.05504 9.49425 11.0438C12.4051 9.05504 14.0684 6.6685 14.0684 3.08869Z" fill="#FFB627"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.405 17.8989L0.761597 4.77295V11.1371L9.91 21.081L12.405 17.8989Z" fill="#FBFBFB"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6528 16.7058L18.6428 11.1372V5.1709L10.7419 13.9215L13.6528 16.7058Z" fill="#FBFBFB"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0686 18.6945V22.2743L18.6428 17.1035V13.5237L14.0686 18.6945Z" fill="#FBFBFB"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.3358 18.6945L0.761597 13.5237V17.1035L5.3358 22.2743V18.6945Z" fill="#FBFBFB"/>
+</svg>
+
 </defs>
 </svg>

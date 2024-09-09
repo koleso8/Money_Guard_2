@@ -52,6 +52,7 @@
   .container {
     padding-left: 32px;
     padding-right: 32px;
+    height: 80px;
   }
 
   .title {
@@ -72,9 +73,18 @@
     padding-right: 12px;
     margin-right: 12px;
   }
+
+  .logosvg {
+    width: 24px;
+    height: 24px;
+  }
+  .logosvguse{
+    width: 24px;
+    height: 24px;
+  }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
@@ -117,6 +127,10 @@
   }
 }
 /* section modal */
+
+.logoModal{
+  display: none;
+}
 
 .modalContent {
   display: flex;
@@ -192,19 +206,23 @@
   .cancelBtn {
     min-width: 300px;
   }
+  .logoModal{
+    display: inline;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 52px; 
+  }
+  .titleModal{
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--white);
+    font-family: var(--font_family);
+  }
+  .logosvgModal{
+    width: 36px;
+    height: 36px;
+  }
+
 }
-/* .back {
-  width: 100vw;
-  height: 100vh;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(100px);
-  box-shadow: 0 4px 60px 0 rgba(25, 16, 16, 0.25);
-  background-color: var(--form_color);
-} */
+
