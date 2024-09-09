@@ -1,17 +1,51 @@
 .statsTabWrapper {
+  position: relative;
+  padding: 32px;
+  width: 100%;
 }
 .statsTab {
-  padding: 32px;
   display: flex;
+  justify-content: stretch;
   width: 100%;
   gap: 32px;
+  min-height: 300px;
 }
 .statsTabHeading {
   font-size: 30px;
   font-weight: 400;
-  padding: 32px 84px;
+  margin-bottom: 20px;
+  margin-left: 16px;
 }
 .tableSection {
   display: flex;
   flex-direction: column;
+  /* width: 395px; */
+
+  width: 100%;
+}
+
+@media only screen and (max-width: 1439px) {
+  .statsTabWrapper {
+    padding: 20px 32px;
+  }
+  .statsTabHeading {
+    position: absolute;
+    top: 20;
+    left: 32;
+  }
+  .tableSection {
+    padding-top: 20px;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .statsTabWrapper {
+    padding: 20px;
+  }
+  .statsTab {
+    flex-direction: column;
+  }
+  .statsTabHeading {
+    position: static;
+  }
 }

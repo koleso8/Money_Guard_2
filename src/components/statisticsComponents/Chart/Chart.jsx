@@ -1,11 +1,21 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import s from "../StatisticsTable/StatisticsTable.module.css";
-import data from "../devData.json";
+// import data from "../devData.json";
+import { selectPeriodTransactions } from "../../../redux/transactions/selector";
+import { useSelector } from "react-redux";
+import { selectBalance } from "../../../redux/auth/selectors";
+import { formatNumber } from "../numbersFormatting";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const ChartSection = () => {
+  const balance = useSelector(selectBalance);
+
+  const data = useSelector(selectPeriodTransactions);
+
+  if (!data.categoriesSummary || !data.categoriesSummary.length) return;
+
   const arrOfExpenses = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const expenseTypes = [
     "Main expenses",
@@ -29,7 +39,7 @@ export const ChartSection = () => {
     labels: expenseTypes,
     datasets: [
       {
-        label: "$",
+        label: "₴",
         data: arrOfExpenses,
         backgroundColor: [
           "#fed057",
@@ -43,7 +53,19 @@ export const ChartSection = () => {
           "#00ad84",
           "#56b9dc",
         ],
-        borderWidth: 0,
+        borderWidth: 1,
+        borderColor: [
+          "#fed057",
+          "#ffd8d0",
+          "#fd9498",
+          "#c5baff",
+          "#6e78e8",
+          "#4a56e2",
+          "#81e1ff",
+          "#24cca7",
+          "#00ad84",
+          "#56b9dc",
+        ],
       },
     ],
   };
@@ -66,8 +88,13 @@ export const ChartSection = () => {
   };
 
   return (
-    <div className={s.doughnutCont}>
-      <Doughnut options={options} data={settings} className={s.doughnut} />
+    <div className={s.chart}>
+      <div className={s.doughnutCont}>
+        <Doughnut options={options} data={settings} className={s.doughnut} />
+        <div className={s.balanceCont}>
+          <p className={s.balance}>₴ {formatNumber(balance)}</p>
+        </div>
+      </div>
     </div>
   );
 };
