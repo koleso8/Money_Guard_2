@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import s from './Header.module.css';
-import clsx from 'clsx';
-import { selectUser } from '../../redux/auth/selectors';
-import { NavLink } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import { logoutThunk } from '../../redux/auth/operations';
-import { setHeaderHeight } from '../../redux/modal/slice';
+import { useDispatch, useSelector } from "react-redux";
+import s from "./Header.module.css";
+import clsx from "clsx";
+import { selectUser } from "../../redux/auth/selectors";
+import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import { logoutThunk } from "../../redux/auth/operations";
+import { setHeaderHeight } from "../../redux/modal/slice";
+import { Icon } from "@mui/material";
 
 const Header = () => {
   const user = useSelector(selectUser);
