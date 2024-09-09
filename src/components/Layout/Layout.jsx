@@ -5,8 +5,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import clsx from 'clsx';
 import s from './Layout.module.css';
 import { Toaster } from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefreshing } from '../../redux/auth/selectors';
+import { useDispatch } from 'react-redux';
+
 import { useEffect } from 'react';
 import {
   fetchAllTrnThunk,
