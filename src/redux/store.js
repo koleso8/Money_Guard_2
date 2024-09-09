@@ -19,7 +19,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  whiteList: ['user'],
+  whiteList: [],
 };
 
 const currencyPersistConfig = {
