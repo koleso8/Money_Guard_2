@@ -17,8 +17,6 @@
 
 @media only screen and (min-width: 556px) {
   .fon {
-    background-image: url(../../images/FonFormTablet.jpg),
-      linear-gradient(to bottom right, #2f15b0, #252480, #000000);
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 75px;
@@ -29,6 +27,12 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .fon {
+    background-image: url(../../images/FonFormTablet.jpg),
+      linear-gradient(to bottom right, #2f15b0, #252480, #000000);
+  }
+}
+@media only screen and (min-width: 1280px) {
   .fon {
     background-image: url(../../images/ToFormReg.png),
       linear-gradient(to bottom right, #2f15b0, #252480, #000000);
