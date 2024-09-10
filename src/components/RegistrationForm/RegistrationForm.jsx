@@ -1,20 +1,20 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { registerThunk } from "../../redux/auth/operations";
-import s from "./RegistrationForm.module.css";
-import PasswordStrengthBar from "react-password-strength-bar";
-import Icon from "../Icon/Icon";
-import { Toaster } from "react-hot-toast";
-import validationSchema from "../../helpers/registrationSchema";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { registerThunk } from '../../redux/auth/operations';
+import s from './RegistrationForm.module.css';
+import PasswordStrengthBar from 'react-password-strength-bar';
+import Icon from '../Icon/Icon';
+import { Toaster } from 'react-hot-toast';
+import validationSchema from '../../helpers/registrationSchema';
 
 export const RegistrationForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    username: "",
-    email: "",
-    password: "",
-    confirmPass: "",
+    username: '',
+    email: '',
+    password: '',
+    confirmPass: '',
   };
 
   const handleSubmit = (values, options) => {
@@ -49,6 +49,7 @@ export const RegistrationForm = () => {
                         name="icon-userFrom"
                       />
                       <Field
+                        autoComplete="username"
                         name="username"
                         placeholder="Name"
                         className={s.input}
@@ -68,6 +69,7 @@ export const RegistrationForm = () => {
                         name="icon-emailForm"
                       />
                       <Field
+                        autoComplete="email"
                         name="email"
                         type="email"
                         placeholder="E-mail"
@@ -88,6 +90,7 @@ export const RegistrationForm = () => {
                         name="icon-passwordForm"
                       />
                       <Field
+                        autoComplete="new-password"
                         name="password"
                         type="password"
                         placeholder="Password"
@@ -108,6 +111,7 @@ export const RegistrationForm = () => {
                         name="icon-passwordForm"
                       />
                       <Field
+                        autoComplete="new-password"
                         name="confirmPass"
                         type="password"
                         placeholder="ConfirmPass"
@@ -122,21 +126,23 @@ export const RegistrationForm = () => {
                       <PasswordStrengthBar
                         className={s.bar}
                         password={values.confirmPass}
-                        scoreWords={["", "", "", "", ""]}
-                        shortScoreWord={[""]}
+                        scoreWords={['', '', '', '', '']}
+                        shortScoreWord={['']}
                         barColors={[
-                          "#FFC727",
-                          "#ef4836",
-                          "#91c4f5",
-                          "#2b90ef",
-                          "#25c281",
+                          '#FFC727',
+                          '#ef4836',
+                          '#91c4f5',
+                          '#2b90ef',
+                          '#25c281',
                         ]}
                         minLength={3}
                       />
                     </div>
                   </div>
                   <div>
-                    <button className={s.btn_first}>Register</button>
+                    <button type="submit" className={s.btn_first}>
+                      Register
+                    </button>
                     <label>
                       <Link to="/login" className={s.btn_second}>
                         Log in

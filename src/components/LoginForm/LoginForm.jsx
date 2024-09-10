@@ -1,17 +1,17 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { loginThunk } from "../../redux/auth/operations";
-import s from "./LoginForm.module.css";
-import Icon from "../Icon/Icon";
-import { Toaster } from "react-hot-toast";
-import validationSchema from "../../helpers/loginSchema";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { loginThunk } from '../../redux/auth/operations';
+import s from './LoginForm.module.css';
+import Icon from '../Icon/Icon';
+import { Toaster } from 'react-hot-toast';
+import validationSchema from '../../helpers/loginSchema';
 
 export const LoginForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
 
   const handleSubmit = (values, options) => {
@@ -43,6 +43,7 @@ export const LoginForm = () => {
                     name="icon-emailForm"
                   />
                   <Field
+                    autoComplete="email"
                     name="email"
                     type="email"
                     placeholder="E-mail"
@@ -63,6 +64,7 @@ export const LoginForm = () => {
                     name="icon-passwordForm"
                   />
                   <Field
+                    autoComplete="new-password"
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -76,7 +78,9 @@ export const LoginForm = () => {
                   <div className={s.line}></div>
                 </div>
                 <div className={s.wrap_button}>
-                  <button className={s.btn_first}>Log in</button>
+                  <button type="submit" className={s.btn_first}>
+                    Log in
+                  </button>
                   <label>
                     <Link to="/register" className={s.btn_second}>
                       Register
