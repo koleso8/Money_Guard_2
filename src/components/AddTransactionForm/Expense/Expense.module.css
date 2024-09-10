@@ -10,6 +10,19 @@
   gap: 40px;
 }
 
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selectContainer span {
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: var(--dashboard_text);
+}
+
 .selectWrapper {
   position: relative;
   width: 100%;
@@ -40,6 +53,30 @@
 .sumDateContainer {
   display: flex;
   gap: 32px;
+}
+
+.sumContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sumContainer span {
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: var(--dashboard_text);
+}
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateContainer span {
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: var(--dashboard_text);
 }
 
 .sdWrapper {
@@ -91,6 +128,13 @@
   width: 100%;
 }
 
+.commentContainer span {
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: var(--dashboard_text);
+}
+
 .commentWrapper {
   position: relative;
   margin-bottom: 10px;
@@ -113,6 +157,7 @@
   outline: none;
   color: var(--white);
   font-size: 18px;
+  font-family: var(--font_family);
 }
 
 .expenseComment::placeholder {
