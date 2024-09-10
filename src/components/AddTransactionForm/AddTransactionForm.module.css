@@ -60,7 +60,7 @@
 
 /* Anahtarın yuvarlak kısmının stil */
 .toggle_switch .toggle_label::before {
-  content: '\1F7A2';
+  content: "\1F7A2";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,6 +87,6 @@
   background-color: var(--dashboard_text);
   box-shadow: 0 6px 15px 0 rgba(255, 134, 141, 0.5);
 
-  content: '—';
+  content: "—";
   transform: translateX(40px);
 }

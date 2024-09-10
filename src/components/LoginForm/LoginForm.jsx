@@ -1,21 +1,20 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { loginThunk } from '../../redux/auth/operations';
-import s from './LoginForm.module.css';
-import Icon from '../Icon/Icon';
-import { Toaster } from 'react-hot-toast';
-import validationSchema from '../../helpers/loginSchema';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { loginThunk } from "../../redux/auth/operations";
+import s from "./LoginForm.module.css";
+import Icon from "../Icon/Icon";
+import { Toaster } from "react-hot-toast";
+import validationSchema from "../../helpers/loginSchema";
 
 export const LoginForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
 
   const handleSubmit = (values, options) => {
-    console.log(values);
     dispath(loginThunk(values));
     options.resetForm();
   };
