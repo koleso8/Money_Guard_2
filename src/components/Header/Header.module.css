@@ -3,8 +3,7 @@
   height: 60px;
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 12px 20px;
   align-items: center;
   z-index: 5;
 }
@@ -34,11 +33,12 @@
 
 .username {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   font-family: var(--second_family);
   text-align: right;
   color: var(--white_60);
   padding-right: 8px;
+  text-transform: capitalize;
 }
 
 .exit {
@@ -50,9 +50,7 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    padding-left: 32px;
-    padding-right: 32px;
-    height: 80px;
+    padding: 40px 32px;
   }
 
   .title {
@@ -68,7 +66,6 @@
     padding-left: 8px;
   }
   .username {
-    font-size: 16px;
     border-right: 1px solid var(--white_60);
     padding-right: 12px;
     margin-right: 12px;
@@ -78,7 +75,7 @@
     width: 24px;
     height: 24px;
   }
-  .logosvguse{
+  .logosvguse {
     width: 24px;
     height: 24px;
   }
@@ -91,8 +88,7 @@
   }
 }
 
-.logoutButton,
-.exitButton {
+.logoutButton {
   background: none;
   border: none;
   cursor: pointer;
@@ -100,23 +96,17 @@
   align-items: center;
   color: var(--white_60);
   padding: 0;
-}
-
-.exitButton:hover {
-  color: var(--white);
-}
-.logoutButton:hover {
-  stroke: var(--white);
-}
-
-.exitButton {
+  display: flex;
+  gap: 8px;
   font-size: 16px;
-  padding-left: 8px;
-  display: none;
+  padding: 10px 0;
+  &:hover {
+    stroke: var(--white);
+    color: var(--white);
+  }
 }
 
-.logoutButton svg,
-.exitButton svg {
+.logoutButton svg {
   width: 18px;
   height: 18px;
 }
@@ -128,7 +118,7 @@
 }
 /* section modal */
 
-.logoModal{
+.logoModal {
   display: none;
 }
 
@@ -216,23 +206,21 @@
   .cancelBtn {
     min-width: 300px;
   }
-  .logoModal{
+  .logoModal {
     display: inline;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 52px; 
+    margin-bottom: 52px;
   }
-  .titleModal{
+  .titleModal {
     font-weight: 400;
     font-size: 26px;
     color: var(--white);
     font-family: var(--font_family);
   }
-  .logosvgModal{
+  .logosvgModal {
     width: 36px;
     height: 36px;
   }
-
 }
-

@@ -1,8 +1,3 @@
-// import { lazy } from "react";
-
-// const {StatsTableRow} = lazy(() => import("../StatsTableRow/StatsTableRow"));
-// const {StatisticsDashboard} = lazy(() => import("../StatisticsDashboard/StatisticsDashboard"));
-
 import { StatsTableRow } from "../StatsTableRow/StatsTableRow";
 import s from "./StatisticsTable.module.css";
 
