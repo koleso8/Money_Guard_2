@@ -45,7 +45,7 @@ const CustomSwitch = styled(Switch)(() => ({
         },
       },
     },
-    '+ .MuiSwitch-track': {
+    ' + .MuiSwitch-track': {
       transition: 'all 0.1s ease',
       opacity: 1,
       backgroundColor: '#FFF',
