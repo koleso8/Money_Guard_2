@@ -1,12 +1,12 @@
-import clsx from 'clsx';
-import s from './TransactionsList.module.css';
-import { useSelector } from 'react-redux';
-import { selectTransactions } from '../../redux/transactions/selector';
-import TransactionsItem from '../TransactionsItem/TransactionsItem';
-import { FiPlus } from 'react-icons/fi';
-import { useState } from 'react';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
+import clsx from "clsx";
+import s from "./TransactionsList.module.css";
+import { useSelector } from "react-redux";
+import { selectTransactions } from "../../redux/transactions/selector";
+import TransactionsItem from "../TransactionsItem/TransactionsItem";
+import { FiPlus } from "react-icons/fi";
+import { useState } from "react";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
 
 const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions).toSorted(
@@ -32,7 +32,7 @@ const TransactionsList = () => {
           </tr>
         </thead>
         <tbody className={clsx(s.tableBody)}>
-          {allTransactions.map(item => (
+          {allTransactions.map((item) => (
             <TransactionsItem key={item.id} {...item} />
           ))}
         </tbody>
