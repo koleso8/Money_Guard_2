@@ -1,8 +1,8 @@
-import clsx from 'clsx';
-import s from './Balance.module.css';
-import { useSelector } from 'react-redux';
-import { selectBalance } from '../../redux/auth/selectors';
-import AnimatedNumber from '../AnimatedNumber/AnimatedNumber';
+import clsx from "clsx";
+import s from "./Balance.module.css";
+import { useSelector } from "react-redux";
+import { selectBalance } from "../../redux/auth/selectors";
+import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 
 const Balance = () => {
   const currentBalance = useSelector(selectBalance);
