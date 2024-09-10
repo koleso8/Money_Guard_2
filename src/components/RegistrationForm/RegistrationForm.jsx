@@ -1,37 +1,38 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { registerThunk } from '../../redux/auth/operations';
-import s from './RegistrationForm.module.css';
-import PasswordStrengthBar from 'react-password-strength-bar';
-import Icon from '../Icon/Icon';
-import { Toaster } from 'react-hot-toast';
-import * as Yup from 'yup';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import * as Yup from "yup";
+import PasswordStrengthBar from "react-password-strength-bar";
+import { Toaster } from "react-hot-toast";
+
+import Icon from "../Icon/Icon";
+import { registerThunk } from "../../redux/auth/operations";
+import s from "./RegistrationForm.module.css";
 
 export const RegistrationForm = () => {
   const validationSchema = Yup.object().shape({
     username: Yup.string()
-      .min(3, 'To short text')
-      .max(15, 'To long text')
-      .required('Enter Text'),
+      .min(3, "To short text")
+      .max(15, "To long text")
+      .required("Enter Text"),
     email: Yup.string()
-      .min(3, 'To short text')
-      .max(15, 'To long text')
-      .required('Enter Text'),
+      .min(3, "To short text")
+      .max(15, "To long text")
+      .required("Enter Text"),
     password: Yup.string()
-      .min(6, 'To short text')
-      .max(12, 'To long text')
-      .required('Enter Text'),
+      .min(6, "To short text")
+      .max(12, "To long text")
+      .required("Enter Text"),
     confirmPass: Yup.string()
-      .oneOf([Yup.ref('password')], 'passwords don`t match')
-      .required('Enter Text'),
+      .oneOf([Yup.ref("password")], "passwords don`t match")
+      .required("Enter Text"),
   });
   const dispath = useDispatch();
   const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPass: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPass: "",
   };
 
   const handleSubmit = (values, options) => {
@@ -139,14 +140,14 @@ export const RegistrationForm = () => {
                       <div className={s.line}></div>
                       <PasswordStrengthBar
                         password={values.confirmPass}
-                        scoreWords={['', '', '', '', '']}
-                        shortScoreWord={['']}
+                        scoreWords={["", "", "", "", ""]}
+                        shortScoreWord={[""]}
                         barColors={[
-                          '#FFC727',
-                          '#ef4836',
-                          '#f6b44d',
-                          '#2b90ef',
-                          '#25c281',
+                          "#FFC727",
+                          "#ef4836",
+                          "#f6b44d",
+                          "#2b90ef",
+                          "#25c281",
                         ]}
                         minLength={6}
                       />

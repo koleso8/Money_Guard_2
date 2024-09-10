@@ -1,11 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+
+import MyDatePicker from "../AddTransactionForm/DatePicker/DatePicker";
+
+import { selectCategories } from "../../redux/transactions/selector";
 import { editTrnThunk } from "../../redux/transactions/operations";
 import editTransactionValidationSchema from "../../helpers/editTransactionValidationSchema";
-import clsx from "clsx";
 import s from "./EditTransactionForm.module.css";
-import { selectCategories } from "../../redux/transactions/selector";
-import MyDatePicker from "../AddTransactionForm/DatePicker/DatePicker";
 
 const EditTransactionForm = ({
   closeModal,

@@ -2,13 +2,13 @@ import { Field, Form, Formik } from "formik";
 import Select from "react-select";
 import { useState } from "react";
 import clsx from "clsx";
-import s from "./Expense.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCategories } from "../../../redux/transactions/selector";
-import { addTrnThunk } from "../../../redux/transactions/operations";
+
 import MyDatePicker from "../DatePicker/DatePicker";
 
-// !ADD VALIDATION, CHANGE TYPE OF NUMBER FOR EXPENSE
+import { selectCategories } from "../../../redux/transactions/selector";
+import { addTrnThunk } from "../../../redux/transactions/operations";
+import s from "./Expense.module.css";
 
 const Expense = ({ closeModal }) => {
   const todayDate = new Date().toISOString().split("T")[0];
