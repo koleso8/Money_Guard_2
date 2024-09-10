@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginThunk } from '../../redux/auth/operations';
@@ -49,6 +49,11 @@ export const LoginForm = () => {
                     placeholder="E-mail"
                     className={s.input}
                   />
+                  <ErrorMessage
+                    name="email"
+                    component="span"
+                    className={s.error}
+                  />
                   <div className={s.line}></div>
                 </div>
                 <div className={s.wrap_input}>
@@ -63,6 +68,11 @@ export const LoginForm = () => {
                     type="password"
                     placeholder="Password"
                     className={s.input}
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="span"
+                    className={s.error}
                   />
                   <div className={s.line}></div>
                 </div>

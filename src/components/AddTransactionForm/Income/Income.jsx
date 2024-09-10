@@ -1,24 +1,24 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import clsx from "clsx";
-import s from "./Income.module.css";
-import incomeValidationSchema from "../../../helpers/incomeValidationSchema";
-import { useDispatch } from "react-redux";
-import { addTrnThunk } from "../../../redux/transactions/operations";
-import MyDatePicker from "../DatePicker/DatePicker";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import clsx from 'clsx';
+import s from './Income.module.css';
+import incomeValidationSchema from '../../../helpers/incomeValidationSchema';
+import { useDispatch } from 'react-redux';
+import { addTrnThunk } from '../../../redux/transactions/operations';
+import MyDatePicker from '../DatePicker/DatePicker';
 
 const Income = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const todayDate = new Date().toISOString().split("T")[0];
+  const todayDate = new Date().toISOString().split('T')[0];
 
   const initialValues = {
     transactionDate: todayDate,
-    type: "INCOME",
-    categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
-    comment: "",
-    amount: "",
+    type: 'INCOME',
+    categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+    comment: '',
+    amount: '',
   };
 
-  const handleIncomeSubmit = (values) => {
+  const handleIncomeSubmit = values => {
     console.log(values);
     dispatch(addTrnThunk(values));
     closeModal();
@@ -34,11 +34,11 @@ const Income = ({ closeModal }) => {
         {() => (
           <Form className={clsx(s.incomeForm)}>
             <div className={clsx(s.sumDateContainer)}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={clsx(s.sdWrapper)}>
                   <Field
                     name="amount"
-                    type="text"
+                    type="number"
                     placeholder="0.00"
                     className={clsx(s.incomeSum)}
                   />
@@ -49,7 +49,7 @@ const Income = ({ closeModal }) => {
                   className={clsx(s.error)}
                 />
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={clsx(s.sdWrapper)}>
                   <MyDatePicker name="transactionDate" />
                 </div>

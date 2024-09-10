@@ -1,14 +1,14 @@
 import { lazy, Suspense, useEffect } from 'react';
-import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
-
 import { useDispatch, useSelector } from 'react-redux';
+
 import { refreshUserThunk } from './redux/auth/operations';
 import { selectIsRefreshing } from './redux/auth/selectors';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 import Loader from './Loader/Loader';
+
+import './App.css';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const RegistrationPage = lazy(() =>

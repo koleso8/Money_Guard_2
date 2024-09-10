@@ -18,7 +18,7 @@
 
 .selectContainer span {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: lighter;
   outline: none;
   color: var(--dashboard_text);
 }
@@ -26,10 +26,10 @@
 .selectWrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
 }
 .selectWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -40,7 +40,7 @@
 
 .expenseSelect {
   width: 100%;
-  font-family: var(--font_family);
+  font-family: inherit;
   background-color: transparent;
   color: var(--white);
   border: none;
@@ -86,7 +86,7 @@
 }
 
 .sdWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -141,7 +141,7 @@
 }
 
 .commentWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;

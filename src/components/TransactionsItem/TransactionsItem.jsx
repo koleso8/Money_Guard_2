@@ -28,11 +28,6 @@ const TransactionsItem = ({
     [s.sumPositive]: type === "INCOME",
   });
 
-  const mobileItemBoxClass = clsx(s.mobileItemBox, {
-    [s.mobileItemBoxIncome]: type === "INCOME",
-    [s.mobileItemBoxExpense]: type === "EXPENSE",
-  });
-
   const handleDelete = (transactionId) => {
     dispatch(deleteTrnThunk(transactionId));
   };
@@ -56,33 +51,29 @@ const TransactionsItem = ({
   };
 
   return (
-    <div className={clsx(s.mobileOuterWrapper)}>
-      <div className={mobileItemBoxClass}>
-        <tr className={clsx(s.itemRow)}>
-          <td className={clsx(s.date)}>{formatDate(transactionDate)}</td>
-          <td className={clsx(s.type)}>{plusMinus(type)}</td>
-          <td className={clsx(s.category)}>{getCategoryName(categoryId)}</td>
-          <td className={clsx(s.comment)}>{comment}</td>
-          <td className={sumClass}>{formatAmount(amount)}</td>
-          <td className={clsx(s.btnBox)}>
-            <button
-              className={clsx(s.editBtn)}
-              type="button"
-              onClick={setEditedItem}
-            >
-              <LuPencil size={14} color="fff" />
-            </button>
-            <button
-              className={clsx(s.delBtn)}
-              type="button"
-              onClick={() => handleDelete(id)}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      </div>
-    </div>
+    <tr className={clsx(s.itemRow)}>
+      <td className={clsx(s.date)}>{formatDate(transactionDate)}</td>
+      <td className={clsx(s.type)}>{plusMinus(type)}</td>
+      <td className={clsx(s.category)}>{getCategoryName(categoryId)}</td>
+      <td className={clsx(s.comment)}>{comment}</td>
+      <td className={sumClass}>{formatAmount(amount)}</td>
+      <td className={clsx(s.btnBox)}>
+        <button
+          className={clsx(s.editBtn)}
+          type="button"
+          onClick={setEditedItem}
+        >
+          <LuPencil size={14} color="fff" />
+        </button>
+        <button
+          className={clsx(s.delBtn)}
+          type="button"
+          onClick={() => handleDelete(id)}
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
   );
 };
 

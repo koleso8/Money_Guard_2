@@ -1,35 +1,40 @@
-import { useDispatch, useSelector } from "react-redux";
-import s from "./Header.module.css";
 import clsx from "clsx";
+
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { NavLink } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import { useEffect, useRef } from "react";
 import { logoutThunk } from "../../redux/auth/operations";
-import { setHeaderHeight } from "../../redux/modal/slice";
+import {
+  setHeaderHeight,
+  openModal,
+  closeModal,
+} from "../../redux/modal/slice";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
 import Icon from "../Icon/Icon";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 
+import s from "./Header.module.css";
+
 const Header = () => {
   const user = useSelector(selectUser);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const headerRef = useRef(null);
   const { isSmallScreen } = useScreenWidth();
-
-  const handleLogout = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   useEffect(() => {
     if (headerRef.current) {
       dispatch(setHeaderHeight(headerRef.current.offsetHeight));
     }
   }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(openModal("logoutConfirmation"));
+  };
+
+  const closeModalHandler = () => {
+    dispatch(closeModal());
+  };
 
   return (
     <div className={clsx(s.container)} ref={headerRef}>
@@ -41,14 +46,13 @@ const Header = () => {
       </NavLink>
       <div className={clsx(s.logout)}>
         <p className={clsx(s.username)}>{user.username}</p>
-
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
           <Icon name="logout" />
           {!isSmallScreen && "Exit"}
         </button>
       </div>
 
-      <ModalBackdrop isOpen={isModalOpen} closeModal={closeModal} noCloseButton>
+      <ModalBackdrop modalType="logoutConfirmation">
         <div className={s.back}>
           <div className={s.modalContent}>
             <div className={clsx(s.logoModal)}>
@@ -61,12 +65,13 @@ const Header = () => {
               className={s.logoutBtn}
               onClick={() => {
                 dispatch(logoutThunk());
+                closeModalHandler();
               }}
             >
-              L O G O U T
+              Logout
             </button>
-            <button className={s.cancelBtn} onClick={closeModal}>
-              C A N C E L
+            <button className={s.cancelBtn} onClick={closeModalHandler}>
+              Cancel
             </button>
           </div>
         </div>
