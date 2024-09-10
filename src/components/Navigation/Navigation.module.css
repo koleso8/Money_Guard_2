@@ -43,7 +43,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: all 0.2s ease-in-out;
   line-height: 1.2;
   display: inline-flex;
 }

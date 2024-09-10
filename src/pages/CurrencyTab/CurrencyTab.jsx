@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import Currency from '../../components/Currency/Currency';
 
@@ -8,7 +9,10 @@ import s from './CurrencyTab.module.css';
 const CurrencyTab = () => {
   const navigate = useNavigate();
   const { isSmallScreen } = useScreenWidth();
-  !isSmallScreen && navigate('/', { replace: true });
+
+  useEffect(() => {
+    !isSmallScreen && navigate('/', { replace: true });
+  }, [isSmallScreen, navigate]);
 
   return (
     <div className={s.wrapper}>
