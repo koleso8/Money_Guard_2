@@ -8,9 +8,7 @@ import App from './App.jsx';
 
 import { persistor, store } from './redux/store.js';
 
-import './styles/reset.css';
 import './styles/common.css';
-import './styles/variables.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -9,6 +9,7 @@ import { PublicRoute } from './components/PublicRoute';
 import { refreshUserThunk } from './redux/auth/operations';
 import { selectIsRefreshing } from './redux/auth/selectors';
 
+
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const RegistrationPage = lazy(() =>
   import('./pages/RegistrationPage/RegistrationPage')
@@ -29,7 +30,7 @@ function App() {
   return isRefreshing ? (
     <Loader />
   ) : (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route
           path="/"
