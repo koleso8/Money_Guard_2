@@ -10,7 +10,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--white_60);
+  background: #fff3;
   border-radius: 10px;
   transition: 0.2s ease-in-out;
 }
