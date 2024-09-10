@@ -151,20 +151,14 @@
   font-size: 18px;
   color: var(--white_60);
   padding-bottom: 8px;
+  background: none;
 }
 
 .error {
   position: absolute;
   top: 42px;
-  left: 152px;
-  color: brown;
-}
-
-.error_second {
-  position: absolute;
-  top: 53px;
-  left: 104px;
-  color: brown;
+  left: 0px;
+  color: var(--dashboard_text);
 }
 
 .line {
@@ -180,7 +174,7 @@
 
 .svg_form_first {
   position: absolute;
-  top: 7px;
+  top: 3px;
   left: 16px;
 }
 
@@ -192,7 +186,7 @@
 
 .svg_form_third {
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 18px;
 }
 
@@ -225,6 +219,15 @@
   margin-bottom: 20px;
 }
 
+.btn_first:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+.btn_first:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}
+
 @media only screen and (min-width: 556px) {
   .btn_first {
     width: 300px;
@@ -244,9 +247,18 @@
   text-transform: uppercase;
   text-align: center;
   color: #623f8b;
-  padding: 13px 104px;
+  padding: 13px 103px;
   display: block;
   margin: 0 auto;
+}
+
+.btn_second:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+.btn_second:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
 }
 
 @media only screen and (min-width: 556px) {
