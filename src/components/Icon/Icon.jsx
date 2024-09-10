@@ -1,4 +1,5 @@
 import Icons from '../../images/icons.svg';
+
 export const Icon = ({ name, ...props }) => {
   return (
     <svg {...props}>

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   headerHeight: 0,
-  activeModal: null, // Додаємо новий стейт для контролю активної модалки
+  activeModal: null,
 };
 
 const slice = createSlice({
@@ -13,10 +13,10 @@ const slice = createSlice({
       state.headerHeight = action.payload;
     },
     openModal: (state, action) => {
-      state.activeModal = action.payload; // Зберігаємо тип активної модалки
+      state.activeModal = action.payload;
     },
     closeModal: state => {
-      state.activeModal = null; // Закриваємо будь-яку активну модалку
+      state.activeModal = null;
     },
   },
 });
