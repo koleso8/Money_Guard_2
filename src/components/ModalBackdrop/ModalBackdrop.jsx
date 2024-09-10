@@ -1,12 +1,12 @@
-import Modal from "react-modal";
-import clsx from "clsx";
-import s from "./ModalBackdrop.module.css";
-import Icon from "../Icon/Icon";
-import { useSelector } from "react-redux";
-import { selectHeaderHeight } from "../../redux/modal/selector";
-import { useScreenWidth } from "../../hooks/useScreenWidth";
+import Modal from 'react-modal';
+import clsx from 'clsx';
+import s from './ModalBackdrop.module.css';
+import Icon from '../Icon/Icon';
+import { useSelector } from 'react-redux';
+import { selectHeaderHeight } from '../../redux/modal/selector';
+import { useScreenWidth } from '../../hooks/useScreenWidth';
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
 const ModalBackdrop = ({
   children,
@@ -17,7 +17,6 @@ const ModalBackdrop = ({
   const { isSmallScreen } = useScreenWidth();
   const headerHeight = useSelector(selectHeaderHeight);
   const modalMarginFromTop = isSmallScreen ? headerHeight : 0;
-  console.log(headerHeight);
 
   const customStyles = {
     overlay: {
