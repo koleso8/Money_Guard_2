@@ -14,6 +14,7 @@ const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions)
     .slice()
     .sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
+
   const dispatch = useDispatch();
 
   const [editedItem, setEditedItem] = useState(null);
@@ -22,6 +23,7 @@ const TransactionsList = () => {
     setEditedItem(null);
     dispatch(openModal('addTransaction'));
   };
+
 
   const openEditModal = item => {
     setEditedItem(item);

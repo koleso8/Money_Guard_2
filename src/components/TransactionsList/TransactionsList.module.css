@@ -2,6 +2,7 @@
   width: calc(100vw - 480px);
   max-width: 1200px;
   max-height: calc(100vh - 110px);
+
   padding: 0px 100px 40px 69px;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@
 
 @media (max-width: 1279px) and (min-width: 768px) {
   .transactionListBox {
-    width: 100vw;
+    width: 100%;
     padding: 0px 32px 40px;
     margin-top: 20px;
   }
@@ -37,12 +38,14 @@
   border-collapse: collapse;
   table-layout: auto;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 @media (max-width: 1279px) and (min-width: 768px) {
   .table {
     min-width: 704px;
     width: 100%;
+    overflow: hidden;
   }
 }
 
@@ -55,8 +58,13 @@
   }
 }
 
+.table thead {
+  border-radius: 8px;
+}
+
 .tableBody {
   overflow-y: auto;
+  border-radius: 8px;
 }
 
 .tableHeader {
@@ -70,14 +78,17 @@
   font-weight: 600;
   line-height: normal;
   position: sticky;
-  border-radius: 8px;
-  display: flex;
+  top: 0;
   width: 100%;
+  height: auto;
+  z-index: 10;
+  border-radius: 8px;
 }
 
 @media (max-width: 1279px) and (min-width: 768px) {
   .tableHeader {
-    display: flex;
+    position: static;
+    width: 100%;
     border-radius: 8px;
   }
 }
@@ -99,6 +110,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  overflow: hidden;
 }
 
 .date {
@@ -116,6 +128,7 @@
   text-align: left;
   width: 18%;
 }
+
 .comment {
   text-align: left;
   width: 30%;
@@ -126,6 +139,7 @@
   padding-right: 20px;
   width: 15%;
 }
+
 .actions {
   width: 15%;
 }
