@@ -156,7 +156,7 @@
 
 .error {
   position: absolute;
-  top: 42px;
+  top: 30px;
   left: 0px;
   color: var(--dashboard_text);
 }
