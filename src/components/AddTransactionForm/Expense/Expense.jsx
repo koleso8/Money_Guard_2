@@ -7,8 +7,8 @@ import { selectCategories } from '../../../redux/transactions/selector';
 import { addTrnThunk } from '../../../redux/transactions/operations';
 import MyDatePicker from '../DatePicker/DatePicker';
 
-import s from './Expense.module.css';
 import expenseValidationSchema from '../../../helpers/expenseValidationSchema';
+import s from './Expense.module.css';
 
 const Expense = ({ closeModal }) => {
   const todayDate = new Date().toISOString().split('T')[0];
@@ -27,44 +27,6 @@ const Expense = ({ closeModal }) => {
     categoryId: '',
     comment: '',
     amount: '',
-  };
-
-  const customStyles = {
-    option: (defaultStyles, state) => ({
-      ...defaultStyles,
-      fontWeight: '400',
-      fontSize: '16px',
-      padding: '4px 20px',
-      color: state.isSelected ? '#FF868D' : '#fff',
-      backgroundColor: state.isSelected
-        ? 'rgba(255, 255, 255, 0.1)'
-        : '#5a438c00',
-    }),
-
-    control: defaultStyles => ({
-      ...defaultStyles,
-      minHeight: 'none',
-      backgroundColor: 'transparent',
-      border: 'none',
-      padding: '2px 20px',
-      boxShadow: 'none',
-      display: 'flex',
-      width: '100%',
-      fontSize: '16px',
-    }),
-
-    menuList: defaultStyles => ({
-      ...defaultStyles,
-      marginTop: '11px',
-
-      height: '157px',
-      borderRadius: '8px',
-      '::-webkit-scrollbar': {
-        width: '0',
-        height: '0',
-      },
-      background: 'linear-gradient(180deg, #513d85, #4b39a4)',
-    }),
   };
 
   const handleExpenseSubmit = values => {
@@ -89,9 +51,9 @@ const Expense = ({ closeModal }) => {
             <div className={s.selectContainer}>
               <div className={s.selectWrapper}>
                 <Select
-                  styles={customStyles}
                   unstyled
-                  // className={s.expenseSelect}
+                  className={s.customSelect}
+                  classNamePrefix="react-select"
                   id="category"
                   name="category"
                   options={categoryOptions}
