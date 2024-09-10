@@ -6,7 +6,6 @@
   padding: 0px 100px 40px 69px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
   overflow-x: hidden;
   margin-top: 46px;
   -ms-overflow-style: none;
@@ -22,6 +21,7 @@
     width: 100%;
     padding: 0px 32px 40px;
     margin-top: 20px;
+    overflow: hidden;
   }
 }
 
@@ -30,6 +30,7 @@
     width: 100vw;
     padding: 0px;
     margin-top: 32px;
+    overflow: hidden;
   }
 }
 
@@ -38,7 +39,6 @@
   border-collapse: collapse;
   table-layout: auto;
   border-radius: 8px;
-  overflow: hidden;
 }
 
 @media (max-width: 1279px) and (min-width: 768px) {
@@ -177,4 +177,23 @@
 .addTrnBtn:active {
   transform: scale(1);
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}
+
+.thead {
+  position: relative;
+}
+
+.thead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  border-radius: 8px;
+  z-index: -1;
+  background: rgba(82, 59, 126);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
 }
