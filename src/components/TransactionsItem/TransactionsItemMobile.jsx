@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { deleteTrnThunk } from "../../redux/transactions/operations";
 import { selectCategories } from "../../redux/transactions/selector";
+
 import s from "./TransactionsItem.module.css";
 import { LuPencil } from "react-icons/lu";
 
@@ -55,26 +56,20 @@ const TransactionsItemMobile = ({
     }).format(amount);
   };
   return (
-    <div className={clsx(s.mobileOuterWrapper)}>
+    <div className={s.mobileOuterWrapper}>
       <div className={mobileItemBoxClass}>
-        <div className={clsx(s.itemRow)}>
-          <span className={clsx(s.date)}>{formatDate(transactionDate)}</span>
-          <span className={clsx(s.type)}>{plusMinus(type)}</span>
-          <span className={clsx(s.category)}>
-            {getCategoryName(categoryId)}
-          </span>
-          <span className={clsx(s.comment)}>{comment}</span>
+        <div className={s.itemRow}>
+          <span className={s.date}>{formatDate(transactionDate)}</span>
+          <span className={s.type}>{plusMinus(type)}</span>
+          <span className={s.category}>{getCategoryName(categoryId)}</span>
+          <span className={s.comment}>{comment}</span>
           <span className={sumClass}>{formatAmount(amount)}</span>
-          <div className={clsx(s.btnBox)}>
-            <button
-              className={clsx(s.editBtn)}
-              type="button"
-              onClick={setEditedItem}
-            >
+          <div className={s.btnBox}>
+            <button className={s.editBtn} type="button" onClick={setEditedItem}>
               <LuPencil size={14} color="fff" />
             </button>
             <button
-              className={clsx(s.delBtn)}
+              className={s.delBtn}
               type="button"
               onClick={() => handleDelete(id)}
             >

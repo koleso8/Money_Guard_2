@@ -1,14 +1,15 @@
-import clsx from 'clsx';
-import s from './TransactionsList.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectTransactions } from '../../redux/transactions/selector';
-import { FiPlus } from 'react-icons/fi';
-import { openModal, closeModal } from '../../redux/modal/slice';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
-import EditTransactionForm from '../EditTransactionForm/EditTransactionForm';
-import TransactionsItemMobile from '../TransactionsItem/TransactionsItemMobile';
-import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { openModal, closeModal } from "../../redux/modal/slice";
+import { selectTransactions } from "../../redux/transactions/selector";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
+import EditTransactionForm from "../EditTransactionForm/EditTransactionForm";
+import TransactionsItemMobile from "../TransactionsItem/TransactionsItemMobile";
+
+import { FiPlus } from "react-icons/fi";
+import s from "./TransactionsList.module.css";
 
 const TransactionsListMobile = () => {
   const allTransactions = useSelector(selectTransactions)
@@ -21,18 +22,18 @@ const TransactionsListMobile = () => {
 
   const openAddModal = () => {
     setEditedItem(null);
-    dispatch(openModal('addTransaction'));
+    dispatch(openModal("addTransaction"));
   };
 
-  const openEditModal = item => {
+  const openEditModal = (item) => {
     setEditedItem(item);
-    dispatch(openModal('editTransaction'));
+    dispatch(openModal("editTransaction"));
   };
 
   return (
     <div>
       <ul>
-        {allTransactions.map(item => (
+        {allTransactions.map((item) => (
           <TransactionsItemMobile
             key={item.id}
             {...item}
@@ -40,11 +41,7 @@ const TransactionsListMobile = () => {
           />
         ))}
       </ul>
-      <button
-        type="button"
-        className={clsx(s.addTrnBtn)}
-        onClick={openAddModal}
-      >
+      <button type="button" className={s.addTrnBtn} onClick={openAddModal}>
         <FiPlus size={30} color="fff" />
       </button>
 
