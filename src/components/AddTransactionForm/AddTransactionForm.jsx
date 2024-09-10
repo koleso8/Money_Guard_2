@@ -30,7 +30,7 @@ const CustomSwitch = styled(Switch)(() => ({
         '&::before': {
           content: "'-'",
           fontSize: '28px',
-          left: 2,
+          left: 1,
           position: 'absolute',
           width: '100%',
           height: '100%',
@@ -45,7 +45,7 @@ const CustomSwitch = styled(Switch)(() => ({
         },
       },
     },
-    '+ .MuiSwitch-track': {
+    '+.MuiSwitch-track': {
       transition: 'all 0.1s ease',
       opacity: 1,
       backgroundColor: '#FFF',
