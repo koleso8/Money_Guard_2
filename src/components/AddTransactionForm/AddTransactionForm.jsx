@@ -1,10 +1,11 @@
-import { styled } from '@mui/material/styles';
-import s from './AddTransactionForm.module.css';
-import Switch from '@mui/material/Switch';
+import clsx from 'clsx';
 import { useState } from 'react';
+import Switch from '@mui/material/Switch';
+import { styled } from '@mui/material/styles';
+
 import Income from './Income/Income';
 import Expense from './Expense/Expense';
-import clsx from 'clsx';
+import s from './AddTransactionForm.module.css';
 
 const CustomSwitch = styled(Switch)(() => ({
   marginLeft: 20,
@@ -30,7 +31,7 @@ const CustomSwitch = styled(Switch)(() => ({
         '&::before': {
           content: "'-'",
           fontSize: '28px',
-          left: 1,
+          left: 2,
           position: 'absolute',
           width: '100%',
           height: '100%',
@@ -39,13 +40,13 @@ const CustomSwitch = styled(Switch)(() => ({
           alignContent: 'center',
           justifyContent: 'center',
 
-          backgroundSize: '18px 18px', // Розмір іконки для правого положення
+          backgroundSize: '18px 18px',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         },
       },
     },
-    ' + .MuiSwitch-track': {
+    '+ .MuiSwitch-track': {
       transition: 'all 0.1s ease',
       opacity: 1,
       backgroundColor: '#FFF',
@@ -93,7 +94,7 @@ const AddTransactionForm = ({ closeModal }) => {
   };
 
   return (
-    <div className={clsx(s.addTransactionForm)}>
+    <div className={s.addTransactionForm}>
       <h2>Add transaction</h2>
       <div
         style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}

@@ -4,6 +4,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
+}
+
+@media (max-width: 767px) {
+  .addTransactionForm {
+    gap: 40px;
+  }
 }
 
 .income {

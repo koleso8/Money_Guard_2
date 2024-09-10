@@ -195,3 +195,52 @@
   transform: scale(1);
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 767px) {
+  .formBox {
+    width: 100%;
+  }
+
+  .incomeForm {
+    width: 100%;
+    gap: 40px;
+    padding: 0;
+  }
+
+  .sumDateContainer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .sdWrapper {
+    width: 100%;
+  }
+
+  .incomeSum,
+  .incomeDate {
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .incomeSum::placeholder,
+  .incomeDate::placeholder {
+    font-size: 16px;
+  }
+
+  .commentContainer {
+    width: 100%;
+  }
+
+  .commentWrapper {
+    width: 100%;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
