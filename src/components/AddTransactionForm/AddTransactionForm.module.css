@@ -5,3 +5,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.income {
+  color: var(--yellow);
+}
+.expense {
+  color: var(--dashboard_text);
+}
+.opt {
+  font-weight: 600;
+}
