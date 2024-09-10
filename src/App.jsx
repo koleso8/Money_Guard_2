@@ -29,7 +29,7 @@ function App() {
   return isRefreshing ? (
     <Loader />
   ) : (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route
           path="/"
