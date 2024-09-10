@@ -9,8 +9,8 @@ import {
   Tooltip,
   Filler,
 } from 'chart.js';
+
 import { useScreenWidth } from '../../hooks/useScreenWidth';
-import clsx from 'clsx';
 import s from './CurrencyChart.module.css';
 
 LineChart.register(
@@ -118,7 +118,7 @@ const CurrencyChart = ({ labels, dataSet }) => {
   }, []);
 
   return (
-    <div className={clsx(s.wrapper)}>
+    <div className={s.wrapper}>
       <Line
         ref={chartRef}
         data={data}

@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { formatNumber } from '../statisticsComponents/numbersFormatting';
 
-const AnimatedNumber = ({ value, duration = 1000 }) => {
+const AnimatedNumber = ({ value, duration = 500 }) => {
   const [displayedValue, setDisplayedValue] = useState(value);
 
   useEffect(() => {
-    const adjustedDuration = duration * 1.3;
     const startValue = displayedValue;
     const startTime = performance.now();
 
     const animate = currentTime => {
       const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / adjustedDuration, 1);
+      const progress = Math.min(elapsedTime / duration, 1);
 
       const currentValue = startValue + (value - startValue) * progress;
 

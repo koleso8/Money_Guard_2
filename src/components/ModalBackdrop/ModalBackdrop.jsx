@@ -1,22 +1,23 @@
 import Modal from 'react-modal';
-import clsx from 'clsx';
-import s from './ModalBackdrop.module.css';
-import Icon from '../Icon/Icon';
 import { useSelector, useDispatch } from 'react-redux';
+
+import Icon from '../Icon/Icon';
+
 import { closeModal } from '../../redux/modal/slice';
 import {
   selectHeaderHeight,
   selectActiveModal,
 } from '../../redux/modal/selector';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
+import s from './ModalBackdrop.module.css';
 
 Modal.setAppElement('#root');
 
 const ModalBackdrop = ({ children, modalType, noCloseButton = false }) => {
+  const dispatch = useDispatch();
   const { isSmallScreen } = useScreenWidth();
   const headerHeight = useSelector(selectHeaderHeight);
   const activeModal = useSelector(selectActiveModal);
-  const dispatch = useDispatch();
 
   const modalMarginFromTop = isSmallScreen ? headerHeight : 0;
 
@@ -35,20 +36,20 @@ const ModalBackdrop = ({ children, modalType, noCloseButton = false }) => {
       isOpen={activeModal === modalType}
       onRequestClose={closeModalHandler}
       className={s.modal}
-      overlayClassName={clsx(s.modalOverlay)}
+      overlayClassName={s.modalOverlay}
       style={customStyles}
     >
       {!noCloseButton && !isSmallScreen && (
-        <button className={clsx(s.iconButton)} onClick={closeModalHandler}>
+        <button className={s.iconButton} onClick={closeModalHandler}>
           <Icon
             name="icon-close"
             height="16px"
             width="16px"
-            className={clsx(s.closeIcon)}
+            className={s.closeIcon}
           />
         </button>
       )}
-      <div className={clsx(s.gradient)}></div>
+      <div className={s.gradient}></div>
       {children}
     </Modal>
   );

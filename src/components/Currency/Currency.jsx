@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
-import s from './Currency.module.css';
+
 import {
   selectCurrencies,
   selectLastRequestTime,
@@ -13,6 +13,7 @@ import graphTablet1x from '../../images/graph_tablet_1x.webp';
 import graphTablet2x from '../../images/graph_tablet_2x.webp';
 import graphMobile1x from '../../images/graph_mobile_1x.webp';
 import graphMobile2x from '../../images/graph_mobile_2x.webp';
+import s from './Currency.module.css';
 
 const Currency = () => {
   const dispatch = useDispatch();
@@ -29,8 +30,8 @@ const Currency = () => {
   }, [dispatch, lastRequestTime]);
 
   return (
-    <div className={clsx(s.wrapper)}>
-      <table className={clsx(s.table)}>
+    <div className={s.wrapper}>
+      <table className={s.table}>
         <thead>
           <tr className={clsx(s.row, s.mainRow)}>
             <th className={clsx(s.item, s.mainItem)}>Currency</th>
@@ -39,27 +40,27 @@ const Currency = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className={clsx(s.row)}>
-            <td className={clsx(s.item)}>USD</td>
-            <td className={clsx(s.item)}>
+          <tr className={s.row}>
+            <td className={s.item}>USD</td>
+            <td className={s.item}>
               {currencies[0]?.rateBuy.toFixed(2) ?? 'no data'}
             </td>
-            <td className={clsx(s.item)}>
+            <td className={s.item}>
               {currencies[0]?.rateSell.toFixed(2) ?? 'no data'}
             </td>
           </tr>
-          <tr className={clsx(s.row)}>
-            <td className={clsx(s.item)}>EUR</td>
-            <td className={clsx(s.item)}>
+          <tr className={s.row}>
+            <td className={s.item}>EUR</td>
+            <td className={s.item}>
               {currencies[1]?.rateBuy.toFixed(2) ?? 'no data'}
             </td>
-            <td className={clsx(s.item)}>
+            <td className={s.item}>
               {currencies[1]?.rateSell.toFixed(2) ?? 'no data'}
             </td>
           </tr>
         </tbody>
       </table>
-      <div className={clsx(s.diagramBox)}>
+      <div className={s.diagramBox}>
         <span className={clsx(s.pointNumber, s.pointFirst)}>
           {currencies[0]?.rateBuy.toFixed(2) ?? ''}
         </span>
@@ -83,7 +84,7 @@ const Currency = () => {
             type="image/webp"
           />
           <img
-            className={clsx(s.diagram)}
+            className={s.diagram}
             src={graphDesktop1x}
             alt="diagram"
             loading="lazy"
