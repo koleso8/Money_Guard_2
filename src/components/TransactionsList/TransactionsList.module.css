@@ -1,12 +1,12 @@
 .transactionListBox {
   width: calc(100vw - 480px);
   max-width: 1200px;
-  max-height: calc(100vh - 100px);
-  overflow: auto;
+  max-height: calc(100vh - 110px);
   padding: 0px 100px 40px 69px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   margin-top: 46px;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -16,6 +16,22 @@
   display: none;
 }
 
+@media (max-width: 1279px) and (min-width: 768px) {
+  .transactionListBox {
+    width: 100vw;
+    padding: 0px 32px 40px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .transactionListBox {
+    width: 100vw;
+    padding: 0px;
+    margin-top: 32px;
+  }
+}
+
 .table {
   min-width: 715px;
   border-collapse: collapse;
@@ -23,8 +39,23 @@
   border-radius: 8px;
 }
 
+@media (max-width: 1279px) and (min-width: 768px) {
+  .table {
+    min-width: 704px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .table {
+    min-width: none;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
 .tableBody {
-  flex-grow: 1;
   overflow-y: auto;
 }
 
@@ -32,15 +63,32 @@
   background: rgba(82, 59, 126);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
-  color: #fff;
-  color: var(--white, #fbfbfb);
-  font-family: Poppins;
+  color: var(--white);
+  font-family: var(--font_family);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   position: sticky;
-  top: -1px;
+  border-radius: 8px;
+  display: flex;
+  width: 100%;
+}
+
+@media (max-width: 1279px) and (min-width: 768px) {
+  .tableHeader {
+    display: flex;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tableHeader {
+    display: none;
+  }
+  .table thead {
+    display: none;
+  }
 }
 
 .tableHeader th {
@@ -54,8 +102,6 @@
 }
 
 .date {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
   padding-left: 20px;
   text-align: left;
   width: 14%;
@@ -77,13 +123,10 @@
 
 .sum {
   text-align: right;
-  width: 15%;
   padding-right: 20px;
+  width: 15%;
 }
-
 .actions {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
   width: 15%;
 }
 
@@ -103,6 +146,13 @@
   right: 40px;
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease;
+}
+
+@media (max-width: 767px) {
+  .addTrnBtn {
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 .addTrnBtn:hover {
