@@ -17,8 +17,6 @@
 
 @media only screen and (min-width: 556px) {
   .fon {
-    background-image: url(../../images/FonFormTablet.jpg),
-      linear-gradient(to bottom right, #2f15b0, #252480, #000000);
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 75px;
@@ -29,6 +27,12 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .fon {
+    background-image: url(../../images/FonFormTablet.jpg),
+      linear-gradient(to bottom right, #2f15b0, #252480, #000000);
+  }
+}
+@media only screen and (min-width: 1280px) {
   .fon {
     background-image: url(../../images/ToFormReg.png),
       linear-gradient(to bottom right, #2f15b0, #252480, #000000);
@@ -151,16 +155,16 @@
 
 .error {
   position: absolute;
-  top: 42px;
-  left: 152px;
-  color: brown;
+  top: 30px;
+  left: 0px;
+  color: var(--dashboard_text);
 }
 
 .error_second {
   position: absolute;
-  top: 53px;
-  left: 104px;
-  color: brown;
+  top: 44px;
+  left: 0px;
+  color: var(--dashboard_text);
 }
 
 .line {
@@ -174,9 +178,26 @@
   }
 }
 
+.bar div {
+  transition: all 0.3s ease;
+  flex-basis: content;
+  height: 4px !important;
+  filter: drop-shadow(rgba(255, 182, 39, 0.5) 0px 1px 8px);
+}
+
+.bar div:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.bar div:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 .svg_form_first {
   position: absolute;
-  top: 7px;
+  top: 3px;
   left: 16px;
 }
 
@@ -188,13 +209,13 @@
 
 .svg_form_third {
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 18px;
 }
 
 .svg_form_name {
   position: absolute;
-  top: 3px;
+  top: 0px;
   left: 14px;
 }
 
@@ -221,6 +242,15 @@
   margin-bottom: 20px;
 }
 
+.btn_first:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+.btn_first:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}
+
 @media only screen and (min-width: 556px) {
   .btn_first {
     width: 300px;
@@ -240,9 +270,18 @@
   text-transform: uppercase;
   text-align: center;
   color: #623f8b;
-  padding: 13px 104px;
+  padding: 13px 103px;
   display: block;
   margin: 0 auto;
+}
+
+.btn_second:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.4);
+}
+.btn_second:active {
+  transform: scale(1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
 }
 
 @media only screen and (min-width: 556px) {

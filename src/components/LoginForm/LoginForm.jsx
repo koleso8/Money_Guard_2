@@ -5,7 +5,7 @@ import { loginThunk } from '../../redux/auth/operations';
 import s from './LoginForm.module.css';
 import Icon from '../Icon/Icon';
 import { Toaster } from 'react-hot-toast';
-import * as Yup from 'yup';
+import validationSchema from '../../helpers/loginSchema';
 
 export const LoginForm = () => {
   const dispath = useDispatch();
@@ -13,17 +13,6 @@ export const LoginForm = () => {
     email: '',
     password: '',
   };
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .min(3, 'To short text')
-      .max(15, 'To long text')
-      .required('Enter Text'),
-    password: Yup.string()
-      .min(6, 'To short text')
-      .max(12, 'To long text')
-      .required('Enter Text'),
-  });
 
   const handleSubmit = (values, options) => {
     console.log(values);
@@ -66,7 +55,7 @@ export const LoginForm = () => {
                   <Icon
                     width={16}
                     height={21}
-                    className={s.svg_form_first}
+                    className={s.svg_form_third}
                     name="icon-passwordForm"
                   />
                   <Field

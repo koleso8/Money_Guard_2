@@ -7,13 +7,15 @@ import { useEffect, useRef, useState } from "react";
 import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
 import { logoutThunk } from "../../redux/auth/operations";
 import { setHeaderHeight } from "../../redux/modal/slice";
-import { Icon } from "@mui/material";
+import Icon from "../Icon/Icon";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 const Header = () => {
   const user = useSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const headerRef = useRef(null);
+  const { isSmallScreen } = useScreenWidth();
 
   const handleLogout = () => {
     setIsModalOpen(true);
@@ -42,10 +44,7 @@ const Header = () => {
 
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
           <Icon name="logout" />
-        </button>
-
-        <button className={clsx(s.exitButton)} onClick={handleLogout}>
-          Exit
+          {!isSmallScreen && "Exit"}
         </button>
       </div>
 

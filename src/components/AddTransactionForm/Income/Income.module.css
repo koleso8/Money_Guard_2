@@ -17,11 +17,11 @@
 
 .sumDateContainer span {
   max-width: 181px;
-  font-family: Poppins;
+  font-family: var(--font_family);
   font-size: 12px;
   font-weight: 400;
   outline: none;
-  color: #ff868d;
+  color: var(--dashboard_text);
 }
 
 .sdWrapper {
@@ -37,15 +37,15 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: var(--white-40, rgba(255, 255, 255, 0.4));
+  background-color: var(--white_40);
 }
 
 .incomeSum {
   width: 100%;
   border: none;
   background-color: transparent;
-  color: var(--white, #fbfbfb);
-  font-family: Poppins;
+  color: var(--white);
+  font-family: var(--font_family);
   text-align: center;
   font-size: 18px;
   font-weight: 600;
@@ -53,14 +53,14 @@
 }
 
 .incomeSum::placeholder {
-  color: var(--white-60, rgba(255, 255, 255, 0.6));
+  color: var(--white_60);
 }
 
 .incomeDate {
   width: 100%;
   border: none;
   background-color: transparent;
-  color: var(--white, #fbfbfb);
+  color: var(--white);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -71,7 +71,7 @@
 }
 
 .incomeDate::placeholder {
-  color: var(--white-60, rgba(255, 255, 255, 0.6));
+  color: var(--white_60);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -88,7 +88,7 @@
   font-size: 12px;
   font-weight: 400;
   outline: none;
-  color: #ff868d;
+  color: var(--dashboard_text);
 }
 
 .incomeComment {
@@ -96,7 +96,7 @@
   background-color: transparent;
   border: none;
   outline: none;
-  color: var(--white, #fbfbfb);
+  color: var(--white);
 
   font-size: 18px;
   font-style: normal;
@@ -105,8 +105,8 @@
 }
 
 .incomeComment::placeholder {
-  color: var(--white-60, rgba(255, 255, 255, 0.6));
-  font-family: Poppins;
+  color: var(--white_60);
+  font-family: var(--font_family);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -125,7 +125,7 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: var(--white-40, rgba(255, 255, 255, 0.4));
+  background-color: var(--white_40);
 }
 
 .buttonContainer {
@@ -137,19 +137,16 @@
   width: 300px;
   height: 50px;
   border-radius: 20px;
-  background: var(
-    --button-gradient,
-    linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
-  );
+  background: var(--gradient);
   border: none;
   outline: none;
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.1s ease;
 
-  color: var(--white, #fbfbfb);
+  color: var(--white);
   text-align: center;
-  font-family: Poppins;
+  font-family: var(--font_family);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -172,14 +169,14 @@
   width: 300px;
   height: 50px;
   border-radius: 20px;
-  background: var(--white, #fbfbfb);
+  background: var(--white);
   border: none;
   outline: none;
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.1s ease;
 
-  color: var(--text-button, #623f8b);
+  color: var(--text_button);
   text-align: center;
   font-size: 18px;
   font-style: normal;
