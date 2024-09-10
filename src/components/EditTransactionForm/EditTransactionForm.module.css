@@ -12,6 +12,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-bottom: 40px;
 }
 
 .editTypeTitle {
@@ -46,7 +47,7 @@
 }
 
 .editCategoryWrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -83,6 +84,17 @@
   color: var(--dashboard_text);
 }
 
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.editSumContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .editSumWrapper {
   position: relative;
   width: 181px;
@@ -90,7 +102,7 @@
 }
 
 .editSumWrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -120,13 +132,18 @@
   line-height: normal;
 }
 
+.editDateContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .editDateWrapper {
   position: relative;
   margin-bottom: 10px;
 }
 
 .editDateWrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -186,7 +203,7 @@
 }
 
 .editCommentWrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -262,4 +279,59 @@
 .editCancelBtn:active {
   transform: scale(1);
   box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================== */
+/* ================================================== */
+
+@media (max-width: 767px) {
+  .editFormBox {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    /* padding: 20px 20px 64px; */
+  }
+
+  .editForm {
+    width: 100%;
+    gap: 40px;
+    padding: 0;
+  }
+
+  .editFormTitle {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
+  .editTypeTitle {
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .inputsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .editSumContainer {
+    width: 100%;
+  }
+
+  .editDateContainer {
+    width: 100%;
+  }
+
+  .editCategoryWrapper,
+  .editSumWrapper,
+  .editDateWrapper,
+  .editCommentWrapper {
+    width: 100%;
+  }
+
+  .editSumDate {
+    flex-direction: column;
+    justify-content: center;
+  }
 }

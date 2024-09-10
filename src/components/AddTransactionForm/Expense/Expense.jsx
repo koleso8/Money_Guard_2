@@ -44,7 +44,6 @@ const Expense = ({ closeModal }) => {
     control: (defaultStyles) => ({
       ...defaultStyles,
       minHeight: "none",
-      // Notice how these are all CSS properties
       backgroundColor: "transparent",
       border: "none",
       padding: "2px 20px",

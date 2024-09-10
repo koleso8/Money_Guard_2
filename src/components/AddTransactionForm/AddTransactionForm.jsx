@@ -40,7 +40,7 @@ const CustomSwitch = styled(Switch)(() => ({
           alignContent: "center",
           justifyContent: "center",
 
-          backgroundSize: "18px 18px", // Розмір іконки для правого положення
+          backgroundSize: "18px 18px",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         },

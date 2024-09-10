@@ -74,79 +74,79 @@ const EditTransactionForm = ({
               </span>
             </h3>
 
-            <div className={s.editCategoryWrapper}>
-              <Field
-                type="text"
-                name="categoryId"
-                className={s.editCategory}
-                value={categoryLabel}
-                readOnly
-              />
-            </div>
-
-            <div className={s.editSumDate}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div className={s.editSumWrapper}>
-                  <Field
-                    type="number"
-                    name="amount"
-                    className={s.editAmount}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9.-]/g, "");
-                      const parts = value.split(".");
-                      if (parts.length > 2) {
-                        value = `${parts[0]}.${parts.slice(1).join("")}`;
-                      }
-                      if (value.indexOf("-") > 0) {
-                        value = value.replace(/-/g, "");
-                      }
-                      const numericValue = value ? +value : "";
-                      setFieldValue("amount", numericValue);
-                    }}
-                    onBlur={handleBlur}
-                    value={values.amount}
-                    placeholder="0.00"
-                  />
-                </div>
-                <div>
-                  <ErrorMessage
-                    name="amount"
-                    component="span"
-                    className={s.error}
-                  />
-                </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div className={s.editDateWrapper}>
-                  <MyDatePicker name="transactionDate" />
-                </div>
-                <div>
-                  <ErrorMessage
-                    name="transactionDate"
-                    component="span"
-                    className={s.error}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className={s.editCommentContainer}>
-              <div className={s.editCommentWrapper}>
+            <div className={s.inputsContainer}>
+              <div className={s.editCategoryWrapper}>
                 <Field
                   type="text"
-                  name="comment"
-                  className={s.editComment}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.comment}
-                  placeholder="Comment"
+                  name="categoryId"
+                  className={s.editCategory}
+                  value={categoryLabel}
+                  readOnly
                 />
               </div>
-              <ErrorMessage
-                name="comment"
-                component="span"
-                className={s.error}
-              />
+              <div className={s.editSumDate}>
+                <div className={s.editSumContainer}>
+                  <div className={s.editSumWrapper}>
+                    <Field
+                      type="number"
+                      name="amount"
+                      className={s.editAmount}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9.-]/g, "");
+                        const parts = value.split(".");
+                        if (parts.length > 2) {
+                          value = `${parts[0]}.${parts.slice(1).join("")}`;
+                        }
+                        if (value.indexOf("-") > 0) {
+                          value = value.replace(/-/g, "");
+                        }
+                        const numericValue = value ? +value : "";
+                        setFieldValue("amount", numericValue);
+                      }}
+                      onBlur={handleBlur}
+                      value={values.amount}
+                      placeholder="0.00"
+                    />
+                  </div>
+                  <div>
+                    <ErrorMessage
+                      name="amount"
+                      component="span"
+                      className={s.error}
+                    />
+                  </div>
+                </div>
+                <div className={s.editDateContainer}>
+                  <div className={s.editDateWrapper}>
+                    <MyDatePicker name="transactionDate" />
+                  </div>
+                  <div>
+                    <ErrorMessage
+                      name="transactionDate"
+                      component="span"
+                      className={s.error}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={s.editCommentContainer}>
+                <div className={s.editCommentWrapper}>
+                  <Field
+                    type="text"
+                    name="comment"
+                    className={s.editComment}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.comment}
+                    placeholder="Comment"
+                  />
+                </div>
+                <ErrorMessage
+                  name="comment"
+                  component="span"
+                  className={s.error}
+                />
+              </div>
             </div>
             <div className={s.editBtnBox}>
               <button type="submit" className={s.editSubmitBtn}>
