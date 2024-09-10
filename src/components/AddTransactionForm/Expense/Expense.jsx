@@ -1,73 +1,35 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import Select from "react-select";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import Select from 'react-select';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCategories } from "../../../redux/transactions/selector";
-import { addTrnThunk } from "../../../redux/transactions/operations";
-import MyDatePicker from "../DatePicker/DatePicker";
+import { selectCategories } from '../../../redux/transactions/selector';
+import { addTrnThunk } from '../../../redux/transactions/operations';
+import MyDatePicker from '../DatePicker/DatePicker';
 
-import s from "./Expense.module.css";
-import expenseValidationSchema from "../../../helpers/expenseValidationSchema";
+import expenseValidationSchema from '../../../helpers/expenseValidationSchema';
+import s from './Expense.module.css';
 
 const Expense = ({ closeModal }) => {
-  const todayDate = new Date().toISOString().split("T")[0];
+  const todayDate = new Date().toISOString().split('T')[0];
   const [selectedCategory, setSelectedCategory] = useState(null);
   const categoriesArr = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const categoryOptions = categoriesArr.slice(0, -1).map((category) => ({
+  const categoryOptions = categoriesArr.slice(0, -1).map(category => ({
     value: category.id,
     label: category.name,
   }));
 
   const initialValues = {
     transactionDate: todayDate,
-    type: "EXPENSE",
-    categoryId: "",
-    comment: "",
-    amount: "",
+    type: 'EXPENSE',
+    categoryId: '',
+    comment: '',
+    amount: '',
   };
 
-  const customStyles = {
-    option: (defaultStyles, state) => ({
-      ...defaultStyles,
-      fontWeight: "400",
-      fontSize: "16px",
-      padding: "4px 20px",
-      color: state.isSelected ? "#FF868D" : "#fff",
-      backgroundColor: state.isSelected
-        ? "rgba(255, 255, 255, 0.1)"
-        : "#5a438c00",
-    }),
-
-    control: (defaultStyles) => ({
-      ...defaultStyles,
-      minHeight: "none",
-      backgroundColor: "transparent",
-      border: "none",
-      padding: "2px 20px",
-      boxShadow: "none",
-      display: "flex",
-      width: "100%",
-      fontSize: "16px",
-    }),
-
-    menuList: (defaultStyles) => ({
-      ...defaultStyles,
-      marginTop: "11px",
-
-      height: "157px",
-      borderRadius: "8px",
-      "::-webkit-scrollbar": {
-        width: "0",
-        height: "0",
-      },
-      background: "linear-gradient(180deg, #513d85, #4b39a4)",
-    }),
-  };
-
-  const handleExpenseSubmit = (values) => {
+  const handleExpenseSubmit = values => {
     const formattedValues = {
       ...values,
       amount: values.amount > 0 ? -values.amount : values.amount,
@@ -89,16 +51,16 @@ const Expense = ({ closeModal }) => {
             <div className={s.selectContainer}>
               <div className={s.selectWrapper}>
                 <Select
-                  styles={customStyles}
                   unstyled
-                  // className={s.expenseSelect}
+                  className={s.customSelect}
+                  classNamePrefix="react-select"
                   id="category"
                   name="category"
                   options={categoryOptions}
                   value={selectedCategory}
-                  onChange={(option) => {
+                  onChange={option => {
                     setSelectedCategory(option);
-                    setFieldValue("categoryId", option ? option.value : "");
+                    setFieldValue('categoryId', option ? option.value : '');
                   }}
                   placeholder="Select a category"
                 />
