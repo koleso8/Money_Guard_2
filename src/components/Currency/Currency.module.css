@@ -41,14 +41,14 @@
 
 .pointFirst {
   position: absolute;
-  top: 15px;
-  left: 50px;
+  top: 5px;
+  left: 32px;
 }
 
 .pointSecond {
   position: absolute;
   top: -20px;
-  right: 100px;
+  right: 68px;
 }
 
 .chartWrapper {
