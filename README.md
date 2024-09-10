@@ -7,4 +7,3 @@
     src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGQZMY8E3A&#x2F;yYlp8rUCHI2sT4KzqMkJ1w&#x2F;watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
   </iframe>
 </div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGQZMY8E3A&#x2F;yYlp8rUCHI2sT4KzqMkJ1w&#x2F;watch?utm_content=DAGQZMY8E3A&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Grey Beige Minimalist Modern Fashion Photo Collage Facebook Cover</a> від користувача Ваня Колесо
