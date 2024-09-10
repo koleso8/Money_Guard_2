@@ -65,7 +65,6 @@ const Expense = ({ closeModal }) => {
       },
       background: "linear-gradient(180deg, #513d85, #4b39a4)",
     }),
-    dropdownIndicator: (defaultStyles) => console.log(defaultStyles),
   };
 
   const handleExpenseSubmit = (values) => {
