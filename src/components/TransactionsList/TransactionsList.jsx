@@ -10,9 +10,9 @@ import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
 import EditTransactionForm from "../EditTransactionForm/EditTransactionForm";
 
 const TransactionsList = () => {
-  const allTransactions = useSelector(selectTransactions).toSorted(
-    (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
-  );
+  const allTransactions = useSelector(selectTransactions)
+    .slice()
+    .sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editedItem, setEditedItem] = useState();
