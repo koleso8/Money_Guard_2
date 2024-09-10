@@ -18,7 +18,6 @@ const EditTransactionForm = ({
   amount,
   id,
 }) => {
-  console.log(type);
   const dispatch = useDispatch();
   const categoriesArr = useSelector(selectCategories);
 
@@ -32,8 +31,6 @@ const EditTransactionForm = ({
     "Unknown category";
 
   const handleSubmit = (values) => {
-    console.log(values.amount);
-
     dispatch(editTrnThunk({ ...values, id }));
     closeModal();
   };

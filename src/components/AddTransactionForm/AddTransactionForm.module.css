@@ -60,12 +60,12 @@
 
 /* Anahtarın yuvarlak kısmının stil */
 .toggle_switch .toggle_label::before {
-  content: '\1F7A2';
+  content: '+';
   display: flex;
   align-items: center;
   justify-content: center;
   align-items: center;
-  font-size: 28 px;
+  font-size: 30px;
   color: rgb(255, 255, 255);
   position: absolute;
   width: 44px;
