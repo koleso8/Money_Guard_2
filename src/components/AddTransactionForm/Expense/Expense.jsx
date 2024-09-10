@@ -17,7 +17,7 @@ const Expense = ({ closeModal }) => {
   const categoriesArr = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const categoryOptions = categoriesArr.map(category => ({
+  const categoryOptions = categoriesArr.slice(0, -1).map(category => ({
     value: category.id,
     label: category.name,
   }));
@@ -118,7 +118,7 @@ const Expense = ({ closeModal }) => {
                 <div className={clsx(s.sdWrapper)}>
                   <Field
                     name="amount"
-                    type="text"
+                    type="number"
                     placeholder="0.00"
                     className={clsx(s.expenseSum)}
                   />

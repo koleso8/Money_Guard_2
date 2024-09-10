@@ -46,7 +46,7 @@
 }
 
 .editCategoryWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -70,6 +70,7 @@
 
 .editSumDate {
   display: flex;
+  align-items: baseline;
   gap: 32px;
 }
 
@@ -89,7 +90,7 @@
 }
 
 .editSumWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -125,7 +126,7 @@
 }
 
 .editDateWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -185,7 +186,7 @@
 }
 
 .editCommentWrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   left: 0;

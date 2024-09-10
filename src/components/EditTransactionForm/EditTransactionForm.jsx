@@ -1,13 +1,13 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import clsx from "clsx";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import clsx from 'clsx';
 
-import MyDatePicker from "../AddTransactionForm/DatePicker/DatePicker";
+import MyDatePicker from '../AddTransactionForm/DatePicker/DatePicker';
 
-import { selectCategories } from "../../redux/transactions/selector";
-import { editTrnThunk } from "../../redux/transactions/operations";
-import editTransactionValidationSchema from "../../helpers/editTransactionValidationSchema";
-import s from "./EditTransactionForm.module.css";
+import { selectCategories } from '../../redux/transactions/selector';
+import { editTrnThunk } from '../../redux/transactions/operations';
+import editTransactionValidationSchema from '../../helpers/editTransactionValidationSchema';
+import s from './EditTransactionForm.module.css';
 
 const EditTransactionForm = ({
   closeModal,
@@ -22,16 +22,16 @@ const EditTransactionForm = ({
   const dispatch = useDispatch();
   const categoriesArr = useSelector(selectCategories);
 
-  const categoryOptions = categoriesArr.map((category) => ({
+  const categoryOptions = categoriesArr.map(category => ({
     value: category.id,
     label: category.name,
   }));
 
   const categoryLabel =
-    categoryOptions.find((option) => option.value === categoryId)?.label ||
-    "Unknown category";
+    categoryOptions.find(option => option.value === categoryId)?.label ||
+    'Unknown category';
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     console.log(values.amount);
 
     dispatch(editTrnThunk({ ...values, id }));
@@ -57,16 +57,16 @@ const EditTransactionForm = ({
             <h3 className={clsx(s.editTypeTitle)}>
               <span
                 className={clsx({
-                  [s.editIncomeHighlight]: values.type === "INCOME",
+                  [s.editIncomeHighlight]: values.type === 'INCOME',
                   [s.editType]: true,
                 })}
               >
                 Income
               </span>
-              {" / "}
+              {' / '}
               <span
                 className={clsx({
-                  [s.editExpenseHighlight]: values.type === "EXPENSE",
+                  [s.editExpenseHighlight]: values.type === 'EXPENSE',
                   [s.editType]: true,
                 })}
               >
@@ -85,23 +85,23 @@ const EditTransactionForm = ({
             </div>
 
             <div className={clsx(s.editSumDate)}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={clsx(s.editSumWrapper)}>
                   <Field
-                    type="text"
+                    type="number"
                     name="amount"
                     className={clsx(s.editAmount)}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9.-]/g, "");
-                      const parts = value.split(".");
+                    onChange={e => {
+                      let value = e.target.value.replace(/[^0-9.-]/g, '');
+                      const parts = value.split('.');
                       if (parts.length > 2) {
-                        value = `${parts[0]}.${parts.slice(1).join("")}`;
+                        value = `${parts[0]}.${parts.slice(1).join('')}`;
                       }
-                      if (value.indexOf("-") > 0) {
-                        value = value.replace(/-/g, "");
+                      if (value.indexOf('-') > 0) {
+                        value = value.replace(/-/g, '');
                       }
-                      const numericValue = value ? +value : "";
-                      setFieldValue("amount", numericValue);
+                      const numericValue = value ? +value : '';
+                      setFieldValue('amount', numericValue);
                     }}
                     onBlur={handleBlur}
                     value={values.amount}
@@ -116,7 +116,7 @@ const EditTransactionForm = ({
                   />
                 </div>
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={clsx(s.editDateWrapper)}>
                   <MyDatePicker name="transactionDate" />
                 </div>
