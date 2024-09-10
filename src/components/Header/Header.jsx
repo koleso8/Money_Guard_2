@@ -1,20 +1,20 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
-import { NavLink } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import { logoutThunk } from '../../redux/auth/operations';
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
+import { NavLink } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { logoutThunk } from "../../redux/auth/operations";
 import {
   setHeaderHeight,
   openModal,
   closeModal,
-} from '../../redux/modal/slice';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import Icon from '../Icon/Icon';
-import { useScreenWidth } from '../../hooks/useScreenWidth';
+} from "../../redux/modal/slice";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import Icon from "../Icon/Icon";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
 
-import s from './Header.module.css';
+import s from "./Header.module.css";
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -29,7 +29,7 @@ const Header = () => {
   }, [dispatch]);
 
   const handleLogout = () => {
-    dispatch(openModal('logoutConfirmation'));
+    dispatch(openModal("logoutConfirmation"));
   };
 
   const closeModalHandler = () => {
@@ -48,7 +48,7 @@ const Header = () => {
         <p className={clsx(s.username)}>{user.username}</p>
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
           <Icon name="logout" />
-          {!isSmallScreen && 'Exit'}
+          {!isSmallScreen && "Exit"}
         </button>
       </div>
 

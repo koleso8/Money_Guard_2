@@ -1,10 +1,12 @@
-import { StatsTableRow } from "../StatsTableRow/StatsTableRow";
-import s from "./StatisticsTable.module.css";
-
-// import data from '../devData.json';
-import { selectPeriodTransactions } from "../../../redux/transactions/selector";
 import { useSelector } from "react-redux";
+
+import { selectPeriodTransactions } from "../../../redux/transactions/selector";
+
+import { StatsTableRow } from "../StatsTableRow/StatsTableRow";
+
 import { formatNumber } from "../numbersFormatting";
+
+import s from "./StatisticsTable.module.css";
 
 export const StatisticsTable = () => {
   const data = useSelector(selectPeriodTransactions);
