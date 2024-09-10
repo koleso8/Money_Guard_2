@@ -319,6 +319,10 @@
     width: 100%;
   }
 
+  .editAmount {
+    text-align: left;
+  }
+
   .editDateContainer {
     width: 100%;
   }
