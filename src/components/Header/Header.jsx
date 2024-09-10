@@ -66,10 +66,10 @@ const Header = () => {
                 closeModalHandler();
               }}
             >
-              L O G O U T
+              Logout
             </button>
             <button className={s.cancelBtn} onClick={closeModalHandler}>
-              C A N C E L
+              Cancel
             </button>
           </div>
         </div>
