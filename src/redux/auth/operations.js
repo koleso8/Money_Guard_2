@@ -61,11 +61,13 @@ export const refreshUserThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persisToken = state.auth.token;
+    const persistToken = state.auth.token;
 
-    if (persisToken === null) thunkAPI.rejectWithValue('NO USER');
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue('NO USER');
+    }
     try {
-      setAuthHeader(persisToken);
+      setAuthHeader(persistToken);
 
       const { data } = await goitApi.get('/api/users/current');
 
