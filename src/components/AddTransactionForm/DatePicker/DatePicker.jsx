@@ -7,6 +7,8 @@ import clsx from "clsx";
 const MyDatePicker = ({ name }) => {
   const [field, meta, helpers] = useField(name);
 
+  const today = new Date();
+
   return (
     <div className={clsx(s.datePickerContainer)}>
       <DatePicker
@@ -17,6 +19,8 @@ const MyDatePicker = ({ name }) => {
         }
         dateFormat="dd.MM.yyyy"
         className={clsx(s.picker)}
+        maxDate={today}
+        calendarStartDay={1}
       />
       <div className={clsx(s.iconContainer)}>
         <svg

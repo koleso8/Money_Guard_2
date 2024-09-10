@@ -24,7 +24,6 @@ const TransactionsList = () => {
     dispatch(openModal('addTransaction'));
   };
 
-
   const openEditModal = item => {
     setEditedItem(item);
     dispatch(openModal('editTransaction'));
@@ -33,7 +32,7 @@ const TransactionsList = () => {
   return (
     <div className={clsx(s.transactionListBox)}>
       <table className={clsx(s.table)}>
-        <thead>
+        <thead className={clsx(s.thead)}>
           <tr className={clsx(s.tableHeader)}>
             <th className={clsx(s.date)}>Date</th>
             <th className={clsx(s.type)}>Type</th>
