@@ -1,6 +1,6 @@
 .transactionListBox {
   width: calc(100vw - 480px);
-  max-width: 1200px;
+  max-width: 1100px;
   max-height: calc(100vh - 110px);
 
   padding: 0px 100px 40px 69px;

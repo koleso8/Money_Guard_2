@@ -20,7 +20,6 @@ const Income = ({ closeModal }) => {
   };
 
   const handleIncomeSubmit = (values) => {
-    console.log(values);
     dispatch(addTrnThunk(values));
     closeModal();
   };
