@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 import {
   getBalanceThunk,
   loginThunk,
   logoutThunk,
   refreshUserThunk,
   registerThunk,
-} from './operations';
+} from "./operations";
 // import { errorMessage } from '../../components/errorMessage';
 
 const initialState = {
@@ -20,9 +20,9 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -40,12 +40,12 @@ const slice = createSlice({
       .addCase(loginThunk.rejected, () => {
         // errorMessage('Invalid email or password');
       })
-      .addCase(logoutThunk.fulfilled, state => {
+      .addCase(logoutThunk.fulfilled, (state) => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(refreshUserThunk.pending, state => {
+      .addCase(refreshUserThunk.pending, (state) => {
         state.isRefreshing = true;
       })
       .addCase(refreshUserThunk.fulfilled, (state, action) => {
@@ -53,7 +53,7 @@ const slice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUserThunk.rejected, state => {
+      .addCase(refreshUserThunk.rejected, (state) => {
         state.isRefreshing = false;
         // errorMessage('Please login or register');
       })

@@ -1,14 +1,15 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import Select from "react-select";
 import { useState } from "react";
 import clsx from "clsx";
-import s from "./Expense.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCategories } from "../../../redux/transactions/selector";
-import { addTrnThunk } from "../../../redux/transactions/operations";
+
 import MyDatePicker from "../DatePicker/DatePicker";
 
-// !ADD VALIDATION, CHANGE TYPE OF NUMBER FOR EXPENSE
+import { selectCategories } from "../../../redux/transactions/selector";
+import { addTrnThunk } from "../../../redux/transactions/operations";
+import s from "./Expense.module.css";
+import expenseValidationSchema from "../../../helpers/expenseValidationSchema";
 
 const Expense = ({ closeModal }) => {
   const todayDate = new Date().toISOString().split("T")[0];
@@ -30,17 +31,25 @@ const Expense = ({ closeModal }) => {
   };
 
   const handleExpenseSubmit = (values) => {
-    console.log(values);
-    dispatch(addTrnThunk(values));
+    const formattedValues = {
+      ...values,
+      amount: values.amount > 0 ? -values.amount : values.amount,
+    };
+
+    dispatch(addTrnThunk(formattedValues));
     closeModal();
   };
 
   return (
     <div className={clsx(s.formBox)}>
-      <Formik initialValues={initialValues} onSubmit={handleExpenseSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={expenseValidationSchema}
+        onSubmit={handleExpenseSubmit}
+      >
         {({ setFieldValue }) => (
           <Form className={clsx(s.expenseForm)}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className={clsx(s.selectContainer)}>
               <div className={clsx(s.selectWrapper)}>
                 <Select
                   className={clsx(s.expenseSelect)}
@@ -55,9 +64,15 @@ const Expense = ({ closeModal }) => {
                   placeholder="Select a category"
                 />
               </div>
+              <ErrorMessage
+                name="categoryId"
+                component="span"
+                className={clsx(s.errorText)}
+              />
             </div>
+
             <div className={clsx(s.sumDateContainer)}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div className={clsx(s.sumContainer)}>
                 <div className={clsx(s.sdWrapper)}>
                   <Field
                     name="amount"
@@ -66,11 +81,21 @@ const Expense = ({ closeModal }) => {
                     className={clsx(s.expenseSum)}
                   />
                 </div>
+                <ErrorMessage
+                  name="amount"
+                  component="span"
+                  className={clsx(s.errorText)}
+                />
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div className={clsx(s.dateContainer)}>
                 <div className={clsx(s.sdWrapper)}>
                   <MyDatePicker name="transactionDate" />
                 </div>
+                <ErrorMessage
+                  name="transactionDate"
+                  component="span"
+                  className={clsx(s.errorText)}
+                />
               </div>
             </div>
             <div className={clsx(s.commentContainer)}>
@@ -82,6 +107,11 @@ const Expense = ({ closeModal }) => {
                   className={clsx(s.expenseComment)}
                 />
               </div>
+              <ErrorMessage
+                name="comment"
+                component="span"
+                className={clsx(s.errorText)}
+              />
             </div>
             <div className={clsx(s.buttonContainer)}>
               <button type="submit" className={clsx(s.expenseAddBtn)}>

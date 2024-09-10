@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./StatisticsDashboard.module.css";
 import Select from "react-select";
+
 import { selectStatisticsPeriod } from "../../../redux/transactions/selector";
 import { setStatisticsPeriod } from "../../../redux/transactions/slice";
+import s from "./StatisticsDashboard.module.css";
 
 export const StatisticsDashboard = () => {
   const period = useSelector(selectStatisticsPeriod);

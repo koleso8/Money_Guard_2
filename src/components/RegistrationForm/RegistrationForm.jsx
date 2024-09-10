@@ -6,26 +6,9 @@ import s from './RegistrationForm.module.css';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import Icon from '../Icon/Icon';
 import { Toaster } from 'react-hot-toast';
-import * as Yup from 'yup';
+import validationSchema from '../../helpers/registrationSchema';
 
 export const RegistrationForm = () => {
-  const validationSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(3, 'To short text')
-      .max(15, 'To long text')
-      .required('Enter Text'),
-    email: Yup.string()
-      .min(3, 'To short text')
-      .max(15, 'To long text')
-      .required('Enter Text'),
-    password: Yup.string()
-      .min(6, 'To short text')
-      .max(12, 'To long text')
-      .required('Enter Text'),
-    confirmPass: Yup.string()
-      .oneOf([Yup.ref('password')], 'passwords don`t match')
-      .required('Enter Text'),
-  });
   const dispath = useDispatch();
   const initialValues = {
     username: '',
@@ -138,17 +121,18 @@ export const RegistrationForm = () => {
                       />
                       <div className={s.line}></div>
                       <PasswordStrengthBar
+                        className={s.bar}
                         password={values.confirmPass}
                         scoreWords={['', '', '', '', '']}
                         shortScoreWord={['']}
                         barColors={[
                           '#FFC727',
                           '#ef4836',
-                          '#f6b44d',
+                          '#91c4f5',
                           '#2b90ef',
                           '#25c281',
                         ]}
-                        minLength={6}
+                        minLength={3}
                       />
                     </div>
                   </div>
