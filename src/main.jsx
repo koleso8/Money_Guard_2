@@ -8,8 +8,6 @@ import App from './App.jsx';
 
 import { persistor, store } from './redux/store.js';
 
-import App from './App.jsx';
-
 import './styles/reset.css';
 import './styles/common.css';
 import './styles/variables.css';
