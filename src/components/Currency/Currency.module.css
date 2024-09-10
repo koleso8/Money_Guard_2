@@ -4,6 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(74, 86, 226, 0.1);
+  @media only screen and (max-width: 767px) {
+    margin-top: 24px;
+  }
 }
 
 .table {
