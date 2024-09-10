@@ -7,22 +7,17 @@ import {
   selectLastRequestTime,
 } from '../../redux/currency/selectors';
 import { fetchCurrencies } from '../../redux/currency/operations';
-import CurrencyChart from '../CurrencyChart/CurrencyChart';
+import graphDesktop1x from '../../images/graph_desktop_1x.webp';
+import graphDesktop2x from '../../images/graph_desktop_2x.webp';
+import graphTablet1x from '../../images/graph_tablet_1x.webp';
+import graphTablet2x from '../../images/graph_tablet_2x.webp';
+import graphMobile1x from '../../images/graph_mobile_1x.webp';
+import graphMobile2x from '../../images/graph_mobile_2x.webp';
 
 const Currency = () => {
   const dispatch = useDispatch();
   const currencies = useSelector(selectCurrencies);
   const lastRequestTime = useSelector(selectLastRequestTime);
-
-  const currenciesForChart = [
-    currencies[0]?.rateBuy.toFixed(2) - 10,
-    currencies[0]?.rateBuy.toFixed(2),
-    currencies[1]?.rateBuy.toFixed(2) - 25,
-    currencies[1]?.rateBuy.toFixed(2) - 20,
-    currencies[1]?.rateBuy.toFixed(2) - 10,
-    currencies[1]?.rateBuy.toFixed(2),
-    currencies[1]?.rateBuy.toFixed(2) - 6,
-  ];
 
   useEffect(() => {
     const currentTime = Date.now();
@@ -65,13 +60,13 @@ const Currency = () => {
         </tbody>
       </table>
       <div className={clsx(s.diagramBox)}>
-        {/* <span className={clsx(s.pointNumber, s.pointFirst)}>
+        <span className={clsx(s.pointNumber, s.pointFirst)}>
           {currencies[0]?.rateBuy.toFixed(2) ?? ''}
         </span>
         <span className={clsx(s.pointNumber, s.pointSecond)}>
           {currencies[1]?.rateBuy.toFixed(2) ?? ''}
-        </span> */}
-        {/* <picture>
+        </span>
+        <picture>
           <source
             media="(min-width: 1440px)"
             srcSet={'.' + graphDesktop1x + ' 2x, ' + graphDesktop2x + ' 2x'}
@@ -93,13 +88,7 @@ const Currency = () => {
             alt="diagram"
             loading="lazy"
           />
-        </picture> */}
-        <div className={clsx(s.chartWrapper)}>
-          <CurrencyChart
-            labels={currenciesForChart}
-            dataSet={currenciesForChart}
-          />
-        </div>
+        </picture>
       </div>
     </div>
   );

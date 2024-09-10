@@ -1,25 +1,33 @@
-import clsx from "clsx";
-import s from "./TransactionsList.module.css";
-import { useSelector } from "react-redux";
-import { selectTransactions } from "../../redux/transactions/selector";
-import TransactionsItem from "../TransactionsItem/TransactionsItem";
-import { FiPlus } from "react-icons/fi";
-import { useState } from "react";
-import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
-import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
-import EditTransactionForm from "../EditTransactionForm/EditTransactionForm";
+import clsx from 'clsx';
+import s from './TransactionsList.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTransactions } from '../../redux/transactions/selector';
+import TransactionsItem from '../TransactionsItem/TransactionsItem';
+import { FiPlus } from 'react-icons/fi';
+import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
+import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
+import EditTransactionForm from '../EditTransactionForm/EditTransactionForm';
+import { openModal, closeModal } from '../../redux/modal/slice';
+import { useState } from 'react';
 
 const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions)
     .slice()
     .sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
 
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [editedItem, setEditedItem] = useState();
-  const openAddModal = () => setIsAddModalOpen(true);
-  const closeAddModal = () => {
-    setIsAddModalOpen(false);
-    setEditedItem();
+  const dispatch = useDispatch();
+
+  const [editedItem, setEditedItem] = useState(null);
+
+  const openAddModal = () => {
+    setEditedItem(null);
+    dispatch(openModal('addTransaction'));
+  };
+
+
+  const openEditModal = item => {
+    setEditedItem(item);
+    dispatch(openModal('editTransaction'));
   };
 
   return (
@@ -36,14 +44,11 @@ const TransactionsList = () => {
           </tr>
         </thead>
         <tbody className={clsx(s.tableBody)}>
-          {allTransactions.map((item) => (
+          {allTransactions.map(item => (
             <TransactionsItem
               key={item.id}
               {...item}
-              setEditedItem={() => {
-                setEditedItem(item);
-                openAddModal();
-              }}
+              setEditedItem={() => openEditModal(item)}
             />
           ))}
         </tbody>
@@ -55,11 +60,17 @@ const TransactionsList = () => {
       >
         <FiPlus size={30} color="fff" />
       </button>
-      <ModalBackdrop isOpen={isAddModalOpen} closeModal={closeAddModal}>
-        {editedItem ? (
-          <EditTransactionForm closeModal={closeAddModal} {...editedItem} />
-        ) : (
-          <AddTransactionForm closeModal={closeAddModal} />
+
+      <ModalBackdrop modalType="addTransaction" noCloseButton={false}>
+        <AddTransactionForm closeModal={() => dispatch(closeModal())} />
+      </ModalBackdrop>
+
+      <ModalBackdrop modalType="editTransaction" noCloseButton={false}>
+        {editedItem && (
+          <EditTransactionForm
+            closeModal={() => dispatch(closeModal())}
+            {...editedItem}
+          />
         )}
       </ModalBackdrop>
     </div>
