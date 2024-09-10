@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
-import s from './Navigation.module.css';
-import { useScreenWidth } from '../../hooks/useScreenWidth';
+
 import Icon from '../Icon/Icon';
+
+import { useScreenWidth } from '../../hooks/useScreenWidth';
+import s from './Navigation.module.css';
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.link, isActive && s.linkActive);
@@ -13,36 +15,26 @@ const Navigation = () => {
 
   return (
     <nav>
-      <ul className={clsx(s.list)}>
-        <li className={clsx(s.listItem)}>
+      <ul className={s.list}>
+        <li className={s.listItem}>
           <NavLink className={buildLinkClass} to="/">
-            <div className={clsx(s.iconBackground)}></div>
-            <Icon name="home" width="24" height="24" className={clsx(s.icon)} />
+            <div className={s.iconBackground}></div>
+            <Icon name="home" width="24" height="24" className={s.icon} />
             {!isSmallScreen && 'Home'}
           </NavLink>
         </li>
-        <li className={clsx(s.listItem)}>
+        <li className={s.listItem}>
           <NavLink className={buildLinkClass} to="/statistics">
-            <div className={clsx(s.iconBackground)}></div>
-            <Icon
-              name="statistics"
-              width="24"
-              height="24"
-              className={clsx(s.icon)}
-            />
+            <div className={s.iconBackground}></div>
+            <Icon name="statistics" width="24" height="24" className={s.icon} />
             {!isSmallScreen && 'Statistics'}
           </NavLink>
         </li>
         {isSmallScreen && (
-          <li className={clsx(s.listItem)}>
+          <li className={s.listItem}>
             <NavLink className={buildLinkClass} to="/currency">
-              <div className={clsx(s.iconBackground)}></div>
-              <Icon
-                name="dollar"
-                width="24"
-                height="24"
-                className={clsx(s.icon)}
-              />
+              <div className={s.iconBackground}></div>
+              <Icon name="dollar" width="24" height="24" className={s.icon} />
             </NavLink>
           </li>
         )}

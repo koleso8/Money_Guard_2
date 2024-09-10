@@ -1,8 +1,9 @@
-import clsx from 'clsx';
-import s from './CurrencyTab.module.css';
-import Currency from '../../components/Currency/Currency';
-import { useScreenWidth } from '../../hooks/useScreenWidth';
 import { useNavigate } from 'react-router-dom';
+
+import Currency from '../../components/Currency/Currency';
+
+import { useScreenWidth } from '../../hooks/useScreenWidth';
+import s from './CurrencyTab.module.css';
 
 const CurrencyTab = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const CurrencyTab = () => {
   !isSmallScreen && navigate('/', { replace: true });
 
   return (
-    <div className={clsx(s.wrapper)}>
+    <div className={s.wrapper}>
       <Currency />
     </div>
   );

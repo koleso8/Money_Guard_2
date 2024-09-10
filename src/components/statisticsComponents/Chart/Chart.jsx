@@ -1,11 +1,12 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import s from "../StatisticsTable/StatisticsTable.module.css";
-// import data from "../devData.json";
-import { selectPeriodTransactions } from "../../../redux/transactions/selector";
 import { useSelector } from "react-redux";
+
+import { selectPeriodTransactions } from "../../../redux/transactions/selector";
 import { selectBalance } from "../../../redux/auth/selectors";
 import { formatNumber } from "../numbersFormatting";
+
+import s from "../StatisticsTable/StatisticsTable.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -98,15 +99,15 @@ export const ChartSection = () => {
   return (
     <div className={s.chart}>
       <div className={s.doughnutCont}>
-        <Doughnut options={options} data={settings} className={s.doughnut} />
         <div className={s.balanceCont}>
           <p className={s.balance}>₴ {formatNumber(balance)}</p>
-          {isShadow && (
+          {/* {isShadow && (
             <div className={s.shadowOuter}>
               <div className={s.shadowInner}></div>
             </div>
-          )}
+          )} */}
         </div>
+        <Doughnut options={options} data={settings} className={s.doughnut} />
       </div>
     </div>
   );
