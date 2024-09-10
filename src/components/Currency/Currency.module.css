@@ -51,9 +51,18 @@
   right: 100px;
 }
 
+.chartWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
 @media (max-width: 1279px) {
   .wrapper {
     border-radius: 0px 0px 8px 8px;
+    overflow: hidden;
+    margin-bottom: -200px;
   }
 
   .mainItem {

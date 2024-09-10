@@ -86,7 +86,7 @@ const EditTransactionForm = ({
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div className={clsx(s.editSumWrapper)}>
                   <Field
-                    type="number"
+                    type="text"
                     name="amount"
                     className={clsx(s.editAmount)}
                     onChange={(e) => {
