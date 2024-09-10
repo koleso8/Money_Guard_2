@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import s from './Header.module.css';
-import clsx from 'clsx';
-import { selectUser } from '../../redux/auth/selectors';
-import { NavLink } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import { logoutThunk } from '../../redux/auth/operations';
-import { setHeaderHeight } from '../../redux/modal/slice';
-import Icon from '../Icon/Icon';
-import { useScreenWidth } from '../../hooks/useScreenWidth';
+import { useDispatch, useSelector } from "react-redux";
+import s from "./Header.module.css";
+import clsx from "clsx";
+import { selectUser } from "../../redux/auth/selectors";
+import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import { logoutThunk } from "../../redux/auth/operations";
+import { setHeaderHeight } from "../../redux/modal/slice";
+import Icon from "../Icon/Icon";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -44,7 +44,7 @@ const Header = () => {
 
         <button className={clsx(s.logoutButton)} onClick={handleLogout}>
           <Icon name="logout" />
-          {!isSmallScreen && 'Exit'}
+          {!isSmallScreen && "Exit"}
         </button>
       </div>
 

@@ -2,11 +2,13 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import Select from "react-select";
 import { useState } from "react";
 import clsx from "clsx";
-import s from "./Expense.module.css";
 import { useDispatch, useSelector } from "react-redux";
+
+import MyDatePicker from "../DatePicker/DatePicker";
+
 import { selectCategories } from "../../../redux/transactions/selector";
 import { addTrnThunk } from "../../../redux/transactions/operations";
-import MyDatePicker from "../DatePicker/DatePicker";
+import s from "./Expense.module.css";
 import expenseValidationSchema from "../../../helpers/expenseValidationSchema";
 
 const Expense = ({ closeModal }) => {

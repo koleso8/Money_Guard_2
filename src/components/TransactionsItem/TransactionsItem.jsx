@@ -1,12 +1,10 @@
 import clsx from "clsx";
-import { LuPencil } from "react-icons/lu";
-import s from "./TransactionsItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
+
 import { deleteTrnThunk } from "../../redux/transactions/operations";
 import { selectCategories } from "../../redux/transactions/selector";
-import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
-import { useState } from "react";
-import EditTransactionForm from "../EditTransactionForm/EditTransactionForm";
+import s from "./TransactionsItem.module.css";
+import { LuPencil } from "react-icons/lu";
 
 const TransactionsItem = ({
   transactionDate,
@@ -15,6 +13,7 @@ const TransactionsItem = ({
   comment = "",
   amount,
   id,
+  setEditedItem,
 }) => {
   const dispatch = useDispatch();
   const selectCategoryArr = useSelector(selectCategories);
@@ -56,11 +55,6 @@ const TransactionsItem = ({
     }).format(amount);
   };
 
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const openEditModal = () => setIsEditModalOpen(true);
-  const closeEditModal = () => setIsEditModalOpen(false);
-
   return (
     <div className={clsx(s.mobileOuterWrapper)}>
       <div className={mobileItemBoxClass}>
@@ -74,7 +68,7 @@ const TransactionsItem = ({
             <button
               className={clsx(s.editBtn)}
               type="button"
-              onClick={openEditModal}
+              onClick={setEditedItem}
             >
               <LuPencil size={14} color="fff" />
             </button>
@@ -85,17 +79,6 @@ const TransactionsItem = ({
             >
               Delete
             </button>
-            <ModalBackdrop isOpen={isEditModalOpen} closeModal={closeEditModal}>
-              <EditTransactionForm
-                closeModal={closeEditModal}
-                transactionDate={transactionDate}
-                type={type}
-                categoryId={categoryId}
-                comment={comment}
-                amount={amount}
-                id={id}
-              />
-            </ModalBackdrop>
           </td>
         </tr>
       </div>

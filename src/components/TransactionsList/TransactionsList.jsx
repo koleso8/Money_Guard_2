@@ -7,6 +7,7 @@ import { FiPlus } from "react-icons/fi";
 import { useState } from "react";
 import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
 import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
+import EditTransactionForm from "../EditTransactionForm/EditTransactionForm";
 
 const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions).toSorted(
@@ -14,9 +15,12 @@ const TransactionsList = () => {
   );
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
+  const [editedItem, setEditedItem] = useState();
   const openAddModal = () => setIsAddModalOpen(true);
-  const closeAddModal = () => setIsAddModalOpen(false);
+  const closeAddModal = () => {
+    setIsAddModalOpen(false);
+    setEditedItem();
+  };
 
   return (
     <div className={clsx(s.transactionListBox)}>
@@ -33,7 +37,14 @@ const TransactionsList = () => {
         </thead>
         <tbody className={clsx(s.tableBody)}>
           {allTransactions.map((item) => (
-            <TransactionsItem key={item.id} {...item} />
+            <TransactionsItem
+              key={item.id}
+              {...item}
+              setEditedItem={() => {
+                setEditedItem(item);
+                openAddModal();
+              }}
+            />
           ))}
         </tbody>
       </table>
@@ -45,7 +56,11 @@ const TransactionsList = () => {
         <FiPlus size={30} color="fff" />
       </button>
       <ModalBackdrop isOpen={isAddModalOpen} closeModal={closeAddModal}>
-        <AddTransactionForm closeModal={closeAddModal} />
+        {editedItem ? (
+          <EditTransactionForm closeModal={closeAddModal} {...editedItem} />
+        ) : (
+          <AddTransactionForm closeModal={closeAddModal} />
+        )}
       </ModalBackdrop>
     </div>
   );
