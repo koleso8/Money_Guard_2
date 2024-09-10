@@ -1,20 +1,20 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { registerThunk } from '../../redux/auth/operations';
-import s from './RegistrationForm.module.css';
-import PasswordStrengthBar from 'react-password-strength-bar';
-import Icon from '../Icon/Icon';
-import { Toaster } from 'react-hot-toast';
-import validationSchema from '../../helpers/registrationSchema';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { registerThunk } from "../../redux/auth/operations";
+import s from "./RegistrationForm.module.css";
+import PasswordStrengthBar from "react-password-strength-bar";
+import Icon from "../Icon/Icon";
+import { Toaster } from "react-hot-toast";
+import validationSchema from "../../helpers/registrationSchema";
 
 export const RegistrationForm = () => {
   const dispath = useDispatch();
   const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPass: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPass: "",
   };
 
   const handleSubmit = (values, options) => {
@@ -123,14 +123,14 @@ export const RegistrationForm = () => {
                       <PasswordStrengthBar
                         className={s.bar}
                         password={values.confirmPass}
-                        scoreWords={['', '', '', '', '']}
-                        shortScoreWord={['']}
+                        scoreWords={["", "", "", "", ""]}
+                        shortScoreWord={[""]}
                         barColors={[
-                          '#FFC727',
-                          '#ef4836',
-                          '#f6b44d',
-                          '#2b90ef',
-                          '#25c281',
+                          "#FFC727",
+                          "#ef4836",
+                          "#f6b44d",
+                          "#2b90ef",
+                          "#25c281",
                         ]}
                         minLength={6}
                       />
