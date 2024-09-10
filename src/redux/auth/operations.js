@@ -81,7 +81,6 @@ export const getBalanceThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await goitApi.get('/api/users/current');
-
       return data.balance;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

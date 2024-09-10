@@ -14,3 +14,8 @@
   color: #5a438c;
   font-size: ;
 }
+@media only screen and (max-width: 767px) {
+  .selectors {
+    flex-direction: column;
+  }
+}
