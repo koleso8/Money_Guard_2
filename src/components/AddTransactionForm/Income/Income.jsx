@@ -1,25 +1,37 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 
-import { addTrnThunk } from "../../../redux/transactions/operations";
+import {
+  addTrnThunk,
+  deleteTrnThunk,
+} from "../../../redux/transactions/operations";
 import MyDatePicker from "../DatePicker/DatePicker";
 
 import s from "./Income.module.css";
 import incomeValidationSchema from "../../../helpers/incomeValidationSchema";
 
-const Income = ({ closeModal }) => {
+const Income = ({ closeModal, editedItem, buttonText }) => {
   const dispatch = useDispatch();
   const todayDate = new Date().toISOString().split("T")[0];
 
-  const initialValues = {
-    transactionDate: todayDate,
-    type: "INCOME",
-    categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
-    comment: "",
-    amount: "",
-  };
+  const initialValues = editedItem
+    ? {
+        amount: Math.abs(editedItem.amount),
+        categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+        comment: editedItem.comment,
+        transactionDate: editedItem.transactionDate,
+        type: "INCOME",
+      }
+    : {
+        transactionDate: todayDate,
+        type: "INCOME",
+        categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+        comment: "",
+        amount: "",
+      };
 
   const handleIncomeSubmit = (values) => {
+    if (editedItem) dispatch(deleteTrnThunk(editedItem.id));
     dispatch(addTrnThunk(values));
     closeModal();
   };
@@ -77,7 +89,7 @@ const Income = ({ closeModal }) => {
             </div>
             <div className={s.buttonContainer}>
               <button type="submit" className={s.incomeAddBtn}>
-                Add
+                {buttonText}
               </button>
               <button
                 type="button"

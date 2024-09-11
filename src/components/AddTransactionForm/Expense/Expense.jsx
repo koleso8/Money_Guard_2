@@ -1,43 +1,61 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import Select from 'react-select';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import Select from "react-select";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectCategories } from '../../../redux/transactions/selector';
-import { addTrnThunk } from '../../../redux/transactions/operations';
-import MyDatePicker from '../DatePicker/DatePicker';
+import { selectCategories } from "../../../redux/transactions/selector";
+import {
+  addTrnThunk,
+  deleteTrnThunk,
+} from "../../../redux/transactions/operations";
+import MyDatePicker from "../DatePicker/DatePicker";
 
-import expenseValidationSchema from '../../../helpers/expenseValidationSchema';
-import s from './Expense.module.css';
+import expenseValidationSchema from "../../../helpers/expenseValidationSchema";
+import s from "./Expense.module.css";
 
-const Expense = ({ closeModal }) => {
-  const todayDate = new Date().toISOString().split('T')[0];
+const Expense = ({ closeModal, editedItem, buttonText }) => {
+  const todayDate = new Date().toISOString().split("T")[0];
   const [selectedCategory, setSelectedCategory] = useState(null);
   const categoriesArr = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const categoryOptions = categoriesArr.slice(0, -1).map(category => ({
+  const categoryOptions = categoriesArr.slice(0, -1).map((category) => ({
     value: category.id,
     label: category.name,
   }));
 
-  const initialValues = {
-    transactionDate: todayDate,
-    type: 'EXPENSE',
-    categoryId: '',
-    comment: '',
-    amount: '',
-  };
+  const initialValues = editedItem
+    ? {
+        amount: Math.abs(editedItem.amount),
+        categoryId: editedItem.categoryId,
+        comment: editedItem.comment,
+        transactionDate: editedItem.transactionDate,
+        type: "EXPENSE",
+      }
+    : {
+        transactionDate: todayDate,
+        type: "EXPENSE",
+        categoryId: "",
+        comment: "",
+        amount: "",
+      };
 
-  const handleExpenseSubmit = values => {
+  const handleExpenseSubmit = (values) => {
     const formattedValues = {
       ...values,
       amount: values.amount > 0 ? -values.amount : values.amount,
     };
+    if (editedItem) dispatch(deleteTrnThunk(editedItem.id));
+    console.log(formattedValues);
 
     dispatch(addTrnThunk(formattedValues));
     closeModal();
   };
+
+  const defCat = categoryOptions.find(
+    (e) => e.value === initialValues.categoryId
+  );
+  const i = categoryOptions.indexOf(defCat);
 
   return (
     <div className={s.formBox}>
@@ -57,10 +75,10 @@ const Expense = ({ closeModal }) => {
                   id="category"
                   name="category"
                   options={categoryOptions}
-                  value={selectedCategory}
-                  onChange={option => {
+                  value={selectedCategory || categoryOptions[i]}
+                  onChange={(option) => {
                     setSelectedCategory(option);
-                    setFieldValue('categoryId', option ? option.value : '');
+                    setFieldValue("categoryId", option ? option.value : "");
                   }}
                   placeholder="Select a category"
                 />
@@ -116,7 +134,7 @@ const Expense = ({ closeModal }) => {
             </div>
             <div className={s.buttonContainer}>
               <button type="submit" className={s.expenseAddBtn}>
-                Add
+                {buttonText}
               </button>
               <button
                 type="button"

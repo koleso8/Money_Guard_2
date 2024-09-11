@@ -58,14 +58,20 @@ const TransactionsList = () => {
       </button>
 
       <ModalBackdrop modalType="addTransaction" noCloseButton={false}>
-        <AddTransactionForm closeModal={() => dispatch(closeModal())} />
+        <AddTransactionForm
+          closeModal={() => dispatch(closeModal())}
+          title="Add transaction"
+          buttonText="Add"
+        />
       </ModalBackdrop>
 
       <ModalBackdrop modalType="editTransaction" noCloseButton={false}>
         {editedItem && (
-          <EditTransactionForm
+          <AddTransactionForm
             closeModal={() => dispatch(closeModal())}
-            {...editedItem}
+            editedItem={editedItem}
+            title="Edit transaction"
+            buttonText="Save"
           />
         )}
       </ModalBackdrop>

@@ -6,8 +6,14 @@ import Expense from "./Expense/Expense";
 
 import s from "./AddTransactionForm.module.css";
 
-const AddTransactionForm = ({ closeModal }) => {
-  const [transactionType, setTransactionType] = useState("+");
+const AddTransactionForm = ({ title, closeModal, editedItem, buttonText }) => {
+  const [transactionType, setTransactionType] = useState(() => {
+    if (!editedItem || editedItem.type === "INCOME") {
+      return "+";
+    } else {
+      return "-";
+    }
+  });
 
   const handleChange = (event) => {
     setTransactionType(event.target.checked ? "-" : "+");
@@ -15,7 +21,7 @@ const AddTransactionForm = ({ closeModal }) => {
 
   return (
     <div className={s.addTransactionForm}>
-      <h2 className={s.title}>Add transaction</h2>
+      <h2 className={s.title}>{title}</h2>
       <div
         style={{
           display: "flex",
@@ -40,8 +46,20 @@ const AddTransactionForm = ({ closeModal }) => {
           Expense
         </span>
       </div>
-      {transactionType === "+" && <Income closeModal={closeModal} />}
-      {transactionType === "-" && <Expense closeModal={closeModal} />}
+      {transactionType === "+" && (
+        <Income
+          closeModal={closeModal}
+          editedItem={editedItem}
+          buttonText={buttonText}
+        />
+      )}
+      {transactionType === "-" && (
+        <Expense
+          closeModal={closeModal}
+          editedItem={editedItem}
+          buttonText={buttonText}
+        />
+      )}
     </div>
   );
 };
