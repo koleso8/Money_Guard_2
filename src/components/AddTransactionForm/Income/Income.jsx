@@ -7,17 +7,19 @@ import MyDatePicker from "../DatePicker/DatePicker";
 import s from "./Income.module.css";
 import incomeValidationSchema from "../../../helpers/incomeValidationSchema";
 
-const Income = ({ closeModal }) => {
+const Income = ({ closeModal, editedItem }) => {
   const dispatch = useDispatch();
   const todayDate = new Date().toISOString().split("T")[0];
 
-  const initialValues = {
+  const initialValues = editedItem || {
     transactionDate: todayDate,
     type: "INCOME",
     categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
     comment: "",
     amount: "",
   };
+  console.log("editedItem", editedItem);
+  console.log("initialValues", initialValues);
 
   const handleIncomeSubmit = (values) => {
     dispatch(addTrnThunk(values));

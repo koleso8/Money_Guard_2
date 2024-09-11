@@ -6,7 +6,7 @@ import Expense from "./Expense/Expense";
 
 import s from "./AddTransactionForm.module.css";
 
-const AddTransactionForm = ({ closeModal }) => {
+const AddTransactionForm = ({ title, closeModal, editedItem }) => {
   const [transactionType, setTransactionType] = useState("+");
 
   const handleChange = (event) => {
@@ -15,7 +15,7 @@ const AddTransactionForm = ({ closeModal }) => {
 
   return (
     <div className={s.addTransactionForm}>
-      <h2 className={s.title}>Add transaction</h2>
+      <h2 className={s.title}>{title}</h2>
       <div
         style={{
           display: "flex",
@@ -40,8 +40,12 @@ const AddTransactionForm = ({ closeModal }) => {
           Expense
         </span>
       </div>
-      {transactionType === "+" && <Income closeModal={closeModal} />}
-      {transactionType === "-" && <Expense closeModal={closeModal} />}
+      {transactionType === "+" && (
+        <Income closeModal={closeModal} editedItem={editedItem} />
+      )}
+      {transactionType === "-" && (
+        <Expense closeModal={closeModal} editedItem={editedItem} />
+      )}
     </div>
   );
 };

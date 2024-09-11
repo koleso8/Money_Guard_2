@@ -1,35 +1,35 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import Select from 'react-select';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import Select from "react-select";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectCategories } from '../../../redux/transactions/selector';
-import { addTrnThunk } from '../../../redux/transactions/operations';
-import MyDatePicker from '../DatePicker/DatePicker';
+import { selectCategories } from "../../../redux/transactions/selector";
+import { addTrnThunk } from "../../../redux/transactions/operations";
+import MyDatePicker from "../DatePicker/DatePicker";
 
-import expenseValidationSchema from '../../../helpers/expenseValidationSchema';
-import s from './Expense.module.css';
+import expenseValidationSchema from "../../../helpers/expenseValidationSchema";
+import s from "./Expense.module.css";
 
-const Expense = ({ closeModal }) => {
-  const todayDate = new Date().toISOString().split('T')[0];
+const Expense = ({ closeModal, editedItem }) => {
+  const todayDate = new Date().toISOString().split("T")[0];
   const [selectedCategory, setSelectedCategory] = useState(null);
   const categoriesArr = useSelector(selectCategories);
   const dispatch = useDispatch();
 
-  const categoryOptions = categoriesArr.slice(0, -1).map(category => ({
+  const categoryOptions = categoriesArr.slice(0, -1).map((category) => ({
     value: category.id,
     label: category.name,
   }));
 
-  const initialValues = {
+  const initialValues = editedItem || {
     transactionDate: todayDate,
-    type: 'EXPENSE',
-    categoryId: '',
-    comment: '',
-    amount: '',
+    type: "EXPENSE",
+    categoryId: "",
+    comment: "",
+    amount: "",
   };
 
-  const handleExpenseSubmit = values => {
+  const handleExpenseSubmit = (values) => {
     const formattedValues = {
       ...values,
       amount: values.amount > 0 ? -values.amount : values.amount,
@@ -58,9 +58,9 @@ const Expense = ({ closeModal }) => {
                   name="category"
                   options={categoryOptions}
                   value={selectedCategory}
-                  onChange={option => {
+                  onChange={(option) => {
                     setSelectedCategory(option);
-                    setFieldValue('categoryId', option ? option.value : '');
+                    setFieldValue("categoryId", option ? option.value : "");
                   }}
                   placeholder="Select a category"
                 />
