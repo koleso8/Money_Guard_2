@@ -7,6 +7,8 @@ import PasswordStrengthBar from 'react-password-strength-bar';
 import Icon from '../Icon/Icon';
 import { Toaster } from 'react-hot-toast';
 import validationSchema from '../../helpers/registrationSchema';
+import { useState } from 'react';
+import clsx from 'clsx';
 
 export const RegistrationForm = () => {
   const dispath = useDispatch();
@@ -15,6 +17,28 @@ export const RegistrationForm = () => {
     email: '',
     password: '',
     confirmPass: '',
+  };
+
+  const [pass, setPass] = useState('password');
+
+  const iconColor = clsx({
+    [s.PassClose]: pass === 'password',
+    [s.PassOpen]: pass === 'text',
+  });
+
+  const [coPass, setCoPass] = useState('password');
+
+  const iconPassColor = clsx({
+    [s.PassClose]: coPass === 'password',
+    [s.PassOpen]: coPass === 'text',
+  });
+
+  const handleClick = () => {
+    setPass(prevState => (prevState == 'password' ? 'text' : 'password'));
+  };
+
+  const handlePassClick = () => {
+    setCoPass(prevState => (prevState == 'password' ? 'text' : 'password'));
   };
 
   const handleSubmit = (values, options) => {
@@ -92,9 +116,16 @@ export const RegistrationForm = () => {
                       <Field
                         autoComplete="new-password"
                         name="password"
-                        type="password"
+                        type={pass}
                         placeholder="Password"
                         className={s.input}
+                      />
+                      <Icon
+                        onClick={handleClick}
+                        width={27}
+                        height={27}
+                        className={iconColor}
+                        name="icon-eye"
                       />
                       <ErrorMessage
                         name="password"
@@ -113,9 +144,16 @@ export const RegistrationForm = () => {
                       <Field
                         autoComplete="new-password"
                         name="confirmPass"
-                        type="password"
+                        type={coPass}
                         placeholder="ConfirmPass"
                         className={s.input}
+                      />
+                      <Icon
+                        onClick={handlePassClick}
+                        width={27}
+                        height={27}
+                        className={iconPassColor}
+                        name="icon-eye"
                       />
                       <ErrorMessage
                         name="confirmPass"
