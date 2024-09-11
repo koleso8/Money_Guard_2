@@ -162,7 +162,7 @@
 
 .error_second {
   position: absolute;
-  top: 44px;
+  top: 50px;
   left: 0px;
   color: var(--dashboard_text);
 }
