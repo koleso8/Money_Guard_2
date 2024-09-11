@@ -15,7 +15,6 @@ export const LoginForm = () => {
   };
 
   const handleSubmit = (values, options) => {
-    console.log(values);
     dispath(loginThunk(values));
     options.resetForm();
   };
@@ -44,6 +43,7 @@ export const LoginForm = () => {
                     name="icon-emailForm"
                   />
                   <Field
+                    autoComplete="email"
                     name="email"
                     type="email"
                     placeholder="E-mail"
@@ -64,6 +64,7 @@ export const LoginForm = () => {
                     name="icon-passwordForm"
                   />
                   <Field
+                    autoComplete="new-password"
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -77,7 +78,9 @@ export const LoginForm = () => {
                   <div className={s.line}></div>
                 </div>
                 <div className={s.wrap_button}>
-                  <button className={s.btn_first}>Log in</button>
+                  <button type="submit" className={s.btn_first}>
+                    Log in
+                  </button>
                   <label>
                     <Link to="/register" className={s.btn_second}>
                       Register

@@ -1,18 +1,18 @@
-import { Suspense } from 'react';
-import Header from '../Header/Header';
-import { Outlet } from 'react-router-dom';
-import Dashboard from '../Dashboard/Dashboard';
-import clsx from 'clsx';
-import s from './Layout.module.css';
-import { Toaster } from 'react-hot-toast';
+import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import clsx from 'clsx';
 
-import { useEffect } from 'react';
+import Header from '../Header/Header';
+import Dashboard from '../Dashboard/Dashboard';
+import Loader from '../../Loader/Loader';
+
 import {
   fetchAllTrnThunk,
   getCategoriesThunk,
 } from '../../redux/transactions/operations';
-import Loader from '../../Loader/Loader';
+import s from './Layout.module.css';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -23,13 +23,13 @@ export const Layout = () => {
   }, [dispatch]);
 
   return (
-    <div className={clsx(s.page)}>
+    <div className={s.page}>
       <Toaster position="top-right" />
 
       <Header />
-      <main className={clsx(s.main)}>
+      <main className={s.main}>
         <Dashboard />
-        <div className={clsx(s.outlet)}>
+        <div className={s.outlet}>
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>

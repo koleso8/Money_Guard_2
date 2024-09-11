@@ -18,7 +18,6 @@ export const RegistrationForm = () => {
   };
 
   const handleSubmit = (values, options) => {
-    console.log(values);
     delete values.confirmPass;
     dispath(registerThunk(values));
     options.resetForm();
@@ -50,6 +49,7 @@ export const RegistrationForm = () => {
                         name="icon-userFrom"
                       />
                       <Field
+                        autoComplete="username"
                         name="username"
                         placeholder="Name"
                         className={s.input}
@@ -69,6 +69,7 @@ export const RegistrationForm = () => {
                         name="icon-emailForm"
                       />
                       <Field
+                        autoComplete="email"
                         name="email"
                         type="email"
                         placeholder="E-mail"
@@ -89,6 +90,7 @@ export const RegistrationForm = () => {
                         name="icon-passwordForm"
                       />
                       <Field
+                        autoComplete="new-password"
                         name="password"
                         type="password"
                         placeholder="Password"
@@ -109,6 +111,7 @@ export const RegistrationForm = () => {
                         name="icon-passwordForm"
                       />
                       <Field
+                        autoComplete="new-password"
                         name="confirmPass"
                         type="password"
                         placeholder="ConfirmPass"
@@ -137,7 +140,9 @@ export const RegistrationForm = () => {
                     </div>
                   </div>
                   <div>
-                    <button className={s.btn_first}>Register</button>
+                    <button type="submit" className={s.btn_first}>
+                      Register
+                    </button>
                     <label>
                       <Link to="/login" className={s.btn_second}>
                         Log in

@@ -1,16 +1,21 @@
-import clsx from 'clsx';
-import s from './CurrencyTab.module.css';
-import Currency from '../../components/Currency/Currency';
-import { useScreenWidth } from '../../hooks/useScreenWidth';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+import Currency from '../../components/Currency/Currency';
+
+import { useScreenWidth } from '../../hooks/useScreenWidth';
+import s from './CurrencyTab.module.css';
 
 const CurrencyTab = () => {
   const navigate = useNavigate();
   const { isSmallScreen } = useScreenWidth();
-  !isSmallScreen && navigate('/', { replace: true });
+
+  useEffect(() => {
+    !isSmallScreen && navigate('/', { replace: true });
+  }, [isSmallScreen, navigate]);
 
   return (
-    <div className={clsx(s.wrapper)}>
+    <div className={s.wrapper}>
       <Currency />
     </div>
   );

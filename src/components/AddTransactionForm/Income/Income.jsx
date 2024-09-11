@@ -1,87 +1,87 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import clsx from 'clsx';
-import s from './Income.module.css';
-import incomeValidationSchema from '../../../helpers/incomeValidationSchema';
-import { useDispatch } from 'react-redux';
-import { addTrnThunk } from '../../../redux/transactions/operations';
-import MyDatePicker from '../DatePicker/DatePicker';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+
+import { addTrnThunk } from "../../../redux/transactions/operations";
+import MyDatePicker from "../DatePicker/DatePicker";
+
+import s from "./Income.module.css";
+import incomeValidationSchema from "../../../helpers/incomeValidationSchema";
 
 const Income = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const todayDate = new Date().toISOString().split('T')[0];
+  const todayDate = new Date().toISOString().split("T")[0];
 
   const initialValues = {
     transactionDate: todayDate,
-    type: 'INCOME',
-    categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
-    comment: '',
-    amount: '',
+    type: "INCOME",
+    categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+    comment: "",
+    amount: "",
   };
 
-  const handleIncomeSubmit = values => {
-    console.log(values);
+  const handleIncomeSubmit = (values) => {
     dispatch(addTrnThunk(values));
     closeModal();
   };
 
   return (
-    <div className={clsx(s.formBox)}>
+    <div className={s.formBox}>
       <Formik
         initialValues={initialValues}
         onSubmit={handleIncomeSubmit}
         validationSchema={incomeValidationSchema}
       >
         {() => (
-          <Form className={clsx(s.incomeForm)}>
-            <div className={clsx(s.sumDateContainer)}>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div className={clsx(s.sdWrapper)}>
+          <Form className={s.incomeForm}>
+            <div className={s.sumDateContainer}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div className={s.sdWrapper}>
                   <Field
                     name="amount"
                     type="number"
                     placeholder="0.00"
-                    className={clsx(s.incomeSum)}
+                    className={s.incomeSum}
                   />
                 </div>
                 <ErrorMessage
                   name="amount"
                   component="span"
-                  className={clsx(s.error)}
+                  className={s.error}
                 />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div className={clsx(s.sdWrapper)}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div className={s.sdWrapper}>
                   <MyDatePicker name="transactionDate" />
                 </div>
                 <ErrorMessage
                   name="transactionDate"
                   component="span"
-                  className={clsx(s.error)}
+                  className={s.error}
                 />
               </div>
             </div>
-            <div className={clsx(s.commentContainer)}>
-              <div className={clsx(s.commentWrapper)}>
+            <div className={s.commentContainer}>
+              <div className={s.commentWrapper}>
                 <Field
                   name="comment"
                   type="text"
                   placeholder="Comment"
-                  className={clsx(s.incomeComment)}
+                  className={s.incomeComment}
                 />
               </div>
               <ErrorMessage
                 name="comment"
                 component="span"
-                className={clsx(s.error)}
+                className={s.error}
               />
             </div>
-            <div className={clsx(s.buttonContainer)}>
-              <button type="submit" className={clsx(s.incomeAddBtn)}>
+            <div className={s.buttonContainer}>
+              <button type="submit" className={s.incomeAddBtn}>
                 Add
               </button>
               <button
                 type="button"
-                className={clsx(s.incomeCnclBtn)}
+                className={s.incomeCnclBtn}
                 onClick={closeModal}
               >
                 Cancel

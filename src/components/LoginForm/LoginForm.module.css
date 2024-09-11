@@ -156,7 +156,7 @@
 
 .error {
   position: absolute;
-  top: 30px;
+  top: 40px;
   left: 0px;
   color: var(--dashboard_text);
 }
@@ -197,6 +197,7 @@
 }
 
 .btn_first {
+  transition: all 150ms ease-in;
   border-radius: 20px;
   border: none;
   width: 280px;
@@ -235,7 +236,7 @@
 }
 
 .btn_second {
-  border: 1px solid #4a56e2;
+  transition: all 150ms ease-in;
   border-radius: 20px;
   width: 280px;
   height: 50px;

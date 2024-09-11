@@ -1,19 +1,18 @@
-import clsx from "clsx";
-
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
-import { NavLink } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import Icon from "../Icon/Icon";
+
+import { selectUser } from "../../redux/auth/selectors";
 import { logoutThunk } from "../../redux/auth/operations";
 import {
   setHeaderHeight,
   openModal,
   closeModal,
 } from "../../redux/modal/slice";
-import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
-import Icon from "../Icon/Icon";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
-
 import s from "./Header.module.css";
 
 const Header = () => {
@@ -37,16 +36,16 @@ const Header = () => {
   };
 
   return (
-    <div className={clsx(s.container)} ref={headerRef}>
+    <div className={s.container} ref={headerRef}>
       <NavLink to="/">
-        <div className={clsx(s.logo)}>
-          <Icon name="logo2" className={clsx(s.logosvg)} />
-          <p className={clsx(s.title)}>Money Guard</p>
+        <div className={s.logo}>
+          <Icon name="logo2" className={s.logosvg} />
+          <p className={s.title}>Money Guard</p>
         </div>
       </NavLink>
-      <div className={clsx(s.logout)}>
-        <p className={clsx(s.username)}>{user.username}</p>
-        <button className={clsx(s.logoutButton)} onClick={handleLogout}>
+      <div className={s.logout}>
+        <p className={s.username}>{user.username}</p>
+        <button className={s.logoutButton} onClick={handleLogout}>
           <Icon name="logout" />
           {!isSmallScreen && "Exit"}
         </button>
@@ -55,9 +54,9 @@ const Header = () => {
       <ModalBackdrop modalType="logoutConfirmation">
         <div className={s.back}>
           <div className={s.modalContent}>
-            <div className={clsx(s.logoModal)}>
-              <Icon name="logo2" className={clsx(s.logosvgModal)} />
-              <p className={clsx(s.titleModal)}>Money Guard</p>
+            <div className={s.logoModal}>
+              <Icon name="logo2" className={s.logosvgModal} />
+              <p className={s.titleModal}>Money Guard</p>
             </div>
 
             <p className={s.modalText}>Are you sure you want to log out?</p>

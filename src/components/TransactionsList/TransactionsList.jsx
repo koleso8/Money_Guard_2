@@ -1,14 +1,15 @@
-import clsx from 'clsx';
-import s from './TransactionsList.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectTransactions } from '../../redux/transactions/selector';
-import TransactionsItem from '../TransactionsItem/TransactionsItem';
-import { FiPlus } from 'react-icons/fi';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
-import EditTransactionForm from '../EditTransactionForm/EditTransactionForm';
-import { openModal, closeModal } from '../../redux/modal/slice';
-import { useState } from 'react';
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { openModal, closeModal } from "../../redux/modal/slice";
+import { selectTransactions } from "../../redux/transactions/selector";
+import TransactionsItem from "../TransactionsItem/TransactionsItem";
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
+import EditTransactionForm from "../EditTransactionForm/EditTransactionForm";
+
+import { FiPlus } from "react-icons/fi";
+import s from "./TransactionsList.module.css";
 
 const TransactionsList = () => {
   const allTransactions = useSelector(selectTransactions)
@@ -21,29 +22,29 @@ const TransactionsList = () => {
 
   const openAddModal = () => {
     setEditedItem(null);
-    dispatch(openModal('addTransaction'));
+    dispatch(openModal("addTransaction"));
   };
 
-  const openEditModal = item => {
+  const openEditModal = (item) => {
     setEditedItem(item);
-    dispatch(openModal('editTransaction'));
+    dispatch(openModal("editTransaction"));
   };
 
   return (
-    <div className={clsx(s.transactionListBox)}>
-      <table className={clsx(s.table)}>
-        <thead className={clsx(s.thead)}>
-          <tr className={clsx(s.tableHeader)}>
-            <th className={clsx(s.date)}>Date</th>
-            <th className={clsx(s.type)}>Type</th>
-            <th className={clsx(s.category)}>Category</th>
-            <th className={clsx(s.comment)}>Comment</th>
-            <th className={clsx(s.sum)}>Sum</th>
-            <th className={clsx(s.actions)}></th>
+    <div className={s.transactionListBox}>
+      <table className={s.table}>
+        <thead className={s.thead}>
+          <tr className={s.tableHeader}>
+            <th className={s.date}>Date</th>
+            <th className={s.type}>Type</th>
+            <th className={s.category}>Category</th>
+            <th className={s.comment}>Comment</th>
+            <th className={s.sum}>Sum</th>
+            <th className={s.actions}></th>
           </tr>
         </thead>
-        <tbody className={clsx(s.tableBody)}>
-          {allTransactions.map(item => (
+        <tbody className={s.tableBody}>
+          {allTransactions.map((item) => (
             <TransactionsItem
               key={item.id}
               {...item}
@@ -52,11 +53,7 @@ const TransactionsList = () => {
           ))}
         </tbody>
       </table>
-      <button
-        type="button"
-        className={clsx(s.addTrnBtn)}
-        onClick={openAddModal}
-      >
+      <button type="button" className={s.addTrnBtn} onClick={openAddModal}>
         <FiPlus size={30} color="fff" />
       </button>
 

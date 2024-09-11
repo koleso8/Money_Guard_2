@@ -1,3 +1,3 @@
-Додаток для обліку фінансів [WebSite](https://money-guard-2.vercel.app/)
+<a href='https://money-guard-2.vercel.app/'>Додаток для обліку фінансів</a>
 
-<img width="1000px" src="./src/images/MG_READ.webp" alt="qr"/>
+<img src="./src/images/LOGO_README.jpg" alt="qr"/>

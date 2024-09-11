@@ -4,8 +4,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 }
 
+@media (max-width: 767px) {
+  .addTransactionForm {
+    gap: 40px;
+  }
+}
+.title {
+  font-weight: 100;
+  letter-spacing: 2px;
+}
 .income {
   color: var(--yellow);
 }
@@ -14,4 +24,69 @@
 }
 .opt {
   font-weight: 600;
+}
+.opt:first-child {
+  margin-right: 20px;
+}
+.opt:last-child {
+  margin-left: 20px;
+}
+/* From Uiverse.io by ClawHack1 */
+/* Genel stil */
+.toggle_switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+}
+
+/* Giriş stil */
+.toggle_switch .toggle_input {
+  display: none;
+}
+
+/* Anahtarın stilinin etrafındaki etiketin stil */
+.toggle_switch .toggle_label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+/* Anahtarın yuvarlak kısmının stil */
+.toggle_switch .toggle_label::before {
+  content: '+';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  top: -2px;
+  left: -2px;
+  background-color: var(--yellow);
+  box-shadow: 0 6px 15px 0 rgba(255, 199, 39, 0.5);
+  transition: transform 0.3s;
+}
+
+/* Anahtarın etkin hale gelmesindeki stil değişiklikleri */
+.toggle_switch .toggle_input:checked + .toggle_label {
+  background-color: #ffffff;
+}
+
+.toggle_switch .toggle_input:checked + .toggle_label::before {
+  background-color: var(--dashboard_text);
+  box-shadow: 0 6px 15px 0 rgba(255, 134, 141, 0.5);
+
+  content: '—';
+  transform: translateX(40px);
 }
