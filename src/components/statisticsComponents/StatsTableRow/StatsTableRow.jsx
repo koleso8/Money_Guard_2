@@ -1,5 +1,6 @@
-import s from "../StatisticsTable/StatisticsTable.module.css";
 import { formatNumber } from "../numbersFormatting";
+
+import s from "../StatisticsTable/StatisticsTable.module.css";
 
 export const StatsTableRow = ({ category, amount }) => {
   return (

@@ -1,6 +1,7 @@
+import clsx from 'clsx';
+
 import s from './Loader.module.css';
 import a from '../components/Layout/Layout.module.css';
-import clsx from 'clsx';
 
 const Loader = () => {
   return (

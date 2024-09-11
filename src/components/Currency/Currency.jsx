@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
-import s from './Currency.module.css';
+
+import CurrencyAreaChart from './CurrencyAreaChart';
+
 import {
   selectCurrencies,
   selectLastRequestTime,
 } from '../../redux/currency/selectors';
 import { fetchCurrencies } from '../../redux/currency/operations';
-import CurrencyChart from '../CurrencyChart/CurrencyChart';
+import s from './Currency.module.css';
 
 const Currency = () => {
   const dispatch = useDispatch();
@@ -15,13 +17,41 @@ const Currency = () => {
   const lastRequestTime = useSelector(selectLastRequestTime);
 
   const currenciesForChart = [
-    currencies[0]?.rateBuy.toFixed(2) - 10,
-    currencies[0]?.rateBuy.toFixed(2),
-    currencies[1]?.rateBuy.toFixed(2) - 25,
-    currencies[1]?.rateBuy.toFixed(2) - 20,
-    currencies[1]?.rateBuy.toFixed(2) - 10,
-    currencies[1]?.rateBuy.toFixed(2),
-    currencies[1]?.rateBuy.toFixed(2) - 6,
+    {
+      name: 'Point 1',
+      showDot: false,
+      uv: currencies[0]?.rateBuy.toFixed(2) * 0.7,
+    },
+    {
+      name: 'Point 2',
+      showDot: true,
+      uv: currencies[0]?.rateBuy.toFixed(2),
+    },
+    {
+      name: 'Point 3',
+      showDot: false,
+      uv: currencies[1]?.rateBuy.toFixed(2) * 0.5,
+    },
+    {
+      name: 'Point 4',
+      showDot: false,
+      uv: currencies[1]?.rateBuy.toFixed(2) * 0.6,
+    },
+    {
+      name: 'Point 5',
+      showDot: false,
+      uv: currencies[1]?.rateBuy.toFixed(2) * 0.8,
+    },
+    {
+      name: 'Point 6',
+      showDot: true,
+      uv: currencies[1]?.rateBuy.toFixed(2),
+    },
+    {
+      name: 'Point 7',
+      showDot: false,
+      uv: currencies[1]?.rateBuy.toFixed(2) - 6,
+    },
   ];
 
   useEffect(() => {
@@ -34,8 +64,8 @@ const Currency = () => {
   }, [dispatch, lastRequestTime]);
 
   return (
-    <div className={clsx(s.wrapper)}>
-      <table className={clsx(s.table)}>
+    <div className={s.wrapper}>
+      <table className={s.table}>
         <thead>
           <tr className={clsx(s.row, s.mainRow)}>
             <th className={clsx(s.item, s.mainItem)}>Currency</th>
@@ -44,63 +74,27 @@ const Currency = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className={clsx(s.row)}>
-            <td className={clsx(s.item)}>USD</td>
-            <td className={clsx(s.item)}>
+          <tr className={s.row}>
+            <td className={s.item}>USD</td>
+            <td className={s.item}>
               {currencies[0]?.rateBuy.toFixed(2) ?? 'no data'}
             </td>
-            <td className={clsx(s.item)}>
+            <td className={s.item}>
               {currencies[0]?.rateSell.toFixed(2) ?? 'no data'}
             </td>
           </tr>
-          <tr className={clsx(s.row)}>
-            <td className={clsx(s.item)}>EUR</td>
-            <td className={clsx(s.item)}>
+          <tr className={s.row}>
+            <td className={s.item}>EUR</td>
+            <td className={s.item}>
               {currencies[1]?.rateBuy.toFixed(2) ?? 'no data'}
             </td>
-            <td className={clsx(s.item)}>
+            <td className={s.item}>
               {currencies[1]?.rateSell.toFixed(2) ?? 'no data'}
             </td>
           </tr>
         </tbody>
       </table>
-      <div className={clsx(s.diagramBox)}>
-        {/* <span className={clsx(s.pointNumber, s.pointFirst)}>
-          {currencies[0]?.rateBuy.toFixed(2) ?? ''}
-        </span>
-        <span className={clsx(s.pointNumber, s.pointSecond)}>
-          {currencies[1]?.rateBuy.toFixed(2) ?? ''}
-        </span> */}
-        {/* <picture>
-          <source
-            media="(min-width: 1440px)"
-            srcSet={'.' + graphDesktop1x + ' 2x, ' + graphDesktop2x + ' 2x'}
-            type="image/webp"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcSet={'.' + graphTablet1x + ' 2x, ' + graphTablet2x + ' 2x'}
-            type="image/webp"
-          />
-          <source
-            media="(max-width: 767px)"
-            srcSet={'.' + graphMobile1x + ' 2x, ' + graphMobile2x + ' 2x'}
-            type="image/webp"
-          />
-          <img
-            className={clsx(s.diagram)}
-            src={graphDesktop1x}
-            alt="diagram"
-            loading="lazy"
-          />
-        </picture> */}
-        <div className={clsx(s.chartWrapper)}>
-          <CurrencyChart
-            labels={currenciesForChart}
-            dataSet={currenciesForChart}
-          />
-        </div>
-      </div>
+      <CurrencyAreaChart data={currenciesForChart} />
     </div>
   );
 };

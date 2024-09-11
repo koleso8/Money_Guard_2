@@ -41,7 +41,6 @@ export const store = configureStore({
     currency: currencyPersistedReducer,
     transactions: transactionsReducer,
     modal: modalReducer,
-    // editing: editingReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

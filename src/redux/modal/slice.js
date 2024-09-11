@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   headerHeight: 0,
+  activeModal: null,
 };
 
 const slice = createSlice({
@@ -11,8 +12,14 @@ const slice = createSlice({
     setHeaderHeight: (state, action) => {
       state.headerHeight = action.payload;
     },
+    openModal: (state, action) => {
+      state.activeModal = action.payload;
+    },
+    closeModal: state => {
+      state.activeModal = null;
+    },
   },
 });
 
 export const modalReducer = slice.reducer;
-export const { setHeaderHeight } = slice.actions;
+export const { setHeaderHeight, openModal, closeModal } = slice.actions;

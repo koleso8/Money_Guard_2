@@ -2,13 +2,14 @@ import { useField } from "formik";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./DatePicker.module.css";
-import clsx from "clsx";
 
 const MyDatePicker = ({ name }) => {
   const [field, meta, helpers] = useField(name);
 
+  const today = new Date();
+
   return (
-    <div className={clsx(s.datePickerContainer)}>
+    <div className={s.datePickerContainer}>
       <DatePicker
         {...field}
         selected={field.value ? new Date(field.value) : null}
@@ -16,9 +17,11 @@ const MyDatePicker = ({ name }) => {
           helpers.setValue(date ? date.toISOString().split("T")[0] : "")
         }
         dateFormat="dd.MM.yyyy"
-        className={clsx(s.picker)}
+        className={s.picker}
+        maxDate={today}
+        calendarStartDay={1}
       />
-      <div className={clsx(s.iconContainer)}>
+      <div className={s.iconContainer}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

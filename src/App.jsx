@@ -1,14 +1,14 @@
 import { lazy, Suspense, useEffect } from 'react';
-import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
+import Loader from './Loader/Loader';
+import { PrivateRoute } from './components/PrivateRoute';
+import { PublicRoute } from './components/PublicRoute';
 
-import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from './redux/auth/operations';
 import { selectIsRefreshing } from './redux/auth/selectors';
-import Loader from './Loader/Loader';
+
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const RegistrationPage = lazy(() =>
@@ -22,6 +22,7 @@ const StatisticsTab = lazy(() => import('./pages/StatisticsTab/StatisticsTab'));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
@@ -29,7 +30,7 @@ function App() {
   return isRefreshing ? (
     <Loader />
   ) : (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route
           path="/"
