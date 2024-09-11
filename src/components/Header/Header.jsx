@@ -1,19 +1,19 @@
-import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
-import Icon from '../Icon/Icon';
+import ModalBackdrop from "../ModalBackdrop/ModalBackdrop";
+import Icon from "../Icon/Icon";
 
-import { selectUser } from '../../redux/auth/selectors';
-import { logoutThunk } from '../../redux/auth/operations';
+import { selectUser } from "../../redux/auth/selectors";
+import { logoutThunk } from "../../redux/auth/operations";
 import {
   setHeaderHeight,
   openModal,
   closeModal,
-} from '../../redux/modal/slice';
-import { useScreenWidth } from '../../hooks/useScreenWidth';
-import s from './Header.module.css';
+} from "../../redux/modal/slice";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
+import s from "./Header.module.css";
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -28,7 +28,7 @@ const Header = () => {
   }, [dispatch]);
 
   const handleLogout = () => {
-    dispatch(openModal('logoutConfirmation'));
+    dispatch(openModal("logoutConfirmation"));
   };
 
   const closeModalHandler = () => {
@@ -47,7 +47,7 @@ const Header = () => {
         <p className={s.username}>{user.username}</p>
         <button className={s.logoutButton} onClick={handleLogout}>
           <Icon name="logout" />
-          {!isSmallScreen && 'Exit'}
+          {!isSmallScreen && "Exit"}
         </button>
       </div>
 
