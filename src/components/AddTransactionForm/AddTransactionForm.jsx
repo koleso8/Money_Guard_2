@@ -6,8 +6,14 @@ import Expense from "./Expense/Expense";
 
 import s from "./AddTransactionForm.module.css";
 
-const AddTransactionForm = ({ title, closeModal, editedItem }) => {
-  const [transactionType, setTransactionType] = useState("+");
+const AddTransactionForm = ({ title, closeModal, editedItem, buttonText }) => {
+  const [transactionType, setTransactionType] = useState(() => {
+    if (!editedItem || editedItem.type === "INCOME") {
+      return "+";
+    } else {
+      return "-";
+    }
+  });
 
   const handleChange = (event) => {
     setTransactionType(event.target.checked ? "-" : "+");
@@ -41,10 +47,18 @@ const AddTransactionForm = ({ title, closeModal, editedItem }) => {
         </span>
       </div>
       {transactionType === "+" && (
-        <Income closeModal={closeModal} editedItem={editedItem} />
+        <Income
+          closeModal={closeModal}
+          editedItem={editedItem}
+          buttonText={buttonText}
+        />
       )}
       {transactionType === "-" && (
-        <Expense closeModal={closeModal} editedItem={editedItem} />
+        <Expense
+          closeModal={closeModal}
+          editedItem={editedItem}
+          buttonText={buttonText}
+        />
       )}
     </div>
   );
