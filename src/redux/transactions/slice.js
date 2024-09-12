@@ -20,6 +20,7 @@ const initialState = {
   error: null,
   currentTransaction: null,
   categories: [],
+  balance: null,
 };
 
 const transactionsSlice = createSlice({
@@ -38,6 +39,10 @@ const transactionsSlice = createSlice({
     builder
       .addCase(fetchAllTrnThunk.fulfilled, (state, { payload }) => {
         state.items = payload;
+        const balance = payload.reduce((sum, e) => {
+          return sum + e.amount;
+        }, 0);
+        state.balance = +balance;
       })
       .addCase(fetchPeriodTrnThunk.fulfilled, (state, { payload }) => {
         state.periodTransactions = payload;

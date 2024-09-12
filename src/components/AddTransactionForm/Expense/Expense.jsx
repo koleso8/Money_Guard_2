@@ -41,16 +41,11 @@ const Expense = ({ closeModal, editedItem, buttonText }) => {
       };
 
   const handleExpenseSubmit = (values) => {
-    const formattedValues = {
-      ...values,
-      amount: values.amount > 0 ? -values.amount : values.amount,
-    };
+    values.amount = Math.abs(values.amount) * -1;
     if (editedItem) {
-      dispatch(
-        evoEditTrnThunk({ transaction: formattedValues, id: editedItem.id })
-      );
+      dispatch(evoEditTrnThunk({ transaction: values, id: editedItem.id }));
     } else {
-      dispatch(addTrnThunk(formattedValues));
+      dispatch(addTrnThunk(values));
     }
     closeModal();
   };

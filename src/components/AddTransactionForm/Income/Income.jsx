@@ -31,8 +31,9 @@ const Income = ({ closeModal, editedItem, buttonText }) => {
       };
 
   const handleIncomeSubmit = (values) => {
+    values.amount = Math.abs(values.amount);
     if (editedItem) {
-      dispatch(evoEditTrnThunk({ ...editedItem, id: editedItem.id }));
+      dispatch(evoEditTrnThunk({ ...values, id: editedItem.id }));
     } else {
       dispatch(addTrnThunk(values));
     }

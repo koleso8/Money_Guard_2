@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import AnimatedNumber from '../AnimatedNumber/AnimatedNumber';
+import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 
-import { selectBalance } from '../../redux/auth/selectors';
-import s from './Balance.module.css';
+import { selectBalance } from "../../redux/transactions/selector";
+import s from "./Balance.module.css";
 
 const Balance = () => {
   const currentBalance = useSelector(selectBalance);

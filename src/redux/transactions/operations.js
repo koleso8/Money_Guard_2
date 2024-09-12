@@ -38,7 +38,7 @@ export const addTrnThunk = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { data } = await goitApi.post("/api/transactions", transaction);
-      await thunkAPI.dispatch(getBalanceThunk());
+      // await thunkAPI.dispatch(getBalanceThunk());
       toast.success("Transaction added!", toastStyles);
 
       return data;
@@ -62,7 +62,7 @@ export const editTrnThunk = createAsyncThunk(
         comment,
         amount,
       });
-      await thunkAPI.dispatch(getBalanceThunk());
+      // await thunkAPI.dispatch(getBalanceThunk());
       toast.success("transaction was modified!", toastStyles);
       return data;
     } catch (error) {
@@ -77,7 +77,7 @@ export const deleteTrnThunk = createAsyncThunk(
   async (transactionId, thunkAPI) => {
     try {
       await goitApi.delete(`/api/transactions/${transactionId}`);
-      await thunkAPI.dispatch(getBalanceThunk());
+      // await thunkAPI.dispatch(getBalanceThunk());
       toast.success("transaction was deleted!", toastStyles);
       return transactionId;
     } catch (error) {
@@ -105,7 +105,7 @@ export const evoEditTrnThunk = createAsyncThunk(
     try {
       await goitApi.post("/api/transactions", obj.transaction);
       await goitApi.delete(`/api/transactions/${obj.id}`);
-      await thunkAPI.dispatch(getBalanceThunk());
+      // await thunkAPI.dispatch(getBalanceThunk());
 
       const { data } = await goitApi.get("/api/transactions");
 
