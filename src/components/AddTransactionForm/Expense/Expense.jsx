@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../../redux/transactions/selector";
 import {
   addTrnThunk,
-  deleteTrnThunk,
+  evoEditTrnThunk,
 } from "../../../redux/transactions/operations";
 import MyDatePicker from "../DatePicker/DatePicker";
 
@@ -45,10 +45,13 @@ const Expense = ({ closeModal, editedItem, buttonText }) => {
       ...values,
       amount: values.amount > 0 ? -values.amount : values.amount,
     };
-    if (editedItem) dispatch(deleteTrnThunk(editedItem.id));
-    console.log(formattedValues);
-
-    dispatch(addTrnThunk(formattedValues));
+    if (editedItem) {
+      dispatch(
+        evoEditTrnThunk({ transaction: formattedValues, id: editedItem.id })
+      );
+    } else {
+      dispatch(addTrnThunk(formattedValues));
+    }
     closeModal();
   };
 

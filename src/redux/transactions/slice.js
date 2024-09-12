@@ -3,6 +3,7 @@ import {
   addTrnThunk,
   deleteTrnThunk,
   editTrnThunk,
+  evoEditTrnThunk,
   fetchAllTrnThunk,
   fetchPeriodTrnThunk,
   getCategoriesThunk,
@@ -62,12 +63,16 @@ const transactionsSlice = createSlice({
       .addCase(deleteTrnThunk.fulfilled, (state, { payload }) => {
         state.items = state.items.filter((trn) => trn.id !== payload);
       })
+      .addCase(evoEditTrnThunk.fulfilled, (state, { payload }) => {
+        state.items = payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchAllTrnThunk.pending,
           fetchPeriodTrnThunk.pending,
           addTrnThunk.pending,
-          deleteTrnThunk.pending
+          deleteTrnThunk.pending,
+          evoEditTrnThunk.pending
         ),
         (state) => {
           state.loading = true;
@@ -79,7 +84,8 @@ const transactionsSlice = createSlice({
           fetchAllTrnThunk.fulfilled,
           fetchPeriodTrnThunk.fulfilled,
           addTrnThunk.fulfilled,
-          deleteTrnThunk.fulfilled
+          deleteTrnThunk.fulfilled,
+          evoEditTrnThunk.fulfilled
         ),
         (state) => {
           state.loading = false;
@@ -92,7 +98,8 @@ const transactionsSlice = createSlice({
           fetchAllTrnThunk.rejected,
           fetchPeriodTrnThunk.rejected,
           addTrnThunk.rejected,
-          deleteTrnThunk.rejected
+          deleteTrnThunk.rejected,
+          evoEditTrnThunk.rejected
         ),
         (state) => {
           state.loading = false;
