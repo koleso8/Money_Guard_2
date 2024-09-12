@@ -163,7 +163,7 @@ export const RegistrationForm = () => {
                       <div className={s.line}></div>
                       <PasswordStrengthBar
                         className={s.bar}
-                        password={values.confirmPass}
+                        password={values.password}
                         scoreWords={['', '', '', '', '']}
                         shortScoreWord={['']}
                         barColors={[
