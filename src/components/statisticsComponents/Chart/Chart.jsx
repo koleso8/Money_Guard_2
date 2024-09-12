@@ -3,7 +3,7 @@ import { Doughnut } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
 import { selectPeriodTransactions } from "../../../redux/transactions/selector";
-import { selectBalance } from "../../../redux/auth/selectors";
+import { selectBalance } from "../../../redux/transactions/selector";
 import { formatNumber } from "../numbersFormatting";
 
 import s from "../StatisticsTable/StatisticsTable.module.css";

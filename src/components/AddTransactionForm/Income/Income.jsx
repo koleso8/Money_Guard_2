@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import {
   addTrnThunk,
-  deleteTrnThunk,
+  evoEditTrnThunk,
 } from "../../../redux/transactions/operations";
 import MyDatePicker from "../DatePicker/DatePicker";
 
@@ -31,8 +31,12 @@ const Income = ({ closeModal, editedItem, buttonText }) => {
       };
 
   const handleIncomeSubmit = (values) => {
-    if (editedItem) dispatch(deleteTrnThunk(editedItem.id));
-    dispatch(addTrnThunk(values));
+    values.amount = Math.abs(values.amount);
+    if (editedItem) {
+      dispatch(evoEditTrnThunk({ ...values, id: editedItem.id }));
+    } else {
+      dispatch(addTrnThunk(values));
+    }
     closeModal();
   };
 

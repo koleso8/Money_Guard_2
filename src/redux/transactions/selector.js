@@ -8,3 +8,4 @@ export const selectCurrentTransaction = (state) =>
 export const selectCategories = (state) => state.transactions.categories;
 export const selectStatisticsPeriod = (state) =>
   state.transactions.statisticsPeriod;
+export const selectBalance = (state) => state.transactions.balance;
