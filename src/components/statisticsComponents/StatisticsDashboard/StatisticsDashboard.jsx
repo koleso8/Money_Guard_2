@@ -37,19 +37,13 @@ export const StatisticsDashboard = () => {
   const years = generateYearsList();
 
   const customStyles = {
-    option: (defaultStyles, state) =>
-      // console.log("defaultStyles: ", defaultStyles),
-      // console.log("state: ", state),
-      ({
-        // You can log the defaultStyles and state for inspection
-        // You don't need to spread the defaultStyles
-
-        ...defaultStyles,
-        fontSize: '16px',
-        padding: '4px 20px',
-        color: state.isSelected ? '#FF868D' : '#fff',
-        backgroundColor: state.isSelected ? '#fff2' : '#5a438c00',
-      }),
+    option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      fontSize: '16px',
+      padding: '4px 20px',
+      color: state.isSelected ? '#FF868D' : '#fff',
+      backgroundColor: state.isSelected ? '#fff2' : '#5a438c00',
+    }),
 
     control: defaultStyles => ({
       ...defaultStyles,

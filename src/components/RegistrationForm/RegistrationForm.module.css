@@ -151,6 +151,7 @@
   font-size: 18px;
   color: var(--white_60);
   padding-bottom: 8px;
+  width: 90%;
 }
 
 .error {
@@ -162,7 +163,7 @@
 
 .error_second {
   position: absolute;
-  top: 44px;
+  top: 50px;
   left: 0px;
   color: var(--dashboard_text);
 }
@@ -291,4 +292,18 @@
   .btn_second {
     width: 300px;
   }
+}
+
+.PassClose {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  fill: var(--white_60);
+}
+
+.PassOpen {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  fill: var(--yellow);
 }

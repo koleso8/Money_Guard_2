@@ -6,6 +6,8 @@ import s from './LoginForm.module.css';
 import Icon from '../Icon/Icon';
 import { Toaster } from 'react-hot-toast';
 import validationSchema from '../../helpers/loginSchema';
+import { useState } from 'react';
+import clsx from 'clsx';
 
 export const LoginForm = () => {
   const dispath = useDispatch();
@@ -13,6 +15,17 @@ export const LoginForm = () => {
     email: '',
     password: '',
   };
+
+  const [pass, setPass] = useState('password');
+
+  const handleClick = () => {
+    setPass(prevState => (prevState == 'password' ? 'text' : 'password'));
+  };
+
+  const iconColor = clsx({
+    [s.PassClose]: pass === 'password',
+    [s.PassOpen]: pass === 'text',
+  });
 
   const handleSubmit = (values, options) => {
     dispath(loginThunk(values));
@@ -66,9 +79,16 @@ export const LoginForm = () => {
                   <Field
                     autoComplete="new-password"
                     name="password"
-                    type="password"
+                    type={pass}
                     placeholder="Password"
                     className={s.input}
+                  />
+                  <Icon
+                    onClick={handleClick}
+                    width={27}
+                    height={27}
+                    className={iconColor}
+                    name="icon-eye"
                   />
                   <ErrorMessage
                     name="password"
