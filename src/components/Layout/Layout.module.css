@@ -85,7 +85,13 @@
     overflow: visible;
   }
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1280px) and (min-width: 768px) {
+    .outlet {
+      overflow: hidden;
+    }
+  }
+
+  @media (max-width: 767px) {
     .outlet {
       overflow: auto;
     }

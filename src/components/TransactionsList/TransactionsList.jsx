@@ -44,13 +44,19 @@ const TransactionsList = () => {
           </tr>
         </thead>
         <tbody className={s.tableBody}>
-          {allTransactions.map((item) => (
-            <TransactionsItem
-              key={item.id}
-              {...item}
-              setEditedItem={() => openEditModal(item)}
-            />
-          ))}
+          {allTransactions.length > 0 ? (
+            allTransactions.map((item) => (
+              <TransactionsItem
+                key={item.id}
+                {...item}
+                setEditedItem={() => openEditModal(item)}
+              />
+            ))
+          ) : (
+            <p className={s.emptyListPlaceholder}>
+              Start by adding your first transaction!
+            </p>
+          )}
         </tbody>
       </table>
       <button type="button" className={s.addTrnBtn} onClick={openAddModal}>
