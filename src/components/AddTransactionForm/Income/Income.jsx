@@ -36,6 +36,32 @@ const Income = ({ closeModal, editedItem, buttonText }) => {
     closeModal();
   };
 
+  const validateAmountInput = (e) => {
+    const value = e.target.value;
+
+    if (
+      e.key === "Backspace" ||
+      e.key === "Delete" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight"
+    ) {
+      return;
+    }
+
+    if (
+      !/[\d.-]/.test(e.key) ||
+      (e.key === "-" && value.includes("-")) ||
+      (e.key === "-" && value.length > 0) ||
+      (e.key === "." && value.includes(".")) ||
+      (e.key === "." && value.length === 0) ||
+      (value.includes(".") &&
+        value.includes("-") &&
+        value.indexOf("-") > value.indexOf("."))
+    ) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className={s.formBox}>
       <Formik
@@ -53,6 +79,7 @@ const Income = ({ closeModal, editedItem, buttonText }) => {
                     type="number"
                     placeholder="0.00"
                     className={s.incomeSum}
+                    onKeyDown={validateAmountInput}
                   />
                 </div>
                 <ErrorMessage

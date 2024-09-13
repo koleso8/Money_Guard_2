@@ -85,6 +85,12 @@
     overflow: visible;
   }
 
+  @media (max-width: 1280px) {
+    .outlet {
+      overflow: auto;
+    }
+  }
+
   .gradientOne {
     top: 30%;
     left: -20%;

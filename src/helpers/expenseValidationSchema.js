@@ -4,8 +4,7 @@ const expenseValidationSchema = yup.object().shape({
   amount: yup
     .number()
     .typeError("Please enter a valid amount")
-    .min(1, "Amount must be at least 1")
-    .required("Amount is required"),
+    .required("Valid amount is required"),
   transactionDate: yup
     .date()
     .required("Date is required")
