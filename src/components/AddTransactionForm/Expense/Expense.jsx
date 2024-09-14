@@ -27,7 +27,7 @@ const Expense = ({ closeModal, editedItem, buttonText }) => {
   const initialValues = editedItem
     ? {
         amount: Math.abs(editedItem.amount),
-        categoryId: editedItem.categoryId,
+        categoryId: editedItem.type === "INCOME" ? null : editedItem.categoryId,
         comment: editedItem.comment,
         transactionDate: editedItem.transactionDate,
         type: "EXPENSE",
