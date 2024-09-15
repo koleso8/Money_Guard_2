@@ -1,3 +1,14 @@
+.emptyListPlaceholder {
+  text-align: center;
+  padding-top: 40px;
+  color: var(--yellow);
+  font-family: var(--font_family);
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .transactionListBox {
   width: calc(100vw - 480px);
   max-width: 1100px;

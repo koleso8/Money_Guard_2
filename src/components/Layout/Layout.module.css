@@ -82,7 +82,7 @@
   }
 
   .outlet {
-    overflow: auto;
+    overflow: hidden;
   }
 
   .gradientOne {
@@ -107,6 +107,10 @@
 }
 
 @media (max-width: 767px) {
+  .outlet {
+    overflow: auto;
+  }
+
   .gradientOne {
     top: 0;
     left: 0;
