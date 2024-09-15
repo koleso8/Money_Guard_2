@@ -1,13 +1,24 @@
+.emptyListPlaceholder {
+  text-align: center;
+  padding-top: 40px;
+  color: var(--yellow);
+  font-family: var(--font_family);
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .transactionListBox {
   width: calc(100vw - 480px);
   max-width: 1100px;
   max-height: calc(100vh - 110px);
-
   padding: 0px 100px 40px 69px;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   margin-top: 46px;
+  overflow-x: hidden;
+  overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -19,9 +30,11 @@
 @media (max-width: 1279px) and (min-width: 768px) {
   .transactionListBox {
     width: 100%;
-    padding: 0px 32px 40px;
+    padding: 0px 32px 100px;
     margin-top: 20px;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100vh - 250px);
   }
 }
 
@@ -39,21 +52,20 @@
   border-collapse: collapse;
   table-layout: auto;
   border-radius: 8px;
+  width: 100%;
 }
 
 @media (max-width: 1279px) and (min-width: 768px) {
   .table {
-    min-width: 704px;
     width: 100%;
-    overflow: hidden;
+    min-width: 704px;
   }
 }
 
 @media (max-width: 767px) {
   .table {
-    min-width: none;
-    max-width: 100%;
     width: 100%;
+    min-width: none;
     border-radius: 10px;
   }
 }
@@ -65,6 +77,19 @@
 .tableBody {
   overflow-y: auto;
   border-radius: 8px;
+  max-height: calc(100vh - 166px);
+}
+
+@media (max-width: 1279px) and (min-width: 768px) {
+  .tableBody {
+    max-height: calc(100vh - 230px);
+  }
+}
+
+@media (max-width: 767px) {
+  .tableBody {
+    max-height: none;
+  }
 }
 
 .tableHeader {
@@ -76,7 +101,6 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
   position: sticky;
   top: 0;
   width: 100%;
@@ -89,7 +113,8 @@
 
 @media (max-width: 1279px) and (min-width: 768px) {
   .tableHeader {
-    position: static;
+    position: sticky;
+    top: 0;
     width: 100%;
     border-radius: 8px;
   }
