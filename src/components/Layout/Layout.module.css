@@ -82,7 +82,7 @@
   }
 
   .outlet {
-    overflow: visible;
+    overflow: auto;
   }
 
   .gradientOne {
